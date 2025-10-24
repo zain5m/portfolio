@@ -4,13 +4,7 @@ import {
   Moon,
   Menu,
   X,
-  // Github,
-  // Linkedin,
   Send,
-  MoveRight,
-  Feather,
-  Database,
-  GitBranch,
   Mail,
   Phone,
   MapPin,
@@ -30,23 +24,21 @@ import { GrLinkedin } from "react-icons/gr";
 import { SiGithub } from "react-icons/si";
 import { SiLinkedin } from "react-icons/si";
 
-import {
-  SiFlutter,
-  SiDart,
-  SiFirebase,
-  SiPython,
-  SiTensorflow,
-  SiGit,
-  SiGooglemaps,
-  SiHive,
-} from "react-icons/si";
-
-import { CiLinkedin } from "react-icons/ci";
+// import {
+//   SiFlutter,
+//   SiDart,
+//   SiFirebase,
+//   SiPython,
+//   SiTensorflow,
+//   SiGit,
+//   SiGooglemaps,
+//   SiHive,
+// } from "react-icons/si";
 
 // --------- بياناتك الشخصية -----------
 
 const NAME = "Zain Mhesn";
-const TITLE = "Flutter Developer & AI Specialist";
+const TITLE = "Flutter Developer | AI Specialist | Information Engineer";
 const EMAIL = "zayanmhesn22@gmail.com";
 const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
@@ -63,23 +55,99 @@ const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
 // )}`;
 
 // --------- مشاريعك الحقيقية -----------
+// const projectsData = [
+//   {
+//     title: "SKY متجر (E-commerce App)",
+//     description:
+//       "Flutter app that transforms a WordPress store into a modern mobile experience. Features product search, authentication, order history, real-time sync.",
+//     imageUrl: "/projects/sky-store.png",
+//     tags: ["Flutter", "Firebase", "REST API", "Hive"],
+//     githubUrl: "",
+//     liveUrl:
+//       "https://play.google.com/store/apps/details?id=com.skytrendstore.skystore",
+//   },
+//   {
+//     title: "Easy Dutch – Language Learning App",
+//     description:
+//       "App for Dutch language learning with daily goals, AI chat, gamification, and real-time pronunciation feedback.",
+//     imageUrl: "/projects/easy-dutch.png",
+//     tags: ["Flutter", "Hive", "TTS", "Google Translate", "AI"],
+//     githubUrl: "",
+//     liveUrl:
+//       "https://play.google.com/store/apps/details?id=com.learn_language.protico",
+//   },
+//   {
+//     title: "Tekrum – Delivery Application",
+//     description:
+//       "Comprehensive delivery platform for users, drivers, and vendors: live tracking, QR scan, real-time orders, and chat.",
+//     imageUrl: "/projects/tekrum.png",
+//     tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner"],
+//     githubUrl: "",
+//     liveUrl:
+//       "https://play.google.com/store/apps/details?id=com.tekrum_dev.tekrum",
+//   },
+//   {
+//     title: "Tekrum Partner – Driver & Vendor App",
+//     description:
+//       "Manages deliveries & products for vendors and drivers: order tracking, QR confirmation, business profiles.",
+//     imageUrl: "/projects/tekrum.png",
+//     tags: ["Flutter", "Firebase", "Google Maps"],
+//     githubUrl: "",
+//     liveUrl:
+//       "https://play.google.com/store/apps/details?id=com.tekrumpartner.tekrum_partner",
+//   },
+//   {
+//     title: "Tafadal – Tourist Taxi Booking App",
+//     description:
+//       "Ride booking and management for tourists in KSA: destinations, online payment, real-time chat, map tracking.",
+//     imageUrl: "/projects/tafadal.png",
+//     tags: ["Flutter", "Firebase", "Google Maps", "Notifications"],
+//     githubUrl: "",
+//     liveUrl: "",
+//   },
+//   {
+//     title: "Todo App (Personal Project)",
+//     description:
+//       "Task management app using clean architecture and Hive local storage.",
+//     tags: ["Flutter", "Hive", "Clean Architecture"],
+//     githubUrl: "https://github.com/zain5m/todo_app.git",
+//     liveUrl: "",
+//   },
+// ];
 const projectsData = [
   {
     title: "SKY متجر (E-commerce App)",
     description:
-      "Flutter app that transforms a WordPress store into a modern mobile experience. Features product search, authentication, order history, real-time sync.",
+      "Transforms a WordPress store into a modern Flutter app with auth, category filters, search, cart, order history, and real-time sync.",
     imageUrl: "/projects/sky-store.png",
-    tags: ["Flutter", "Firebase", "REST API", "Hive"],
+    tags: [
+      "Flutter",
+      "Clean Architecture",
+      "Bloc",
+      "REST API",
+      "Firebase",
+      "Hive",
+      "Google Sign-In",
+      "FCM",
+    ],
     githubUrl: "",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.skytrendstore.skystore",
   },
   {
-    title: "Easy Dutch – Language Learning App",
+    title: "Easy Dutch – Language Learning",
     description:
-      "App for Dutch language learning with daily goals, AI chat, gamification, and real-time pronunciation feedback.",
+      "Dutch learning app with AI chat, daily challenges, TTS pronunciation, achievements, stats, and rewards.",
     imageUrl: "/projects/easy-dutch.png",
-    tags: ["Flutter", "Hive", "TTS", "Google Translate", "AI"],
+    tags: [
+      "Flutter",
+      "Hive",
+      "TTS",
+      "Google Translate API",
+      "AdMob",
+      "Firebase Notifications",
+      "Mistral AI",
+    ],
     githubUrl: "",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.learn_language.protico",
@@ -87,62 +155,178 @@ const projectsData = [
   {
     title: "Tekrum – Delivery Application",
     description:
-      "Comprehensive delivery platform for users, drivers, and vendors: live tracking, QR scan, real-time orders, and chat.",
+      "Browse vendors/products, place and track orders, custom 'Jable' requests, multi-address, ratings, and push notifications.",
     imageUrl: "/projects/tekrum.png",
-    tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner"],
+    tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner", "FCM"],
     githubUrl: "",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.tekrum_dev.tekrum",
   },
   {
-    title: "Tekrum Partner – Driver & Vendor App",
+    title: "Tekrum Partner – Driver & Vendor",
     description:
-      "Manages deliveries & products for vendors and drivers: order tracking, QR confirmation, business profiles.",
+      "Drivers manage delivery requests and QR confirmation; vendors manage products and order statuses with profiles and scheduling.",
     imageUrl: "/projects/tekrum.png",
-    tags: ["Flutter", "Firebase", "Google Maps"],
+    tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner"],
     githubUrl: "",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.tekrumpartner.tekrum_partner",
   },
   {
-    title: "Tafadal – Tourist Taxi Booking App",
+    title: "Tafadal – Tourist Taxi Booking (KSA)",
     description:
-      "Ride booking and management for tourists in KSA: destinations, online payment, real-time chat, map tracking.",
+      "Tourist taxi booking with real-time driver tracking, booking management, ride history, notifications, online payment, and in-app chat.",
     imageUrl: "/projects/tafadal.png",
-    tags: ["Flutter", "Firebase", "Google Maps", "Notifications"],
+    tags: ["Flutter", "Firebase", "Google Maps", "FCM", "Realtime Chat"],
     githubUrl: "",
     liveUrl: "",
   },
   {
-    title: "Todo App (Personal Project)",
+    title: "To-do App (Personal)",
     description:
-      "Task management app using clean architecture and Hive local storage.",
+      "Productivity app using Clean Architecture and Hive for local storage with categories, priorities, and progress tracking.",
     tags: ["Flutter", "Hive", "Clean Architecture"],
     githubUrl: "https://github.com/zain5m/todo_app.git",
     liveUrl: "",
   },
+  {
+    title: "Social Media App (Academic)",
+    description:
+      "Interest-based social platform: posts with images, stories, tags, likes/comments, follows, notifications, and real-time chat.",
+
+    tags: [
+      "Flutter",
+      "Firebase Firestore",
+      "Auth",
+      "Cloud Messaging",
+      "Realtime Chat",
+    ],
+    githubUrl: "",
+    liveUrl: "",
+  },
 ];
+// --------- مهاراتك -----------
+// const skills = [
+//   "Flutter",
+//   "Dart",
+//   "Firebase",
+//   "Python",
+//   "Machine Learning",
+//   "Git",
+//   "Google Maps",
+//   "Hive",
+// ];
+// const skillIconMap = {
+//   Flutter: SiFlutter,
+//   Dart: SiDart,
+//   Firebase: SiFirebase,
+//   Python: SiPython,
+//   "Machine Learning": SiTensorflow,
+//   Git: SiGit,
+//   "Google Maps": SiGooglemaps,
+//   Hive: SiHive,
+// };
+// --------- مهاراتك -----------
+import {
+  SiFlutter,
+  SiDart,
+  SiFirebase,
+  SiPython,
+  SiTensorflow,
+  SiGit,
+  SiGooglemaps,
+  SiHive,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiLangchain,
+  SiOpenai,
+  // SiQdrant,
+  SiOracle,
+  SiApollographql,
+  SiMysql,
+  SiGitlab,
+  SiGoogleadmob,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+
+import { FaDatabase, FaLanguage } from "react-icons/fa6";
+import { PiVectorThreeBold } from "react-icons/pi"; // لمتجهات Vector DBs
+import { TbSql } from "react-icons/tb";
+import { MdDeveloperMode } from "react-icons/md";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { BsBarChartFill } from "react-icons/bs";
 
 // --------- مهاراتك -----------
 const skills = [
+  // Mobile (Core)
   "Flutter",
   "Dart",
-  "Firebase",
+  "Clean Architecture",
+  "Bloc",
+  "Provider",
+  "REST APIs",
+  "Firebase (Auth, Firestore, FCM)",
+  "Local Storage (Hive, Sqflite, Shared Prefs, Secure Storage)",
+  "Google Maps API",
+  "AdMob",
+
+  // AI & Data
   "Python",
-  "Machine Learning",
+  "Pandas",
+  "NumPy",
+  "Scikit-learn",
+  "RAG",
+  "LangChain",
+  "Vector DBs (Qdrant, ChromaDB)",
+  "LLM Integration",
+  "Mistral AI",
+  "OpenAI",
+
+  // Databases & Tools
+  "Oracle SQL",
+  "PL/SQL",
+  "Oracle APEX",
+  "SQL (general)",
   "Git",
-  "Google Maps",
-  "Hive",
+  "GitHub",
+  "GitLab",
 ];
+
+// --------- أيقونات محسّنة -----------
 const skillIconMap = {
+  // Mobile
   Flutter: SiFlutter,
   Dart: SiDart,
-  Firebase: SiFirebase,
+  "Clean Architecture": MdDeveloperMode,
+  Bloc: SiFlutter, // ما في أيقونة مخصصة، استعمل Flutter كرمز تطوير
+  Provider: SiFlutter,
+  "REST APIs": SiApollographql, // تمثّل API layer
+  "Firebase (Auth, Firestore, FCM)": SiFirebase,
+  "Local Storage (Hive, Sqflite, Shared Prefs, Secure Storage)": SiHive,
+  "Google Maps API": SiGooglemaps,
+  AdMob: SiGoogleadmob,
+
+  // AI & Data
   Python: SiPython,
-  "Machine Learning": SiTensorflow,
+  Pandas: SiPandas,
+  NumPy: SiNumpy,
+  "Scikit-learn": SiScikitlearn,
+  RAG: GiArtificialIntelligence,
+  LangChain: SiLangchain,
+  "Vector DBs (Qdrant, ChromaDB)": PiVectorThreeBold,
+  "LLM Integration": GiArtificialIntelligence,
+  "Mistral AI": SiTensorflow, // لا يوجد أيقونة رسمية
+  OpenAI: SiOpenai,
+
+  // Databases & Tools
+  "Oracle SQL": SiOracle,
+  "PL/SQL": TbSql,
+  "Oracle APEX": SiOracle,
+  "SQL (general)": FaDatabase,
   Git: SiGit,
-  "Google Maps": SiGooglemaps,
-  Hive: SiHive,
+  GitHub: SiGithub,
+  GitLab: SiGitlab,
 };
 
 // --------- Theme Context -----------
@@ -443,10 +627,11 @@ function Home() {
             {TITLE}
           </h2>
           <p className="max-w-2xl text-lg text-gray-600 dark:text-gray-400 mb-8 mx-auto lg:mx-0 animate-fade-in-up animate-delay-4">
-            Flutter Developer & AI Specialist with 3+ years of experience
-            building cross-platform apps and intelligent digital solutions.
-            Passionate about merging AI with mobile to create innovative,
-            user-focused products.
+            Information Engineering graduate specialized in Artificial
+            Intelligence, with 3+ years in Flutter. Built and shipped 5+
+            cross-platform apps using Clean Architecture, Firebase, and
+            Bloc/Provider. Comfortable integrating AI (RAG, LangChain, vector
+            DBs) to deliver scalable, user-focused mobile products.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animate-delay-4">
@@ -530,8 +715,10 @@ function Projects() {
   return (
     // 👈 NOTICE: هذا القسم يجب أن يكون له id="projects"
     <section id="projects" className="container mx-auto max-w-6xl px-4 py-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-        Projects I've Built
+      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
+        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-blue-500 to-green-400 text-white rounded-2xl shadow-md">
+          Projects I've Built
+        </span>
       </h2>
       <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
         Here are some of the projects I'm proud of.
@@ -645,39 +832,192 @@ function ProjectCard({ project }) {
 }
 
 // --------- About -----------
+// function About() {
+//   return (
+//     // 👈 NOTICE: هذا القسم يجب أن يكون له id="about"
+//     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
+//       <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
+//         <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-purple-500 to-blue-400 text-white rounded-2xl shadow-md">
+//           About Me
+//         </span>
+//       </h2>
+//       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+//         <div className="w-full md:w-2/3">
+//           <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+//             Information Engineering graduate specialized in Artificial
+//             Intelligence. 3+ years building Flutter apps end-to-end with Clean
+//             Architecture and robust state management. I like turning ambiguous
+//             product ideas into reliable, shippable mobile software.
+//           </p>
+//           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+//             On the mobile side: Flutter, Dart, Bloc/Provider, REST, Firebase,
+//             local storage, Google Maps, and AdMob. On the AI side: Python data
+//             stack (Pandas/NumPy/Scikit-learn) and Gen-AI workflows (RAG,
+//             LangChain, vector DBs like Qdrant/ChromaDB, and LLM integration with
+//             Mistral/OpenAI). I care about scalable code, evidence-based
+//             features, and shipping.
+//           </p>
+//           <div className="mt-4 text-gray-700 dark:text-gray-300 mb-8">
+//             <b>Languages:</b> Arabic (Native), English (Intermediate)
+//           </div>
+//           {/* <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+//             Hello! I'm <b>{NAME}</b>, an Information Engineering graduate
+//             specialized in Artificial Intelligence. I have over 3 years of
+//             hands-on experience in Flutter mobile development, delivering
+//             intelligent, user-focused apps.
+//           </p>
+//           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+//             My expertise covers Flutter, Dart, Firebase, Machine Learning, and
+//             Clean Architecture. I thrive on solving complex problems and
+//             building innovative solutions that blend mobile engineering with AI.
+//             Always eager to collaborate, learn, and create.
+//           </p>
+//           <div className="mt-4 text-gray-700 dark:text-gray-300 mb-8">
+//             <b>Languages:</b> Arabic (Native), English (Intermediate)
+//           </div> */}
+
+//           <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+//             <Briefcase size={22} className="text-blue-500" /> My Toolkit
+//           </h3>
+//           <div className="mb-4">
+//             <SkillsGrid items={skills} />
+//           </div>
+//         </div>
+//         <div className="w-full md:w-1/3 flex justify-center">
+//           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
+//             <img
+//               src={PROFILE_IMG_SQUARE}
+//               loading="lazy"
+//               alt={NAME}
+//               className="rounded-xl shadow-lg w-full max-w-sm mx-auto"
+//               onError={(e) =>
+//                 (e.target.src =
+//                   "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
+//               }
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="mt-16 max-w-3xl mx-auto bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+//         <h3 className="text-2xl font-semibold mb-6 text-center">
+//           Education & Certifications
+//         </h3>
+//         {/* <ul className="text-gray-700 dark:text-gray-300 space-y-4">
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <GraduationCap
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               B.Sc. in Information Engineering – Artificial Intelligence,
+//               Damascus University (2020–2025)
+//             </span>
+//           </li>
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <Award
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               Oracle SQL & APEX Training – EastMed Company (2024)
+//             </span>
+//           </li>
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <Award
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               AI & Machine Learning Training Program – SHAI for AI Club (2024)
+//             </span>
+//           </li>
+//         </ul> */}
+//         <ul className="text-gray-700 dark:text-gray-300 space-y-4">
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <GraduationCap
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               B.Sc. in Information Engineering – Artificial Intelligence,
+//               Damascus University (2019–2025)
+//               <br />
+//               <i>Graduation Project:</i> RAG-based conversational system for HR
+//               résumé evaluation using LLMs & vector databases (Qdrant), with
+//               semantic/hybrid retrieval via LangChain; achieved &gt;90% ranking
+//               alignment with human experts.
+//             </span>
+//           </li>
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <Award
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               Oracle SQL &amp; APEX Training – EastMed Company (Aug–Sep 2024, 80
+//               hours). Hands-on Oracle DB + APEX web solutions.
+//             </span>
+//           </li>
+//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+//             <Award
+//               size={24}
+//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
+//             />
+//             <span className="text-lg">
+//               AI &amp; Machine Learning Training Program – SHAI for AI Club
+//               (2024). Foundations + advanced topics with project-based learning.
+//             </span>
+//           </li>
+//         </ul>
+//         <div className="mt-8 text-center">
+//           <a
+//             href={CV_URL}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 transform hover:scale-105"
+//           >
+//             Download CV <Download size={20} />
+//           </a>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 function About() {
   return (
-    // 👈 NOTICE: هذا القسم يجب أن يكون له id="about"
     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        About Me
+      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
+        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-purple-500 to-blue-400 text-white rounded-2xl shadow-md">
+          About Me
+        </span>
       </h2>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        <div className="w-full md:w-2/3">
+
+      {/* الصف العلوي: النصوص + الصورة جنب بعض */}
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-12">
+        {/* النصوص (تأخذ عمودين على الشاشات المتوسطة+) */}
+        <div className="md:col-span-2">
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            Hello! I'm <b>{NAME}</b>, an Information Engineering graduate
-            specialized in Artificial Intelligence. I have over 3 years of
-            hands-on experience in Flutter mobile development, delivering
-            intelligent, user-focused apps.
+            Information Engineering graduate specialized in Artificial
+            Intelligence. 3+ years building Flutter apps end-to-end with Clean
+            Architecture and robust state management. I like turning ambiguous
+            product ideas into reliable, shippable mobile software.
           </p>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            My expertise covers Flutter, Dart, Firebase, Machine Learning, and
-            Clean Architecture. I thrive on solving complex problems and
-            building innovative solutions that blend mobile engineering with AI.
-            Always eager to collaborate, learn, and create.
+            On the mobile side: Flutter, Dart, Bloc/Provider, REST, Firebase,
+            local storage, Google Maps, and AdMob. On the AI side: Python data
+            stack (Pandas/NumPy/Scikit-learn) and Gen-AI workflows (RAG,
+            LangChain, vector DBs like Qdrant/ChromaDB, and LLM integration with
+            Mistral/OpenAI). I care about scalable code, evidence-based
+            features, and shipping.
           </p>
-          <div className="mt-4 text-gray-700 dark:text-gray-300 mb-8">
+          <div className="mt-4 text-gray-700 dark:text-gray-300">
             <b>Languages:</b> Arabic (Native), English (Intermediate)
           </div>
-
-          <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-            <Briefcase size={22} className="text-blue-500" /> My Toolkit
-          </h3>
-          <div className="mb-4">
-            <SkillsGrid items={skills} />
-          </div>
         </div>
-        <div className="w-full md:w-1/3 flex justify-center">
+
+        {/* الصورة (عمود واحد) */}
+        <div className="w-full flex justify-center">
           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
             <img
               src={PROFILE_IMG_SQUARE}
@@ -693,6 +1033,20 @@ function About() {
         </div>
       </div>
 
+      {/* خط فاصل لطيف (اختياري) */}
+      <div className="mt-12 border-t border-gray-200 dark:border-gray-800/60" />
+
+      {/* My Toolkit تحت النص + الصورة وبعرض كامل */}
+      <div className="mt-12">
+        <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+          <Briefcase size={22} className="text-blue-500" /> My Toolkit
+        </h3>
+        <div className="mb-4">
+          <SkillsGrid items={skills} />
+        </div>
+      </div>
+
+      {/* التعليم والشهادات */}
       <div className="mt-16 max-w-3xl mx-auto bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
         <h3 className="text-2xl font-semibold mb-6 text-center">
           Education & Certifications
@@ -705,7 +1059,12 @@ function About() {
             />
             <span className="text-lg">
               B.Sc. in Information Engineering – Artificial Intelligence,
-              Damascus University (2020–2025)
+              Damascus University (2019–2025)
+              <br />
+              <i>Graduation Project:</i> RAG-based conversational system for HR
+              résumé evaluation using LLMs & vector databases (Qdrant), with
+              semantic/hybrid retrieval via LangChain; achieved &gt;90% ranking
+              alignment with human experts.
             </span>
           </li>
           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
@@ -714,7 +1073,8 @@ function About() {
               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
             />
             <span className="text-lg">
-              Oracle SQL & APEX Training – EastMed Company (2024)
+              Oracle SQL &amp; APEX Training – EastMed Company (Aug–Sep 2024, 80
+              hours). Hands-on Oracle DB + APEX web solutions.
             </span>
           </li>
           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
@@ -723,7 +1083,8 @@ function About() {
               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
             />
             <span className="text-lg">
-              AI & Machine Learning Training Program – SHAI for AI Club (2024)
+              AI &amp; Machine Learning Training Program – SHAI for AI Club
+              (2024). Foundations + advanced topics with project-based learning.
             </span>
           </li>
         </ul>
@@ -806,8 +1167,10 @@ function Contact() {
   return (
     // 👈 NOTICE: هذا القسم يجب أن يكون له id="contact"
     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-        Get In Touch
+      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
+        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-green-500 to-blue-400 text-white rounded-2xl shadow-md">
+          Get In Touch
+        </span>
       </h2>
       <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
         Interested in working together or have a question? Reach out!
