@@ -18,7 +18,7 @@ import {
   GraduationCap,
   Award,
   Download,
-  Briefcase, // (جديد)
+  Briefcase,
 } from "lucide-react";
 //
 import { SiWhatsapp } from "react-icons/si";
@@ -123,16 +123,6 @@ const projectsData = [
 ];
 
 // --------- مهاراتك -----------
-
-// const skills = [
-//   { name: "Flutter", icon: <Feather size={20} /> },
-//   { name: "Dart", icon: <MoveRight size={20} /> },
-//   { name: "Firebase", icon: <Database size={20} /> },
-//   { name: "Python", icon: <MoveRight size={20} /> },
-//   { name: "Machine Learning", icon: <Database size={20} /> },
-//   { name: "Git", icon: <GitBranch size={20} /> },
-// ];
-// --------- مهاراتك -----------
 const skills = [
   "Flutter",
   "Dart",
@@ -157,6 +147,14 @@ const skillIconMap = {
 // --------- Theme Context -----------
 const ThemeContext = React.createContext();
 
+// 👈 ADDED: نقلنا هذا المتغير هنا ليصبح عام
+const navItems = [
+  { name: "Home", id: "home" },
+  { name: "Projects", id: "projects" },
+  { name: "About", id: "about" },
+  { name: "Contact", id: "contact" },
+];
+
 // --------- Main App -----------
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -164,119 +162,160 @@ export default function App() {
     return saved ? saved : "dark"; // 👈 يبدأ داكن
   });
 
-  // const [theme, setTheme] = useState("dark");
-
-  const [page, setPage] = useState("home");
+  // 👈 CHANGED: استبدلنا "page" بـ "activeSection" لتتبع السكرول
+  const [activeSection, setActiveSection] = useState("home");
+  // const [page, setPage] = useState("home"); // 👈 REMOVED
 
   useEffect(() => {
     document.documentElement.lang = "en";
     document.documentElement.dir = "ltr";
     // ضيف/شيل كلاس dark
     document.documentElement.classList.toggle("dark", theme === "dark");
-
     document.documentElement.style.colorScheme = theme;
-
     localStorage.setItem("theme", theme);
   }, [theme]);
-  //   document.documentElement.lang = 'en';
-  //   document.documentElement.dir = 'ltr';
-  //   if (theme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }, [theme]);
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
-  const navigateTo = (pageName) => setPage(pageName);
 
-  const renderPage = () => {
-    switch (page) {
-      case "home":
-        return <Home navigateTo={navigateTo} />;
-      case "projects":
-        return <Projects />;
-      case "about":
-        return <About />;
-      case "contact":
-        return <Contact />;
-      default:
-        return <Home navigateTo={navigateTo} />;
-    }
-  };
+  // 👈 ADDED: هذا الـ useEffect هو المسؤول عن تتبع السكرول
+  useEffect(() => {
+    // جلب جميع الأقسام
+    const sections = navItems.map((item) =>
+      document.getElementById(item.id)
+    );
+
+    // إعدادات الـ Observer
+    // rootMargin: -80px (ارتفاع الـ Navbar) من الأعلى
+    // -60% من الأسفل، لتحديد القسم الفعال في الجزء العلوي من الشاشة
+    const observerOptions = {
+      root: null, // التتبع نسبة للـ viewport
+      rootMargin: "-80px 0px -60% 0px",
+      threshold: 0, // يشتغل بمجرد دخول بكسل واحد
+    };
+
+    // الـ Callback الذي سيعمل عند التمرير
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // إذا كان القسم ظاهراً، حدّث الحالة
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    // إنشاء الـ Observer
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // بدء مراقبة جميع الأقسام
+    sections.forEach((section) => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    // دالة التنظيف: إيقاف المراقبة عند إغلاق المكون
+    return () => {
+      sections.forEach((section) => {
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
+  }, []); // 👈 [] يعني أنه سيعمل مرة واحدة فقط عند تحميل الصفحة
+
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+
+  // 👈 REMOVED: لم نعد بحاجة لهذه الدوال
+  // const navigateTo = (pageName) => setPage(pageName);
+  // const renderPage = () => { ... };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <style>
         {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .page-content {
-            animation: fadeIn 0.5s ease-in-out;
-          }
-          
-          /* (جديد) أنيميشن للـ Hero */
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-          }
-          .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-          .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-          .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-          .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
-        `}
+            // 👈 ADDED: لجعل التمرير ناعماً عند الضغط على الروابط
+            html {
+              scroll-behavior: smooth;
+            }
+            // 👈 ADDED: لإضافة هامش علوي للأقسام يساوي ارتفاع الـ Navbar
+            // 80px = 5rem (h-20 in tailwind)
+            section[id] {
+              scroll-margin-top: 80px;
+            }
+         
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .page-content {
+              animation: fadeIn 0.5s ease-in-out;
+            }
+            
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-up {
+              animation: fadeInUp 0.8s ease-out forwards;
+            }
+            .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+            .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+            .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+            .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+          `}
       </style>
-      {/* (جديد) تعديل الخلفية */}
       <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
-        {/* (جديد) إضافة خلفية متدرجة */}
         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-slate-950 dark:bg-[radial-gradient(#ffffff20_1px,transparent_1px)]"></div>
 
-        <Navbar navigateTo={navigateTo} currentPage={page} />
-        <main className="pt-20 page-content relative z-10">{renderPage()}</main>
-        <Footer navigateTo={navigateTo} />
+        {/* 👈 CHANGED: مررنا الحالة الجديدة (activeSection) بدلاً من (page) */}
+        <Navbar currentPage={activeSection} />
+
+        {/* 👈 CHANGED: عرضنا جميع المكونات مباشرة بدلاً من دالة renderPage */}
+        <main className="pt-20 page-content relative z-10">
+          <Home />
+          <Projects />
+          <About />
+          <Contact />
+        </main>
+        
+        {/* 👈 CHANGED: أزلنا prop الـ navigateTo */}
+        <Footer />
       </div>
     </ThemeContext.Provider>
   );
 }
 
 // --------- Navbar -----------
-function Navbar({ navigateTo, currentPage }) {
+// 👈 CHANGED: أزلنا prop الـ navigateTo
+function Navbar({ currentPage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = React.useContext(ThemeContext);
-  const navItems = [
-    { name: "Home", id: "home" },
-    { name: "Projects", id: "projects" },
-    { name: "About", id: "about" },
-    { name: "Contact", id: "contact" },
-  ];
-  return (
-    // (جديد) تعديل تصميم الـ Navbar (Glassmorphism)
+  // 👈 MOVED: نقلنا هذا المتغير خارج المكون
 
+  return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
       <div className="container mx-auto max-w-6xl px-4 h-20 flex justify-between items-center">
-        <div
+        {/* 👈 CHANGED: حولنا الـ div إلى رابط <a> لينتقل إلى قسم #home */}
+        <a
+          href="#home"
           className="text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 cursor-pointer"
-          onClick={() => navigateTo("home")}
+          // onClick={() => navigateTo("home")} // 👈 REMOVED
         >
           {NAME}
-        </div>
+        </a>
         <nav className="hidden md:flex items-center space-x-2">
+          {/* 👈 CHANGED: حولنا الـ button إلى رابط <a> لينتقل إلى القسم الموافق */}
           {navItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              onClick={() => navigateTo(item.id)}
+              href={`#${item.id}`} // 👈 ADDED: الرابط
+              // onClick={() => navigateTo(item.id)} // 👈 REMOVED
               className={`text-base font-medium transition-all duration-300 px-4 py-2 rounded-lg ${
-                currentPage === item.id
+                currentPage === item.id // 👈 سيعمل هذا الآن بناءً على السكرول
                   ? "bg-blue-100/50 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300"
                   : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
               }`}
             >
               {item.name}
-            </button>
+            </a>
           ))}
           <a
             href={GITHUB}
@@ -320,11 +359,13 @@ function Navbar({ navigateTo, currentPage }) {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-20 left-0 right-0 bg-white dark:bg-slate-900 shadow-lg py-4 border-b border-gray-200 dark:border-gray-800">
           <nav className="flex flex-col items-center space-y-4">
+            {/* 👈 CHANGED: حولنا الـ button إلى <a> */}
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.id}
+                href={`#${item.id}`} // 👈 ADDED: الرابط
                 onClick={() => {
-                  navigateTo(item.id);
+                  // 👈 CHANGED: أزلنا navigateTo، وأبقينا إغلاق القائمة
                   setIsMobileMenuOpen(false);
                 }}
                 className={`text-lg font-medium transition-colors ${
@@ -334,7 +375,7 @@ function Navbar({ navigateTo, currentPage }) {
                 }`}
               >
                 {item.name}
-              </button>
+              </a>
             ))}
             <div className="flex gap-4">
               <a
@@ -362,9 +403,10 @@ function Navbar({ navigateTo, currentPage }) {
 }
 
 // --------- Home -----------
-function Home({ navigateTo }) {
+// 👈 CHANGED: أزلنا prop الـ navigateTo
+function Home() {
   return (
-    // (جديد) تعديل كامل للـ Hero Section
+    // 👈 NOTICE: هذا القسم يجب أن يكون له id="home" ليعمل السكرول
     <section
       id="home"
       className="container mx-auto max-w-6xl px-4 py-20 md:py-32"
@@ -405,12 +447,14 @@ function Home({ navigateTo }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animate-delay-4">
-            <button
-              onClick={() => navigateTo("projects")}
+            {/* 👈 CHANGED: حولنا الـ button إلى <a> للانتقال إلى قسم المشاريع */}
+            <a
+              href="#projects" // 👈 ADDED
+              // onClick={() => navigateTo("projects")} // 👈 REMOVED
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
             >
               View My Projects <MoveRight size={20} />
-            </button>
+            </a>
             <a
               href={CV_URL}
               target="_blank"
@@ -457,6 +501,7 @@ function Home({ navigateTo }) {
 // --------- Projects -----------
 function Projects() {
   return (
+    // 👈 NOTICE: هذا القسم يجب أن يكون له id="projects"
     <section id="projects" className="container mx-auto max-w-6xl px-4 py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
         Projects I've Built
@@ -473,38 +518,27 @@ function Projects() {
   );
 }
 
+// ... ProjectCard (لا تغييرات هنا)
 function ProjectCard({ project }) {
-  // , imageFit = "cover"
-  // const imgClass =
-  //   imageFit === "contain"
-  //     ? "object-contain w-full h-full p-4"
-  //     : "object-cover w-full h-full";
-
   const hasLinks = Boolean(project.githubUrl) || Boolean(project.liveUrl);
 
   return (
     <div className="group relative rounded-2xl">
-      {/* طبقة التدرّج (glow) ضمن حدود الكارد */}
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                   bg-gradient-to-r from-blue-400 to-green-400 blur-xl"
+                     bg-gradient-to-r from-blue-400 to-green-400 blur-xl"
         aria-hidden
       />
-
-      {/* محتوى الكارد */}
       <div
         className="relative z-10 bg-white dark:bg-slate-800/80 rounded-2xl overflow-hidden
-                   shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300
-                   transform hover:-translate-y-1 border border-gray-200/50 dark:border-gray-700/50"
+                       shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300
+                       transform hover:-translate-y-1 border border-gray-200/50 dark:border-gray-700/50"
       >
-        {/* الغلاف / الصورة */}
-
         {project.imageUrl ? (
           <div className="flex items-center justify-center h-48 overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-slate-900">
             <img
               src={project.imageUrl}
               alt={project.title}
-              // className={imgClass}
               className="object-contain h-full w-full p-4"
               onError={(e) => (e.target.src = "/projects/placeholder.png")}
               loading="lazy"
@@ -513,7 +547,6 @@ function ProjectCard({ project }) {
         ) : (
           <div className="overflow-hidden rounded-t-2xl">
             <img
-              // src="https://placehold.co/600x400/d1fae5/222?text=${project.title}"
               src={`https://placehold.co/600x400/d1fae5/222?text=${encodeURIComponent(
                 project.title
               )}`}
@@ -526,18 +559,13 @@ function ProjectCard({ project }) {
             />
           </div>
         )}
-
-        {/* النص والتفاصيل */}
         <div className="p-6">
           <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
             {project.title}
           </h3>
-
           <p className="text-gray-600 dark:text-gray-400 mb-4 min-h-16 text-sm">
             {project.description}
           </p>
-
-          {/* الوسوم */}
           {Array.isArray(project.tags) && project.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tags.map((tag, i) => (
@@ -550,8 +578,6 @@ function ProjectCard({ project }) {
               ))}
             </div>
           )}
-
-          {/* الأزرار */}
           {hasLinks && (
             <div className="flex flex-wrap gap-3">
               {project.githubUrl && (
@@ -560,8 +586,8 @@ function ProjectCard({ project }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white
-                             dark:bg-gray-200 dark:text-gray-900 rounded-lg font-medium
-                             hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors text-sm"
+                                 dark:bg-gray-200 dark:text-gray-900 rounded-lg font-medium
+                                 hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors text-sm"
                   aria-label={`View source code for ${project.title} on GitHub`}
                 >
                   <SiGithub size={18} />
@@ -569,15 +595,13 @@ function ProjectCard({ project }) {
                   <ExternalLink size={16} />
                 </a>
               )}
-
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg
-                             font-medium hover:bg-blue-700 transition-colors text-sm"
-                  // aria-label={`Open live demo for ${project.title}`}
+                                 font-medium hover:bg-blue-700 transition-colors text-sm"
                   aria-label={`View ${project.title} on Google Play`}
                 >
                   <SiGoogleplay size={18} />
@@ -595,13 +619,12 @@ function ProjectCard({ project }) {
 // --------- About -----------
 function About() {
   return (
+    // 👈 NOTICE: هذا القسم يجب أن يكون له id="about"
     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
         About Me
       </h2>
-      {/* (جديد) تعديل التخطيط */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* (جديد) النص على اليسار */}
         <div className="w-full md:w-2/3">
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
             Hello! I'm <b>{NAME}</b>, an Information Engineering graduate
@@ -625,18 +648,7 @@ function About() {
           <div className="mb-4">
             <SkillsGrid items={skills} />
           </div>
-
-          {/* <div className="flex flex-wrap gap-3 mb-4">
-            {skills.map((skill) => (
-              <div key={skill.name} className="flex items-center gap-2 bg-gray-100 dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-all">
-                {React.cloneElement(skill.icon, { className: "text-blue-600 dark:text-blue-400" })}
-                <span className="font-medium text-sm">{skill.name}</span>
-              </div>
-            ))}
-          </div> */}
         </div>
-
-        {/* (جديد) الصورة على اليمين مع إطار متدرج */}
         <div className="w-full md:w-1/3 flex justify-center">
           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
             <img
@@ -652,7 +664,6 @@ function About() {
         </div>
       </div>
 
-      {/* (جديد) تحسين قسم التعليم */}
       <div className="mt-16 max-w-3xl mx-auto bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
         <h3 className="text-2xl font-semibold mb-6 text-center">
           Education & Certifications
@@ -701,6 +712,8 @@ function About() {
     </section>
   );
 }
+
+// ... SkillsGrid (لا تغييرات هنا)
 function SkillsGrid({ items }) {
   return (
     <div
@@ -733,6 +746,7 @@ function SkillsGrid({ items }) {
   );
 }
 
+
 // --------- Contact -----------
 function Contact() {
   const [formData, setFormData] = useState({
@@ -762,6 +776,7 @@ function Contact() {
   };
 
   return (
+    // 👈 NOTICE: هذا القسم يجب أن يكون له id="contact"
     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         Get In Touch
@@ -771,7 +786,6 @@ function Contact() {
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-10">
-        {/* الإيميل */}
         <a
           href={`mailto:${EMAIL}`}
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
@@ -779,8 +793,6 @@ function Contact() {
           <Mail size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">{EMAIL}</span>
         </a>
-
-        {/* لينكدإن */}
         <a
           href={LINKEDIN}
           target="_blank"
@@ -790,8 +802,6 @@ function Contact() {
           <GrLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">LinkedIn</span>
         </a>
-
-        {/* رقم الهاتف */}
         <a
           href={`tel:${PHONE}`}
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
@@ -799,8 +809,6 @@ function Contact() {
           <Phone size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">{PHONE}</span>
         </a>
-
-        {/* واتساب */}
         <a
           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
           target="_blank"
@@ -813,32 +821,8 @@ function Contact() {
           />
           <span className="text-sm font-medium">WhatsApp</span>
         </a>
-        {/* <a
-          href={`mailto:${EMAIL}`}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-        >
-          <Send size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">{EMAIL}</span>
-        </a>
-        <a
-          href={LINKEDIN}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-        >
-          <SiLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">LinkedIn</span>
-        </a>
-        <a
-          href={`tel:${PHONE}`}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-        >
-          <Phone size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">{PHONE}</span>
-        </a> */}
       </div>
 
-      {/* (جديد) تحسين تصميم الفورم */}
       <div className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
         {isSubmitted ? (
           <div className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg">
@@ -920,17 +904,20 @@ function Contact() {
 }
 
 // --------- Footer -----------
-function Footer({ navigateTo }) {
+// 👈 CHANGED: أزلنا prop الـ navigateTo
+function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-slate-950/50 border-t border-gray-200 dark:border-gray-800/50">
       <div className="container mx-auto max-w-6xl px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="text-center md:text-left">
-          <div
+          {/* 👈 CHANGED: حولنا الـ div إلى <a> للعودة للرئيسية */}
+          <a
+            href="#home"
             className="text-xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer mb-2"
-            onClick={() => navigateTo("home")}
+            // onClick={() => navigateTo("home")} // 👈 REMOVED
           >
             {NAME}
-          </div>
+          </a>
           <div className="text-gray-600 dark:text-gray-400">
             {TITLE} <br />
             <span className="text-sm">{EMAIL}</span> |{" "}
