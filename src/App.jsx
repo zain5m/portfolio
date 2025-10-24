@@ -420,6 +420,7 @@ function Home() {
             <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400 to-green-400 blur-lg opacity-50 dark:opacity-70 animate-pulse"></div>
             <img
               src={PROFILE_IMG_ROUND}
+              loading="lazy"
               alt={NAME}
               className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white dark:border-slate-900"
               onError={(e) =>
@@ -564,10 +565,10 @@ function ProjectCard({ project }) {
           <div className="flex items-center justify-center h-48 overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-slate-900">
             <img
               src={project.imageUrl}
+              loading="lazy"
               alt={project.title}
               className="object-contain h-full w-full p-4"
               onError={(e) => (e.target.src = "/projects/placeholder.png")}
-              loading="lazy"
             />
           </div>
         ) : (
@@ -576,6 +577,7 @@ function ProjectCard({ project }) {
               src={`https://placehold.co/600x400/d1fae5/222?text=${encodeURIComponent(
                 project.title
               )}`}
+              loading="lazy"
               alt={project.title}
               className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
               onError={(e) =>
@@ -679,6 +681,7 @@ function About() {
           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
             <img
               src={PROFILE_IMG_SQUARE}
+              loading="lazy"
               alt={NAME}
               className="rounded-xl shadow-lg w-full max-w-sm mx-auto"
               onError={(e) =>
