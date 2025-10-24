@@ -20,6 +20,8 @@ import {
   Download,
   Briefcase,
 } from "lucide-react";
+import { IoRocketSharp } from "react-icons/io5";
+
 //
 import { SiWhatsapp } from "react-icons/si";
 import { SiGoogleplay } from "react-icons/si";
@@ -40,20 +42,25 @@ import {
 } from "react-icons/si";
 
 import { CiLinkedin } from "react-icons/ci";
+
 // --------- بياناتك الشخصية -----------
+
 const NAME = "Zain Mhesn";
 const TITLE = "Flutter Developer & AI Specialist";
 const EMAIL = "zayanmhesn22@gmail.com";
-const PHONE = "+96359527648";
+const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
 const LINKEDIN = "https://www.linkedin.com/in/zain-mhesn-48624920b";
 const GITHUB = "https://github.com/zain5m";
-// (هام) استبدل هذا بالرابط الحقيقي لملف سيرتك الذاتية
+
 const CV_URL = "/projects/ZAIN_MHESN.pdf";
-// (جديد) رابط لصورتك الشخصية (استبدله)
-const PROFILE_IMG = `https://placehold.co/500x500/cbd5e1/334155?text=${encodeURIComponent(
-  NAME[0]
-)}`;
+
+const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
+const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
+// NAME FOR IMAGE
+// `https://placehold.co/500x500/cbd5e1/334155?text=${encodeURIComponent(
+//   NAME[0]
+// )}`;
 
 // --------- مشاريعك الحقيقية -----------
 const projectsData = [
@@ -61,7 +68,6 @@ const projectsData = [
     title: "SKY متجر (E-commerce App)",
     description:
       "Flutter app that transforms a WordPress store into a modern mobile experience. Features product search, authentication, order history, real-time sync.",
-    // imageUrl: "https://placehold.co/600x400/3b82f6/ffffff?text=SKY+Store", // استبدل لاحقًا بصورة حقيقية للتطبيق
     imageUrl: "/projects/sky-store.png",
     tags: ["Flutter", "Firebase", "REST API", "Hive"],
     githubUrl: "",
@@ -72,7 +78,6 @@ const projectsData = [
     title: "Easy Dutch – Language Learning App",
     description:
       "App for Dutch language learning with daily goals, AI chat, gamification, and real-time pronunciation feedback.",
-    // imageUrl: "https://placehold.co/600x400/fbbf24/222?text=Easy+Dutch",
     imageUrl: "/projects/easy-dutch.png",
     tags: ["Flutter", "Hive", "TTS", "Google Translate", "AI"],
     githubUrl: "",
@@ -83,7 +88,6 @@ const projectsData = [
     title: "Tekrum – Delivery Application",
     description:
       "Comprehensive delivery platform for users, drivers, and vendors: live tracking, QR scan, real-time orders, and chat.",
-    // imageUrl: "https://placehold.co/600x400/0ea5e9/fff?text=Tekrum+Delivery",
     imageUrl: "/projects/tekrum.png",
     tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner"],
     githubUrl: "",
@@ -94,7 +98,6 @@ const projectsData = [
     title: "Tekrum Partner – Driver & Vendor App",
     description:
       "Manages deliveries & products for vendors and drivers: order tracking, QR confirmation, business profiles.",
-    // imageUrl: "https://placehold.co/600x400/16a34a/fff?text=Tekrum+Partner",
     imageUrl: "/projects/tekrum.png",
     tags: ["Flutter", "Firebase", "Google Maps"],
     githubUrl: "",
@@ -105,7 +108,6 @@ const projectsData = [
     title: "Tafadal – Tourist Taxi Booking App",
     description:
       "Ride booking and management for tourists in KSA: destinations, online payment, real-time chat, map tracking.",
-    // imageUrl: "https://placehold.co/600x400/334155/fff?text=Tafadal+Taxi",
     imageUrl: "/projects/tafadal.png",
     tags: ["Flutter", "Firebase", "Google Maps", "Notifications"],
     githubUrl: "",
@@ -115,7 +117,6 @@ const projectsData = [
     title: "Todo App (Personal Project)",
     description:
       "Task management app using clean architecture and Hive local storage.",
-    // imageUrl: "https://placehold.co/600x400/d1fae5/222?text=Todo+App",
     tags: ["Flutter", "Hive", "Clean Architecture"],
     githubUrl: "https://github.com/zain5m/todo_app.git",
     liveUrl: "",
@@ -178,9 +179,7 @@ export default function App() {
   // 👈 ADDED: هذا الـ useEffect هو المسؤول عن تتبع السكرول
   useEffect(() => {
     // جلب جميع الأقسام
-    const sections = navItems.map((item) =>
-      document.getElementById(item.id)
-    );
+    const sections = navItems.map((item) => document.getElementById(item.id));
 
     // إعدادات الـ Observer
     // rootMargin: -80px (ارتفاع الـ Navbar) من الأعلى
@@ -202,7 +201,10 @@ export default function App() {
     };
 
     // إنشاء الـ Observer
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
 
     // بدء مراقبة جميع الأقسام
     sections.forEach((section) => {
@@ -275,7 +277,7 @@ export default function App() {
           <About />
           <Contact />
         </main>
-        
+
         {/* 👈 CHANGED: أزلنا prop الـ navigateTo */}
         <Footer />
       </div>
@@ -417,7 +419,7 @@ function Home() {
           <div className="relative">
             <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400 to-green-400 blur-lg opacity-50 dark:opacity-70 animate-pulse"></div>
             <img
-              src={PROFILE_IMG}
+              src={PROFILE_IMG_ROUND}
               alt={NAME}
               className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white dark:border-slate-900"
               onError={(e) =>
@@ -453,7 +455,7 @@ function Home() {
               // onClick={() => navigateTo("projects")} // 👈 REMOVED
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
             >
-              View My Projects <MoveRight size={20} />
+              View My Projects <IoRocketSharp size={20} />
             </a>
             <a
               href={CV_URL}
@@ -479,6 +481,30 @@ function Home() {
             >
               <Phone size={18} className="text-blue-600 dark:text-blue-400" />
               <span className="text-sm font-medium">{PHONE}</span>
+            </a>
+            <a
+              href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 hover:scale-105 transition-all duration-300 shadow-sm"
+            >
+              <SiWhatsapp
+                size={18}
+                className="text-green-600 dark:text-green-400"
+              />
+              <span className="text-sm font-medium">WhatsApp</span>
+            </a>
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+            >
+              <GrLinkedin
+                size={18}
+                className="text-blue-600 dark:text-blue-400"
+              />
+              <span className="text-sm font-medium">LinkedIn</span>
             </a>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -652,7 +678,7 @@ function About() {
         <div className="w-full md:w-1/3 flex justify-center">
           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
             <img
-              src={PROFILE_IMG}
+              src={PROFILE_IMG_SQUARE}
               alt={NAME}
               className="rounded-xl shadow-lg w-full max-w-sm mx-auto"
               onError={(e) =>
@@ -745,7 +771,6 @@ function SkillsGrid({ items }) {
     </div>
   );
 }
-
 
 // --------- Contact -----------
 function Contact() {
