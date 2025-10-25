@@ -1,3 +1,4 @@
+// https://app.web3forms.com/forms
 import React, { useState, useEffect } from "react";
 import {
   Sun,
@@ -1137,6 +1138,163 @@ function SkillsGrid({ items }) {
 }
 
 // --------- Contact -----------
+// function Contact() {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [error, setError] = useState("");
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!formData.name || !formData.email || !formData.message) {
+//       setError("Please fill out all fields.");
+//       return;
+//     }
+//     setError("");
+//     console.log("Form data submitted:", formData);
+//     setIsSubmitted(true);
+//     setFormData({ name: "", email: "", message: "" });
+//     setTimeout(() => setIsSubmitted(false), 3000);
+//   };
+
+//   return (
+//     // 👈 NOTICE: هذا القسم يجب أن يكون له id="contact"
+//     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
+//       <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
+//         <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-green-500 to-blue-400 text-white rounded-2xl shadow-md">
+//           Get In Touch
+//         </span>
+//       </h2>
+//       <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
+//         Interested in working together or have a question? Reach out!
+//       </p>
+
+//       <div className="flex flex-wrap justify-center gap-4 mb-10">
+//         <a
+//           href={`mailto:${EMAIL}`}
+//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+//         >
+//           <Mail size={18} className="text-blue-600 dark:text-blue-400" />
+//           <span className="text-sm font-medium">{EMAIL}</span>
+//         </a>
+//         <a
+//           href={LINKEDIN}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+//         >
+//           <GrLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
+//           <span className="text-sm font-medium">LinkedIn</span>
+//         </a>
+//         <a
+//           href={`tel:${PHONE}`}
+//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+//         >
+//           <Phone size={18} className="text-blue-600 dark:text-blue-400" />
+//           <span className="text-sm font-medium">{PHONE}</span>
+//         </a>
+//         <a
+//           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 hover:scale-105 transition-all duration-300 shadow-sm"
+//         >
+//           <SiWhatsapp
+//             size={18}
+//             className="text-green-600 dark:text-green-400"
+//           />
+//           <span className="text-sm font-medium">WhatsApp</span>
+//         </a>
+//       </div>
+
+//       <div className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+//         {isSubmitted ? (
+//           <div className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg">
+//             Thank you! Your message has been sent.
+//           </div>
+//         ) : (
+//           <form onSubmit={handleSubmit} className="space-y-6">
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               <div>
+//                 <label
+//                   htmlFor="name"
+//                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+//                 >
+//                   Full Name
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="name"
+//                   name="name"
+//                   value={formData.name}
+//                   onChange={handleChange}
+//                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+//                   placeholder="Your Name"
+//                 />
+//               </div>
+//               <div>
+//                 <label
+//                   htmlFor="email"
+//                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+//                 >
+//                   Email Address
+//                 </label>
+//                 <input
+//                   type="email"
+//                   id="email"
+//                   name="email"
+//                   value={formData.email}
+//                   onChange={handleChange}
+//                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+//                   placeholder="you@example.com"
+//                 />
+//               </div>
+//             </div>
+//             <div>
+//               <label
+//                 htmlFor="message"
+//                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+//               >
+//                 Message
+//               </label>
+//               <textarea
+//                 id="message"
+//                 name="message"
+//                 rows="5"
+//                 value={formData.message}
+//                 onChange={handleChange}
+//                 className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+//                 placeholder="Your message..."
+//               />
+//             </div>
+//             {error && (
+//               <div className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg">
+//                 {error}
+//               </div>
+//             )}
+//             <div className="text-center">
+//               <button
+//                 type="submit"
+//                 className="w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+//               >
+//                 Send Message <Send size={18} />
+//               </button>
+//             </div>
+//           </form>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
+// 🔧 فعّل/عطّل الديبَغ من هنا أو عبر ?debug=1 في الرابط
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -1145,27 +1303,58 @@ function Contact() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setError("Please fill out all fields.");
       return;
     }
+
     setError("");
-    console.log("Form data submitted:", formData);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setLoading(true);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `New message from ${formData.name}`,
+          from_name: "Portfolio Contact",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        setError(data.message || "Failed to send. Try again later.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    // 👈 NOTICE: هذا القسم يجب أن يكون له id="contact"
     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
       <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
         <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-green-500 to-blue-400 text-white rounded-2xl shadow-md">
@@ -1184,6 +1373,7 @@ function Contact() {
           <Mail size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">{EMAIL}</span>
         </a>
+
         <a
           href={LINKEDIN}
           target="_blank"
@@ -1193,6 +1383,7 @@ function Contact() {
           <GrLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">LinkedIn</span>
         </a>
+
         <a
           href={`tel:${PHONE}`}
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
@@ -1200,6 +1391,7 @@ function Contact() {
           <Phone size={18} className="text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-medium">{PHONE}</span>
         </a>
+
         <a
           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
           target="_blank"
@@ -1221,6 +1413,16 @@ function Contact() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* honeypot للحماية من السبام */}
+            <input
+              type="text"
+              name="company"
+              className="hidden"
+              tabIndex="-1"
+              autoComplete="off"
+              onChange={() => setError("Spam detected.")}
+            />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -1239,6 +1441,7 @@ function Contact() {
                   placeholder="Your Name"
                 />
               </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -1257,6 +1460,7 @@ function Contact() {
                 />
               </div>
             </div>
+
             <div>
               <label
                 htmlFor="message"
@@ -1274,17 +1478,26 @@ function Contact() {
                 placeholder="Your message..."
               />
             </div>
+
             {error && (
               <div className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg">
                 {error}
               </div>
             )}
+
             <div className="text-center">
               <button
                 type="submit"
-                className="w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+                disabled={loading}
+                className="w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto disabled:opacity-60"
               >
-                Send Message <Send size={18} />
+                {loading ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send Message <Send size={18} />
+                  </>
+                )}
               </button>
             </div>
           </form>
