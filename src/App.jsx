@@ -1,4 +1,7 @@
 // https://app.web3forms.com/forms
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
+
 import React, { useState, useEffect } from "react";
 import {
   Sun,
@@ -465,6 +468,9 @@ export default function App() {
 
         {/* 👈 CHANGED: أزلنا prop الـ navigateTo */}
         <Footer />
+
+        {import.meta.env.PROD && <Analytics />}
+        {import.meta.env.PROD && <SpeedInsights />}
       </div>
     </ThemeContext.Provider>
   );
@@ -1328,7 +1334,7 @@ function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          access_key: import.meta.env.WEB3FORMS_KEY,
           subject: `New message from ${formData.name}`,
           from_name: "Portfolio Contact",
           name: formData.name,
