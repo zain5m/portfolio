@@ -603,63 +603,15 @@ export default function App() {
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  // return (
-  //   <ThemeContext.Provider value={{ theme, toggleTheme }}>
-  //     <style>
-  //       {`
-  //         html { scroll-behavior: smooth; }
-  //         section[id] { scroll-margin-top: 80px; }
-  //         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to {opacity:1; transform:translateY(0);} }
-  //         .page-content { animation: fadeIn 0.5s ease-in-out; }
-  //       `}
-  //     </style>
-
-  //     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
-  //       {/* 🔵 الخلفية الكاملة */}
-  //       <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden">
-  //         {/* شبكة نقطية خفيفة */}
-  //         <div className="h-full w-full bg-[radial-gradient(#94a3b833_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)] [background-size:18px_18px]" />
-
-  //         {/* 👇 الشبكة العصبونية المتحركة */}
-  //         <NeuralNetworkBG />
-
-  //         {/* غيوم ناعمة */}
-  //         {!window.matchMedia("(prefers-reduced-motion: reduce)").matches && (
-  //           <>
-  //             <div className="pointer-events-none absolute -top-24 -left-10 h-80 w-80 rounded-full blur-3xl opacity-40 bg-blue-400/40 dark:bg-blue-500/30 animate-[pulse_5s_ease-in-out_infinite]" />
-  //             <div className="pointer-events-none absolute top-1/3 right-0 h-96 w-96 rounded-full blur-3xl opacity-35 bg-emerald-400/40 dark:bg-emerald-500/30 animate-[pulse_6s_ease-in-out_infinite]" />
-  //             <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full blur-3xl opacity-25 bg-cyan-400/40 dark:bg-cyan-500/30 animate-[pulse_7s_ease-in-out_infinite]" />
-  //           </>
-  //         )}
-  //       </div>
-
-  //       {/* Navbar */}
-  //       <Navbar currentPage={activeSection} />
-  //       <NeuralNetworkBG />
-
-  //       {/* المحتوى */}
-  //       <main className="pt-20 page-content relative z-10">
-  //         <Home />
-  //         <Projects />
-  //         <About />
-  //         <Contact />
-  //       </main>
-
-  //       {/* Footer */}
-  //       <Footer />
-
-  //       {import.meta.env.PROD && <Analytics />}
-  //       {import.meta.env.PROD && <SpeedInsights />}
-  //     </div>
-  //   </ThemeContext.Provider>
-  // );
-  // ... في داخل الريتيرن لـ App:
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <style>
         {`
-        html { scroll-behavior: smooth; }
+         @media (min-width: 1024px) {
+      html { scroll-behavior: smooth; }
+    }
         section[id] { scroll-margin-top: 80px; }
+
       `}
       </style>
       <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
@@ -1289,6 +1241,44 @@ function ProjectCard({ project, prefersReducedMotion }) {
 function About() {
   const prefersReducedMotion = useReducedMotion();
 
+  // const education = [
+  //   {
+  //     icon: <GraduationCap size={22} />,
+  //     type: "Degree",
+  //     title: "B.Sc. in Information Engineering – Artificial Intelligence",
+  //     institution: "Damascus University",
+  //     period: "2019–2025",
+  //     desc: "Graduation Project: RAG-based conversational system for HR résumé evaluation using LLMs & vector databases (Qdrant), with semantic/hybrid retrieval via LangChain; achieved >90% ranking alignment with human experts.",
+  //     gradient: "from-purple-500 via-pink-500 to-rose-500",
+  //     iconBg:
+  //       "bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30",
+  //     iconColor: "text-purple-600 dark:text-purple-300",
+  //   },
+  //   {
+  //     icon: <Award size={22} />,
+  //     type: "Professional Training",
+  //     title: "Oracle SQL & APEX Training",
+  //     institution: "EastMed Company",
+  //     period: "Aug–Sep 2024 (80 hours)",
+  //     desc: "Hands-on Oracle DB + APEX web solutions.",
+  //     gradient: "from-blue-500 via-cyan-500 to-teal-500",
+  //     iconBg:
+  //       "bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30",
+  //     iconColor: "text-blue-600 dark:text-blue-300",
+  //   },
+  //   {
+  //     icon: <Sparkles size={22} />,
+  //     type: "AI Training Program",
+  //     title: "AI & Machine Learning Training Program",
+  //     institution: "SHAI for AI Club",
+  //     period: "2024",
+  //     desc: "Foundations + advanced topics with project-based learning.",
+  //     gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+  //     iconBg:
+  //       "bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30",
+  //     iconColor: "text-emerald-600 dark:text-emerald-300",
+  //   },
+  // ];
   const education = [
     {
       icon: <GraduationCap size={22} />,
@@ -1297,10 +1287,6 @@ function About() {
       institution: "Damascus University",
       period: "2019–2025",
       desc: "Graduation Project: RAG-based conversational system for HR résumé evaluation using LLMs & vector databases (Qdrant), with semantic/hybrid retrieval via LangChain; achieved >90% ranking alignment with human experts.",
-      gradient: "from-purple-500 via-pink-500 to-rose-500",
-      iconBg:
-        "bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30",
-      iconColor: "text-purple-600 dark:text-purple-300",
     },
     {
       icon: <Award size={22} />,
@@ -1309,10 +1295,6 @@ function About() {
       institution: "EastMed Company",
       period: "Aug–Sep 2024 (80 hours)",
       desc: "Hands-on Oracle DB + APEX web solutions.",
-      gradient: "from-blue-500 via-cyan-500 to-teal-500",
-      iconBg:
-        "bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30",
-      iconColor: "text-blue-600 dark:text-blue-300",
     },
     {
       icon: <Sparkles size={22} />,
@@ -1321,10 +1303,6 @@ function About() {
       institution: "SHAI for AI Club",
       period: "2024",
       desc: "Foundations + advanced topics with project-based learning.",
-      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-      iconBg:
-        "bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30",
-      iconColor: "text-emerald-600 dark:text-emerald-300",
     },
   ];
 
@@ -1471,247 +1449,77 @@ function About() {
       <div className="mt-12 border-t border-gray-200 dark:border-gray-800/60" />
 
       <ToolkitSection />
+      {/* Education & Certifications — نسخة خفيفة بدون لاج */}
+      <div className="mt-16 max-w-4xl mx-auto">
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center md:text-left">
+          <span className="inline-flex items-center gap-2">
+            <BookOpen className="text-purple-500" size={24} />
+            <span>Education &amp; Certifications</span>
+          </span>
+        </h3>
 
-      {/* Education & Certifications — تصميم بريميوم محسّن */}
-      <motion.div
-        className="mt-20 max-w-4xl mx-auto relative"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ type: "spring", stiffness: 160, damping: 18 }}
-      >
-        {/* العنوان الرئيسي مع تأثيرات متوهجة */}
-        <motion.div
-          className="relative mb-12 text-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 200, damping: 15 }}
-        >
-          <motion.h3
-            className="relative inline-block text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent"
-            whileHover={
-              prefersReducedMotion
-                ? {}
-                : {
-                    scale: 1.05,
-                    transition: { type: "spring", stiffness: 400 },
-                  }
-            }
-          >
-            <BookOpen
-              className="inline-block mr-3 mb-1 text-purple-500"
-              size={32}
-            />
-            Education & Certifications
-            {!prefersReducedMotion && (
-              <motion.span
-                className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-2xl rounded-full"
-                animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            )}
-          </motion.h3>
-          <motion.div
-            className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
-        </motion.div>
+        <div className="mt-2 h-1 w-20 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full mx-auto md:mx-0" />
 
-        {/* إطار زجاجي متدرّج محسّن */}
-        <div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-purple-500/30 via-pink-500/30 via-blue-500/30 to-emerald-500/30 shadow-2xl">
-          <div className="rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-6 md:p-10 border border-white/30 dark:border-white/10">
-            {/* خط زمني متدرّج */}
-            <div className="relative">
-              <motion.div
-                className="absolute left-6 md:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 via-blue-500 to-emerald-500 rounded-full shadow-lg"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                style={{ originY: 0 }}
-              />
+        <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+          A mix of academic background and focused training in databases &amp;
+          AI.
+        </p>
 
-              <div className="space-y-8">
-                {education.map((e, i) => (
-                  <motion.div
-                    key={i}
-                    variants={appear}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    whileHover={
-                      prefersReducedMotion
-                        ? {}
-                        : {
-                            y: -4,
-                            transition: { type: "spring", stiffness: 300 },
-                          }
-                    }
-                    className="relative pl-16 md:pl-20"
-                  >
-                    {/* نقطة متوهجة على الخط */}
-                    <motion.div
-                      className={`absolute left-[21px] md:left-[29px] top-6 h-5 w-5 rounded-full bg-gradient-to-br ${e.gradient} shadow-lg ring-4 ring-white dark:ring-slate-900 z-10`}
-                      whileHover={
-                        prefersReducedMotion ? {} : { scale: 1.3, rotate: 180 }
-                      }
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      {!prefersReducedMotion && (
-                        <motion.span
-                          className={`absolute inset-0 rounded-full bg-gradient-to-br ${e.gradient}`}
-                          animate={{
-                            scale: [1, 1.5, 1],
-                            opacity: [0.6, 0, 0.6],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      )}
-                    </motion.div>
+        {/* بطاقات عمودية خفيفة */}
+        <div className="mt-8 space-y-4">
+          {education.map((e, i) => (
+            <div
+              key={i}
+              className="flex flex-col md:flex-row gap-4 p-4 md:p-5 rounded-xl border border-gray-200/70 dark:border-gray-700/70 bg-white/80 dark:bg-slate-900/70 shadow-sm hover:shadow-md hover:border-blue-400/60 dark:hover:border-blue-400/60 hover:-translate-y-[2px] transition-all duration-200"
+            >
+              {/* الأيقونة والبادج */}
+              <div className="flex items-start gap-3 md:w-1/3">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 shrink-0">
+                  {e.icon}
+                </div>
+                <div>
+                  <span className="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-200 mb-1">
+                    {e.type}
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+                    <MapPin size={12} className="text-purple-500" />
+                    <span>{e.institution}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                    <Calendar size={12} className="text-blue-500" />
+                    <span>{e.period}</span>
+                  </div>
+                </div>
+              </div>
 
-                    {/* البطاقة المحسّنة */}
-                    <motion.div
-                      className={`group relative rounded-2xl border-2 border-transparent bg-gradient-to-br ${e.gradient} p-[2px] shadow-xl hover:shadow-2xl transition-all duration-300`}
-                      whileHover={
-                        prefersReducedMotion
-                          ? {}
-                          : {
-                              scale: 1.02,
-                              boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                            }
-                      }
-                    >
-                      <div className="rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-5 md:p-6 border border-white/50 dark:border-white/10">
-                        {/* رأس البطاقة */}
-                        <div className="flex items-start justify-between gap-4 mb-3">
-                          <div className="flex items-center gap-3 flex-1">
-                            <motion.div
-                              className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${e.iconBg} ${e.iconColor} shadow-md ring-2 ring-white/50 dark:ring-slate-700/50`}
-                              whileHover={
-                                prefersReducedMotion
-                                  ? {}
-                                  : { rotate: [0, -10, 10, 0], scale: 1.1 }
-                              }
-                              transition={{ duration: 0.5 }}
-                            >
-                              {e.icon}
-                            </motion.div>
-                            <div className="flex-1">
-                              <motion.span
-                                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${e.gradient} text-white shadow-sm mb-2`}
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                              >
-                                {e.type}
-                              </motion.span>
-                              <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-tight">
-                                {e.title}
-                              </h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* معلومات المؤسسة والوقت */}
-                        <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-gray-600 dark:text-gray-400">
-                          <div className="flex items-center gap-1.5">
-                            <MapPin size={14} className="text-purple-500" />
-                            <span className="font-medium">{e.institution}</span>
-                          </div>
-                          <span className="text-gray-400">•</span>
-                          <div className="flex items-center gap-1.5">
-                            <Calendar size={14} className="text-blue-500" />
-                            <span>{e.period}</span>
-                          </div>
-                        </div>
-
-                        {/* الوصف */}
-                        {e.desc && (
-                          <motion.p
-                            className="mt-3 text-gray-700 dark:text-gray-300 text-[15px] leading-relaxed pl-1 border-l-2 border-gray-200 dark:border-gray-700"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                          >
-                            {e.desc}
-                          </motion.p>
-                        )}
-
-                        {/* تأثير متوهج عند الهوفر */}
-                        {!prefersReducedMotion && (
-                          <motion.span
-                            className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${e.gradient} opacity-0 group-hover:opacity-10 blur-xl -z-10`}
-                            transition={{ duration: 0.3 }}
-                          />
-                        )}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
+              {/* النص الرئيسي */}
+              <div className="md:w-2/3">
+                <h4 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                  {e.title}
+                </h4>
+                {e.desc && (
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {e.desc}
+                  </p>
+                )}
               </div>
             </div>
-
-            {/* زر الـ CV محسّن */}
-            <motion.div
-              className="mt-12 text-center"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <motion.a
-                href={CV_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={
-                  prefersReducedMotion
-                    ? {}
-                    : {
-                        scale: 1.05,
-                        boxShadow: "0 10px 30px rgba(16, 185, 129, 0.4)",
-                      }
-                }
-                whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-                className="relative inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 shadow-xl transition-all duration-300"
-              >
-                <Download size={20} />
-                <span>Download CV</span>
-                {!prefersReducedMotion && (
-                  <motion.span
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400/50 via-teal-400/50 to-cyan-400/50 blur-xl -z-10"
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                )}
-              </motion.a>
-            </motion.div>
-          </div>
+          ))}
         </div>
-      </motion.div>
+
+        {/* زر الـ CV بسيط وخفيف */}
+        <div className="mt-8 text-center md:text-left">
+          <a
+            href={CV_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-semibold text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 shadow-md hover:shadow-lg transition-all duration-200 text-sm md:text-base"
+          >
+            <Download size={18} />
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
