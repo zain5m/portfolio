@@ -1,4 +1,3 @@
-// https://app.web3forms.com/forms
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -17,29 +16,299 @@ import {
   Award,
   Download,
   Briefcase,
+  BookOpen,
+  Calendar,
+  Sparkles,
 } from "lucide-react";
 import { IoRocketSharp } from "react-icons/io5";
 
 //
-import { SiWhatsapp } from "react-icons/si";
-import { SiGoogleplay } from "react-icons/si";
 import { GrLinkedin } from "react-icons/gr";
+import { BsSpeedometer2, BsBarChartFill } from "react-icons/bs";
+import { VscBeaker } from "react-icons/vsc";
+import { MdAccessibilityNew, MdDeveloperMode } from "react-icons/md";
+import { TbLock, TbSql } from "react-icons/tb";
 
-import { SiGithub } from "react-icons/si";
-import { SiLinkedin } from "react-icons/si";
+import {
+  SiGoogleplay,
+  SiWhatsapp,
+  SiLinkedin,
+  SiGithub,
+  SiFlutter,
+  SiDart,
+  SiFirebase,
+  SiPython,
+  SiTensorflow,
+  SiGit,
+  SiGooglemaps,
+  SiHive,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiLangchain,
+  SiOpenai,
+  // SiQdrant,
+  SiOracle,
+  SiApollographql,
+  SiMysql,
+  SiGitlab,
+  SiGoogleadmob,
+  SiSentry,
+  SiGithubactions,
+  SiPostman,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
-// import {
-//   SiFlutter,
-//   SiDart,
-//   SiFirebase,
-//   SiPython,
-//   SiTensorflow,
-//   SiGit,
-//   SiGooglemaps,
-//   SiHive,
-// } from "react-icons/si";
+import { FaDatabase, FaLanguage } from "react-icons/fa6";
+import { PiVectorThreeBold } from "react-icons/pi";
+import {} from "react-icons/tb";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+  useMotionValue,
+} from "framer-motion";
 
-// --------- بياناتك الشخصية -----------
+//////////////////////////////////////////////////////NEW -------------------------------------------
+
+// function NeuralNetworkBG() {
+//   const prefersReducedMotion = useReducedMotion();
+
+//   const layers = [
+//     { x: 70, n: 4 },
+//     { x: 210, n: 6 },
+//     { x: 370, n: 5 },
+//     { x: 530, n: 3 },
+//   ];
+//   const height = 620;
+
+//   const connections = [];
+//   for (let i = 0; i < layers.length - 1; i++) {
+//     for (let a = 0; a < layers[i].n; a++) {
+//       for (let b = 0; b < layers[i + 1].n; b++) {
+//         connections.push({
+//           x1: layers[i].x,
+//           y1: ((a + 1) * height) / (layers[i].n + 1),
+//           x2: layers[i + 1].x,
+//           y2: ((b + 1) * height) / (layers[i + 1].n + 1),
+//           key: `c-${i}-${a}-${b}`,
+//         });
+//       }
+//     }
+//   }
+
+//   const nodes = layers.flatMap((layer, li) =>
+//     Array.from({ length: layer.n }).map((_, ni) => ({
+//       cx: layer.x,
+//       cy: ((ni + 1) * height) / (layer.n + 1),
+//       key: `n-${li}-${ni}`,
+//     }))
+//   );
+
+//   const lineColor = "#22d3ee"; // cyan-400
+//   const nodeColor = "#60a5fa"; // blue-400
+
+//   return (
+//     <motion.svg
+//       // ✅ تموضع Responsive: أنزلها شوي وزِحها يمين، وتكبر تدريجيًا مع الشاشات
+//       className="
+//         fixed pointer-events-none select-none opacity-70
+//         z-0
+//         right-[-48px] top-36 w-[280px] h-[340px]
+//         sm:right-[-56px] sm:top-44 sm:w-[320px] sm:h-[380px]
+//         md:right-[-24px] md:top-28 md:w-[500px] md:h-[560px]
+//         lg:right-0 lg:top-24 lg:w-[600px] lg:h-[600px]
+//         xl:right-0 xl:top-20 xl:w-[650px] xl:h-[620px]
+//       "
+//       viewBox={`0 0 650 ${height}`}
+//       fill="none"
+//       aria-hidden
+//       animate={prefersReducedMotion ? undefined : { y: [0, -6, 0] }}
+//       transition={
+//         prefersReducedMotion
+//           ? undefined
+//           : { duration: 8, repeat: Infinity, ease: "easeInOut" }
+//       }
+//     >
+//       <defs>
+//         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+//           <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+//           <feMerge>
+//             <feMergeNode in="coloredBlur" />
+//             <feMergeNode in="SourceGraphic" />
+//           </feMerge>
+//         </filter>
+//         <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+//           <stop offset="0%" stopColor={lineColor} stopOpacity="0.35" />
+//           <stop offset="100%" stopColor="#34d399" stopOpacity="0.35" />
+//         </linearGradient>
+//       </defs>
+
+//       {connections.map((c, i) => (
+//         <motion.line
+//           key={c.key}
+//           x1={c.x1}
+//           y1={c.y1}
+//           x2={c.x2}
+//           y2={c.y2}
+//           stroke="url(#lg)"
+//           strokeWidth="1.6"
+//           strokeLinecap="round"
+//           strokeDasharray={prefersReducedMotion ? "none" : "8 14"}
+//           initial={prefersReducedMotion ? undefined : { strokeDashoffset: 0 }}
+//           animate={
+//             prefersReducedMotion ? undefined : { strokeDashoffset: [-22, 0] }
+//           }
+//           transition={
+//             prefersReducedMotion
+//               ? undefined
+//               : {
+//                   duration: 2.2 + (i % 7) * 0.12,
+//                   repeat: Infinity,
+//                   ease: "linear",
+//                 }
+//           }
+//           opacity={0.45}
+//         />
+//       ))}
+
+//       {nodes.map((n, i) => (
+//         <motion.circle
+//           key={n.key}
+//           cx={n.cx}
+//           cy={n.cy}
+//           r="11"
+//           fill={nodeColor}
+//           opacity="0.4"
+//           filter="url(#glow)"
+//           animate={
+//             prefersReducedMotion
+//               ? undefined
+//               : { r: [11, 13, 11], opacity: [0.35, 0.55, 0.4] }
+//           }
+//           transition={
+//             prefersReducedMotion
+//               ? undefined
+//               : {
+//                   duration: 2.6 + (i % 5) * 0.18,
+//                   repeat: Infinity,
+//                   ease: "easeInOut",
+//                 }
+//           }
+//         />
+//       ))}
+//     </motion.svg>
+//   );
+// }
+
+function NeuralNetworkBG() {
+  const prefersReducedMotion = useReducedMotion();
+
+  // قللنا عدد النودز شوي
+  const layers = [
+    { x: 80, n: 3 },
+    { x: 230, n: 4 },
+    { x: 390, n: 3 },
+    { x: 540, n: 2 },
+  ];
+  const height = 520;
+
+  const connections = [];
+  for (let i = 0; i < layers.length - 1; i++) {
+    for (let a = 0; a < layers[i].n; a++) {
+      for (let b = 0; b < layers[i + 1].n; b++) {
+        connections.push({
+          x1: layers[i].x,
+          y1: ((a + 1) * height) / (layers[i].n + 1),
+          x2: layers[i + 1].x,
+          y2: ((b + 1) * height) / (layers[i + 1].n + 1),
+          key: `c-${i}-${a}-${b}`,
+        });
+      }
+    }
+  }
+
+  const nodes = layers.flatMap((layer, li) =>
+    Array.from({ length: layer.n }).map((_, ni) => ({
+      cx: layer.x,
+      cy: ((ni + 1) * height) / (layer.n + 1),
+      key: `n-${li}-${ni}`,
+    }))
+  );
+
+  const lineColor = "#22d3ee"; // cyan-400
+  const nodeColor = "#60a5fa"; // blue-400
+
+  return (
+    <motion.svg
+      className="
+        fixed pointer-events-none select-none opacity-40
+        z-0
+        right-[-32px] top-40 w-[260px] h-[320px]
+        sm:right-[-40px] sm:top-40 sm:w-[320px] sm:h-[360px]
+        md:right-0 md:top-32 md:w-[460px] md:h-[480px]
+        lg:right-4 lg:top-24 lg:w-[560px] lg:h-[520px]
+      "
+      viewBox={`0 0 620 ${height}`}
+      fill="none"
+      aria-hidden
+      animate={prefersReducedMotion ? undefined : { y: [0, -8, 0] }}
+      transition={
+        prefersReducedMotion
+          ? undefined
+          : { duration: 10, repeat: Infinity, ease: "easeInOut" }
+      }
+    >
+      <defs>
+        <linearGradient id="nn-lines" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor={lineColor} stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#34d399" stopOpacity="0.4" />
+        </linearGradient>
+        <filter id="nn-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* خطوط ثابتة بدون motion لكل واحد */}
+      {connections.map((c) => (
+        <line
+          key={c.key}
+          x1={c.x1}
+          y1={c.y1}
+          x2={c.x2}
+          y2={c.y2}
+          stroke="url(#nn-lines)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          opacity={0.4}
+        />
+      ))}
+
+      {/* نودز ثابتة مع glow خفيف */}
+      {nodes.map((n) => (
+        <circle
+          key={n.key}
+          cx={n.cx}
+          cy={n.cy}
+          r="9"
+          fill={nodeColor}
+          opacity="0.5"
+          filter="url(#nn-glow)"
+        />
+      ))}
+    </motion.svg>
+  );
+}
+
+//////////////////////////////////////////////////////NEW -------------------------------------------
+// -------------------------------------------
 
 const NAME = "Zain Mhesn";
 const TITLE = "Flutter Developer | AI Specialist | Information Engineer";
@@ -53,71 +322,7 @@ const CV_URL = "/projects/ZAIN_MHESN.pdf";
 
 const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
 const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
-// NAME FOR IMAGE
-// `https://placehold.co/500x500/cbd5e1/334155?text=${encodeURIComponent(
-//   NAME[0]
-// )}`;
-
-// --------- مشاريعك الحقيقية -----------
-// const projectsData = [
-//   {
-//     title: "SKY متجر (E-commerce App)",
-//     description:
-//       "Flutter app that transforms a WordPress store into a modern mobile experience. Features product search, authentication, order history, real-time sync.",
-//     imageUrl: "/projects/sky-store.png",
-//     tags: ["Flutter", "Firebase", "REST API", "Hive"],
-//     githubUrl: "",
-//     liveUrl:
-//       "https://play.google.com/store/apps/details?id=com.skytrendstore.skystore",
-//   },
-//   {
-//     title: "Easy Dutch – Language Learning App",
-//     description:
-//       "App for Dutch language learning with daily goals, AI chat, gamification, and real-time pronunciation feedback.",
-//     imageUrl: "/projects/easy-dutch.png",
-//     tags: ["Flutter", "Hive", "TTS", "Google Translate", "AI"],
-//     githubUrl: "",
-//     liveUrl:
-//       "https://play.google.com/store/apps/details?id=com.learn_language.protico",
-//   },
-//   {
-//     title: "Tekrum – Delivery Application",
-//     description:
-//       "Comprehensive delivery platform for users, drivers, and vendors: live tracking, QR scan, real-time orders, and chat.",
-//     imageUrl: "/projects/tekrum.png",
-//     tags: ["Flutter", "Firebase", "Google Maps", "QR Scanner"],
-//     githubUrl: "",
-//     liveUrl:
-//       "https://play.google.com/store/apps/details?id=com.tekrum_dev.tekrum",
-//   },
-//   {
-//     title: "Tekrum Partner – Driver & Vendor App",
-//     description:
-//       "Manages deliveries & products for vendors and drivers: order tracking, QR confirmation, business profiles.",
-//     imageUrl: "/projects/tekrum.png",
-//     tags: ["Flutter", "Firebase", "Google Maps"],
-//     githubUrl: "",
-//     liveUrl:
-//       "https://play.google.com/store/apps/details?id=com.tekrumpartner.tekrum_partner",
-//   },
-//   {
-//     title: "Tafadal – Tourist Taxi Booking App",
-//     description:
-//       "Ride booking and management for tourists in KSA: destinations, online payment, real-time chat, map tracking.",
-//     imageUrl: "/projects/tafadal.png",
-//     tags: ["Flutter", "Firebase", "Google Maps", "Notifications"],
-//     githubUrl: "",
-//     liveUrl: "",
-//   },
-//   {
-//     title: "Todo App (Personal Project)",
-//     description:
-//       "Task management app using clean architecture and Hive local storage.",
-//     tags: ["Flutter", "Hive", "Clean Architecture"],
-//     githubUrl: "https://github.com/zain5m/todo_app.git",
-//     liveUrl: "",
-//   },
-// ];
+// -------------------------------------------
 const projectsData = [
   {
     title: "SKY متجر (E-commerce App)",
@@ -186,6 +391,42 @@ const projectsData = [
     liveUrl: "",
   },
   {
+    title: "Bankid.SY – Secure App↔Backend Exchange",
+    description:
+      "Implemented AES-256-CBC (random IV) + RSA-OAEP key wrapping, public-key handshake, secure key caching, JSON/file encryption, and FCM push notifications. Refactored legacy code and improved stability.",
+    imageUrl: "/projects/Bankid.SY.png",
+    tags: [
+      "Flutter",
+      "Security",
+      "AES-256-CBC",
+      "RSA-OAEP",
+      "flutter_secure_storage",
+      "FCM",
+      "Sentry",
+    ],
+    githubUrl: "",
+    liveUrl: "",
+  },
+  {
+    title: "SETS ORG 24 – Modernization & AdMob",
+    description:
+      "Upgraded packages, refactored core, stabilized performance, and integrated AdMob (banner/interstitial/rewarded). Testing + crash reduction.",
+    imageUrl: "/projects/SETS_ORG_24.jpeg",
+    tags: ["Flutter", "Refactor", "AdMob", "Stability", "Optimization"],
+    githubUrl: "",
+    liveUrl: "https://play.google.com/store/apps/details?id=dev.mahmoud.stae",
+  },
+  {
+    title: "سيتات اورج 2024 (MusicTones)",
+    description:
+      "Codebase refactor and upgrades, fixed major bugs, optimized audio playback & UI responsiveness, Firebase integration, QA + Google Play deployment.",
+    imageUrl: "/projects/musictones.png",
+    tags: ["Flutter", "Audio", "Firebase", "Optimization"],
+    githubUrl: "",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.musictones.apporg.musictones",
+  },
+  {
     title: "To-do App (Personal)",
     description:
       "Productivity app using Clean Architecture and Hive for local storage with categories, priorities, and progress tracking.",
@@ -209,57 +450,6 @@ const projectsData = [
     liveUrl: "",
   },
 ];
-// --------- مهاراتك -----------
-// const skills = [
-//   "Flutter",
-//   "Dart",
-//   "Firebase",
-//   "Python",
-//   "Machine Learning",
-//   "Git",
-//   "Google Maps",
-//   "Hive",
-// ];
-// const skillIconMap = {
-//   Flutter: SiFlutter,
-//   Dart: SiDart,
-//   Firebase: SiFirebase,
-//   Python: SiPython,
-//   "Machine Learning": SiTensorflow,
-//   Git: SiGit,
-//   "Google Maps": SiGooglemaps,
-//   Hive: SiHive,
-// };
-// --------- مهاراتك -----------
-import {
-  SiFlutter,
-  SiDart,
-  SiFirebase,
-  SiPython,
-  SiTensorflow,
-  SiGit,
-  SiGooglemaps,
-  SiHive,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
-  SiLangchain,
-  SiOpenai,
-  // SiQdrant,
-  SiOracle,
-  SiApollographql,
-  SiMysql,
-  SiGitlab,
-  SiGoogleadmob,
-} from "react-icons/si";
-import { FaJava } from "react-icons/fa";
-
-import { FaDatabase, FaLanguage } from "react-icons/fa6";
-import { PiVectorThreeBold } from "react-icons/pi"; // لمتجهات Vector DBs
-import { TbSql } from "react-icons/tb";
-import { MdDeveloperMode } from "react-icons/md";
-import { GiArtificialIntelligence } from "react-icons/gi";
-import { BsBarChartFill } from "react-icons/bs";
 
 // --------- مهاراتك -----------
 const skills = [
@@ -275,6 +465,21 @@ const skills = [
   "Google Maps API",
   "AdMob",
 
+  // Delivery & Release
+  "Google Play Console",
+  "App Signing & Release",
+
+  // Quality & Ops
+  // "Testing (Unit, Widget, Integration)",
+  // "Performance Profiling",
+  // "Crash Reporting (Sentry/Crashlytics)",
+  // "CI/CD (GitHub Actions)",
+  // "Postman/API Testing",
+  // "Accessibility (a11y)",
+  "Localization (i18n)",
+
+  // Security
+  "App Security (AES/RSA, Key Handshake, Secure Storage)",
   // AI & Data
   "Python",
   "Pandas",
@@ -303,13 +508,29 @@ const skillIconMap = {
   Flutter: SiFlutter,
   Dart: SiDart,
   "Clean Architecture": MdDeveloperMode,
-  Bloc: SiFlutter, // ما في أيقونة مخصصة، استعمل Flutter كرمز تطوير
+  Bloc: SiFlutter,
   Provider: SiFlutter,
   "REST APIs": SiApollographql, // تمثّل API layer
   "Firebase (Auth, Firestore, FCM)": SiFirebase,
   "Local Storage (Hive, Sqflite, Shared Prefs, Secure Storage)": SiHive,
   "Google Maps API": SiGooglemaps,
   AdMob: SiGoogleadmob,
+
+  // Delivery & Release
+  "Google Play Console": SiGoogleplay,
+  "App Signing & Release": SiGoogleplay,
+
+  // Quality & Ops
+  // "Testing (Unit, Widget, Integration)": VscBeaker,
+  // "Performance Profiling": BsSpeedometer2,
+  // "Crash Reporting (Sentry/Crashlytics)": SiSentry,
+  // "CI/CD (GitHub Actions)": SiGithubactions,
+  // "Postman/API Testing": SiPostman,
+  // "Accessibility (a11y)": MdAccessibilityNew,
+  "Localization (i18n)": FaLanguage,
+
+  // Security
+  "App Security (AES/RSA, Key Handshake, Secure Storage)": TbLock,
 
   // AI & Data
   Python: SiPython,
@@ -320,7 +541,7 @@ const skillIconMap = {
   LangChain: SiLangchain,
   "Vector DBs (Qdrant, ChromaDB)": PiVectorThreeBold,
   "LLM Integration": GiArtificialIntelligence,
-  "Mistral AI": SiTensorflow, // لا يوجد أيقونة رسمية
+  "Mistral AI": SiTensorflow,
   OpenAI: SiOpenai,
 
   // Databases & Tools
@@ -344,228 +565,248 @@ const navItems = [
   { name: "Contact", id: "contact" },
 ];
 
-// --------- Main App -----------
 export default function App() {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved ? saved : "dark"; // 👈 يبدأ داكن
   });
 
-  // 👈 CHANGED: استبدلنا "page" بـ "activeSection" لتتبع السكرول
   const [activeSection, setActiveSection] = useState("home");
-  // const [page, setPage] = useState("home"); // 👈 REMOVED
 
   useEffect(() => {
     document.documentElement.lang = "en";
     document.documentElement.dir = "ltr";
-    // ضيف/شيل كلاس dark
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.style.colorScheme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 👈 ADDED: هذا الـ useEffect هو المسؤول عن تتبع السكرول
   useEffect(() => {
-    // جلب جميع الأقسام
     const sections = navItems.map((item) => document.getElementById(item.id));
-
-    // إعدادات الـ Observer
-    // rootMargin: -80px (ارتفاع الـ Navbar) من الأعلى
-    // -60% من الأسفل، لتحديد القسم الفعال في الجزء العلوي من الشاشة
     const observerOptions = {
-      root: null, // التتبع نسبة للـ viewport
+      root: null,
       rootMargin: "-80px 0px -60% 0px",
-      threshold: 0, // يشتغل بمجرد دخول بكسل واحد
+      threshold: 0,
     };
-
-    // الـ Callback الذي سيعمل عند التمرير
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // إذا كان القسم ظاهراً، حدّث الحالة
-          setActiveSection(entry.target.id);
-        }
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
       });
     };
-
-    // إنشاء الـ Observer
     const observer = new IntersectionObserver(
       observerCallback,
       observerOptions
     );
-
-    // بدء مراقبة جميع الأقسام
-    sections.forEach((section) => {
-      if (section) {
-        observer.observe(section);
-      }
-    });
-
-    // دالة التنظيف: إيقاف المراقبة عند إغلاق المكون
-    return () => {
-      sections.forEach((section) => {
-        if (section) {
-          observer.unobserve(section);
-        }
-      });
-    };
-  }, []); // 👈 [] يعني أنه سيعمل مرة واحدة فقط عند تحميل الصفحة
+    sections.forEach((s) => s && observer.observe(s));
+    return () => sections.forEach((s) => s && observer.unobserve(s));
+  }, []);
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  // 👈 REMOVED: لم نعد بحاجة لهذه الدوال
-  // const navigateTo = (pageName) => setPage(pageName);
-  // const renderPage = () => { ... };
+  // return (
+  //   <ThemeContext.Provider value={{ theme, toggleTheme }}>
+  //     <style>
+  //       {`
+  //         html { scroll-behavior: smooth; }
+  //         section[id] { scroll-margin-top: 80px; }
+  //         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to {opacity:1; transform:translateY(0);} }
+  //         .page-content { animation: fadeIn 0.5s ease-in-out; }
+  //       `}
+  //     </style>
 
+  //     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
+  //       {/* 🔵 الخلفية الكاملة */}
+  //       <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden">
+  //         {/* شبكة نقطية خفيفة */}
+  //         <div className="h-full w-full bg-[radial-gradient(#94a3b833_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)] [background-size:18px_18px]" />
+
+  //         {/* 👇 الشبكة العصبونية المتحركة */}
+  //         <NeuralNetworkBG />
+
+  //         {/* غيوم ناعمة */}
+  //         {!window.matchMedia("(prefers-reduced-motion: reduce)").matches && (
+  //           <>
+  //             <div className="pointer-events-none absolute -top-24 -left-10 h-80 w-80 rounded-full blur-3xl opacity-40 bg-blue-400/40 dark:bg-blue-500/30 animate-[pulse_5s_ease-in-out_infinite]" />
+  //             <div className="pointer-events-none absolute top-1/3 right-0 h-96 w-96 rounded-full blur-3xl opacity-35 bg-emerald-400/40 dark:bg-emerald-500/30 animate-[pulse_6s_ease-in-out_infinite]" />
+  //             <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full blur-3xl opacity-25 bg-cyan-400/40 dark:bg-cyan-500/30 animate-[pulse_7s_ease-in-out_infinite]" />
+  //           </>
+  //         )}
+  //       </div>
+
+  //       {/* Navbar */}
+  //       <Navbar currentPage={activeSection} />
+  //       <NeuralNetworkBG />
+
+  //       {/* المحتوى */}
+  //       <main className="pt-20 page-content relative z-10">
+  //         <Home />
+  //         <Projects />
+  //         <About />
+  //         <Contact />
+  //       </main>
+
+  //       {/* Footer */}
+  //       <Footer />
+
+  //       {import.meta.env.PROD && <Analytics />}
+  //       {import.meta.env.PROD && <SpeedInsights />}
+  //     </div>
+  //   </ThemeContext.Provider>
+  // );
+  // ... في داخل الريتيرن لـ App:
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <style>
         {`
-            // 👈 ADDED: لجعل التمرير ناعماً عند الضغط على الروابط
-            html {
-              scroll-behavior: smooth;
-            }
-            // 👈 ADDED: لإضافة هامش علوي للأقسام يساوي ارتفاع الـ Navbar
-            // 80px = 5rem (h-20 in tailwind)
-            section[id] {
-              scroll-margin-top: 80px;
-            }
-         
-            @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-            .page-content {
-              animation: fadeIn 0.5s ease-in-out;
-            }
-            
-            @keyframes fadeInUp {
-              from { opacity: 0; transform: translateY(20px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-            .animate-fade-in-up {
-              animation: fadeInUp 0.8s ease-out forwards;
-            }
-            .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
-            .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
-            .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-            .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
-          `}
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 80px; }
+      `}
       </style>
       <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-slate-950 dark:bg-[radial-gradient(#ffffff20_1px,transparent_1px)]"></div>
+        {/* 🔵 الخلفية العصبية فقط */}
 
-        {/* 👈 CHANGED: مررنا الحالة الجديدة (activeSection) بدلاً من (page) */}
         <Navbar currentPage={activeSection} />
+        <NeuralNetworkBG />
 
-        {/* 👈 CHANGED: عرضنا جميع المكونات مباشرة بدلاً من دالة renderPage */}
         <main className="pt-20 page-content relative z-10">
           <Home />
           <Projects />
           <About />
           <Contact />
         </main>
-
-        {/* 👈 CHANGED: أزلنا prop الـ navigateTo */}
         <Footer />
-
-        {import.meta.env.PROD && <Analytics />}
-        {import.meta.env.PROD && <SpeedInsights />}
       </div>
     </ThemeContext.Provider>
   );
 }
 
-// --------- Navbar -----------
-// 👈 CHANGED: أزلنا prop الـ navigateTo
+// --------- Navbar (Animated) -----------
 function Navbar({ currentPage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = React.useContext(ThemeContext);
-  // 👈 MOVED: نقلنا هذا المتغير خارج المكون
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 20,
+    mass: 0.4,
+  });
+
+  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
-      <div className="container mx-auto max-w-6xl px-4 h-20 flex justify-between items-center">
-        {/* 👈 CHANGED: حولنا الـ div إلى رابط <a> لينتقل إلى قسم #home */}
-        <a
-          href="#home"
-          className="text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400 cursor-pointer"
-          // onClick={() => navigateTo("home")} // 👈 REMOVED
-        >
-          {NAME}
-        </a>
-        <nav className="hidden md:flex items-center space-x-2">
-          {/* 👈 CHANGED: حولنا الـ button إلى رابط <a> لينتقل إلى القسم الموافق */}
-          {navItems.map((item) => (
+    <header className="fixed top-0 left-0 right-0 z-[60]">
+      <div className="bg-white/70 dark:bg-slate-950/70 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
+        <div className="container mx-auto max-w-6xl px-4 h-20 flex justify-between items-center">
+          <a
+            href="#home"
+            className="text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400"
+          >
+            {NAME}
+          </a>
+
+          <nav className="hidden md:flex items-center space-x-2">
+            {navItems.map((item) => {
+              const active = currentPage === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`relative px-4 py-2 rounded-lg text-base font-medium transition-all duration-300
+                    ${
+                      active
+                        ? "text-blue-600 dark:text-blue-300"
+                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    }`}
+                >
+                  {item.name}
+                  {/* underline متحرك */}
+                  <span
+                    className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full transition-all duration-300
+                    ${
+                      active
+                        ? "bg-blue-500 dark:bg-blue-400 scale-x-100"
+                        : "bg-blue-500/50 dark:bg-blue-400/50 scale-x-0 group-hover:scale-x-100"
+                    }`}
+                    style={{ transformOrigin: "left" }}
+                  />
+                </a>
+              );
+            })}
+
             <a
-              key={item.id}
-              href={`#${item.id}`} // 👈 ADDED: الرابط
-              // onClick={() => navigateTo(item.id)} // 👈 REMOVED
-              className={`text-base font-medium transition-all duration-300 px-4 py-2 rounded-lg ${
-                currentPage === item.id // 👈 سيعمل هذا الآن بناءً على السكرول
-                  ? "bg-blue-100/50 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300"
-                  : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-              }`}
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
             >
-              {item.name}
+              <SiGithub size={20} />
             </a>
-          ))}
-          <a
-            href={GITHUB}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
-          >
-            <SiGithub size={20} />
-          </a>
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
-          >
-            <SiLinkedin size={20} />
-          </a>
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-          >
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
-        </nav>
-        {/* Mobile Nav */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={toggleTheme}
-            className="p-2 mr-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+            >
+              <SiLinkedin size={20} />
+            </a>
+
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
+          </nav>
+
+          {/* Mobile */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleTheme}
+              className="p-2 mr-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Open Menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {/* شريط التقدم أعلى الناف */}
+        {!prefersReducedMotion && (
+          <motion.div
+            className="h-[3px] bg-blue-600/80 dark:bg-blue-400/90 origin-left"
+            style={{ scaleX }}
+          />
+        )}
       </div>
+
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-white dark:bg-slate-900 shadow-lg py-4 border-b border-gray-200 dark:border-gray-800">
+        <motion.div
+          initial={{ y: -12, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 180, damping: 20 }}
+          className="md:hidden absolute top-20 left-0 right-0 bg-white dark:bg-slate-900 shadow-lg py-4 border-b border-gray-200 dark:border-gray-800 z-[55]"
+        >
           <nav className="flex flex-col items-center space-y-4">
-            {/* 👈 CHANGED: حولنا الـ button إلى <a> */}
             {navItems.map((item) => (
               <a
                 key={item.id}
-                href={`#${item.id}`} // 👈 ADDED: الرابط
-                onClick={() => {
-                  // 👈 CHANGED: أزلنا navigateTo، وأبقينا إغلاق القائمة
-                  setIsMobileMenuOpen(false);
-                }}
-                className={`text-lg font-medium transition-colors ${
-                  currentPage === item.id
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                }`}
+                href={`#${item.id}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`text-lg font-medium transition-colors
+                  ${
+                    currentPage === item.id
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  }`}
               >
                 {item.name}
               </a>
@@ -589,191 +830,391 @@ function Navbar({ currentPage }) {
               </a>
             </div>
           </nav>
-        </div>
+        </motion.div>
       )}
     </header>
   );
 }
 
 // --------- Home -----------
-// 👈 CHANGED: أزلنا prop الـ navigateTo
+
 function Home() {
+  const prefersReducedMotion = useReducedMotion();
+
+  // Parallax لطيف للصورة
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.4],
+    [0, prefersReducedMotion ? 0 : -40]
+  );
+  const glowScale = useTransform(
+    scrollYProgress,
+    [0, 0.4],
+    [1, prefersReducedMotion ? 1 : 1.08]
+  );
+
+  // Variants عامة للنصوص (stagger)
+  const container = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.12,
+        type: "spring",
+        stiffness: 120,
+        damping: 16,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 220, damping: 16 },
+    },
+  };
+
   return (
-    // 👈 NOTICE: هذا القسم يجب أن يكون له id="home" ليعمل السكرول
     <section
       id="home"
       className="container mx-auto max-w-6xl px-4 py-20 md:py-32"
     >
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* (جديد) الصورة الشخصية */}
-        <div className="w-full lg:w-1/3 flex justify-center lg:justify-start animate-fade-in-up animate-delay-1">
+        {/* الصورة مع Parallax + لمعة */}
+        <motion.div
+          className="w-full lg:w-1/3 flex justify-center lg:justify-start"
+          style={{ y }}
+        >
           <div className="relative">
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400 to-green-400 blur-lg opacity-50 dark:opacity-70 animate-pulse"></div>
-            <img
+            <motion.div
+              className="absolute -inset-3 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 blur-lg opacity-60 dark:opacity-70"
+              animate={
+                prefersReducedMotion
+                  ? {}
+                  : { scale: [1, 1.05, 1], rotate: [0, 2, 0] }
+              }
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.img
               src={PROFILE_IMG_ROUND}
               loading="lazy"
               alt={NAME}
               className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white dark:border-slate-900"
+              whileHover={
+                prefersReducedMotion ? {} : { rotate: 1.5, scale: 1.02 }
+              }
+              transition={{ type: "spring", stiffness: 300, damping: 18 }}
               onError={(e) =>
                 (e.target.src =
                   "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
               }
             />
+            {/* هالة ضوء تتنفس */}
+            {!prefersReducedMotion && (
+              <motion.div
+                className="absolute inset-0 rounded-full ring-2 ring-blue-400/30"
+                style={{ scale: glowScale }}
+              />
+            )}
           </div>
-        </div>
+        </motion.div>
 
-        {/* (جديد) النص على اليمين */}
-        <div className="w-full lg:w-2/3 text-center lg:text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-2 text-gray-900 dark:text-white animate-fade-in-up animate-delay-2">
+        {/* النصوص + الأزرار مع stagger */}
+        <motion.div
+          className="w-full lg:w-2/3 text-center lg:text-left"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold mb-2 text-gray-900 dark:text-white"
+            variants={item}
+          >
             Hi, I'm{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-400 dark:from-blue-400 dark:to-blue-300">
               {NAME}
             </span>
-          </h1>
-          <h2 className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-6 animate-fade-in-up animate-delay-3">
+          </motion.h1>
+
+          <motion.h2
+            className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-6"
+            variants={item}
+          >
             {TITLE}
-          </h2>
-          <p className="max-w-2xl text-lg text-gray-600 dark:text-gray-400 mb-8 mx-auto lg:mx-0 animate-fade-in-up animate-delay-4">
+          </motion.h2>
+
+          <motion.p
+            className="max-w-2xl text-lg text-gray-600 dark:text-gray-400 mb-8 mx-auto lg:mx-0"
+            variants={item}
+          >
             Information Engineering graduate specialized in Artificial
             Intelligence, with 3+ years in Flutter. Built and shipped 5+
             cross-platform apps using Clean Architecture, Firebase, and
             Bloc/Provider. Comfortable integrating AI (RAG, LangChain, vector
             DBs) to deliver scalable, user-focused mobile products.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animate-delay-4">
-            {/* 👈 CHANGED: حولنا الـ button إلى <a> للانتقال إلى قسم المشاريع */}
-            <a
-              href="#projects" // 👈 ADDED
-              // onClick={() => navigateTo("projects")} // 👈 REMOVED
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            variants={item}
+          >
+            <motion.a
+              href="#projects"
+              whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 flex items-center justify-center gap-2"
             >
               View My Projects <IoRocketSharp size={20} />
-            </a>
-            <a
+            </motion.a>
+
+            <motion.a
               href={CV_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+              whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+              className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Download CV <Download size={20} />
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
-          <div className="mt-10 flex flex-wrap gap-4 items-center justify-center lg:justify-start text-gray-700 dark:text-gray-300 animate-fade-in-up animate-delay-4">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <Mail size={18} className="text-blue-600 dark:text-blue-400" />
-              <span className="text-sm font-medium">{EMAIL}</span>
-            </a>
-            <a
-              href={`tel:${PHONE}`}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <Phone size={18} className="text-blue-600 dark:text-blue-400" />
-              <span className="text-sm font-medium">{PHONE}</span>
-            </a>
-            <a
-              href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <SiWhatsapp
-                size={18}
-                className="text-green-600 dark:text-green-400"
-              />
-              <span className="text-sm font-medium">WhatsApp</span>
-            </a>
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <GrLinkedin
-                size={18}
-                className="text-blue-600 dark:text-blue-400"
-              />
-              <span className="text-sm font-medium">LinkedIn</span>
-            </a>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                LOCATION
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <MapPin size={18} className="text-blue-600 dark:text-blue-400" />
-              <span className="text-sm font-medium">{LOCATION}</span>
-            </a>
-          </div>
-        </div>
+          {/* روابط سريعة؛ كل واحدة لها micro hover */}
+          <motion.div
+            className="mt-10 flex flex-wrap gap-4 items-center justify-center lg:justify-start"
+            variants={item}
+          >
+            {[
+              {
+                href: `mailto:${EMAIL}`,
+                icon: (
+                  <Mail
+                    size={18}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
+                ),
+                label: EMAIL,
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+              {
+                href: `tel:${PHONE}`,
+                icon: (
+                  <Phone
+                    size={18}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
+                ),
+                label: PHONE,
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+              {
+                href: `https://wa.me/${PHONE.replace(/\D/g, "")}`,
+                icon: (
+                  <SiWhatsapp
+                    size={18}
+                    className="text-green-600 dark:text-green-400"
+                  />
+                ),
+                label: "WhatsApp",
+                classes:
+                  "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300",
+              },
+              {
+                href: LINKEDIN,
+                icon: (
+                  <GrLinkedin
+                    size={18}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
+                ),
+                label: "LinkedIn",
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+              {
+                href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  LOCATION
+                )}`,
+                icon: (
+                  <MapPin
+                    size={18}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
+                ),
+                label: LOCATION,
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+            ].map((btn, i) => (
+              <motion.a
+                key={i}
+                href={btn.href}
+                target={btn.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  btn.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-sm ${btn.classes}`}
+              >
+                {btn.icon}
+                <span className="text-sm font-medium">{btn.label}</span>
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-// --------- Projects -----------
+// --------- Projects (Animated Grid) -----------
 function Projects() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+
   return (
-    // 👈 NOTICE: هذا القسم يجب أن يكون له id="projects"
     <section id="projects" className="container mx-auto max-w-6xl px-4 py-20">
-      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
-        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-blue-500 to-green-400 text-white rounded-2xl shadow-md">
-          Projects I've Built
-        </span>
-      </h2>
-      <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
+      <motion.h2
+        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <motion.span
+          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-green-400 text-white rounded-2xl shadow-lg"
+          whileHover={
+            prefersReducedMotion
+              ? {}
+              : {
+                  scale: 1.08,
+                  rotate: 1,
+                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
+                }
+          }
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        >
+          <span className="relative z-10">Projects I've Built</span>
+          {/* هالة متوهجة */}
+          {!prefersReducedMotion && (
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/50 via-cyan-400/50 to-green-400/50 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          )}
+        </motion.span>
+      </motion.h2>
+      <motion.p
+        className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
         Here are some of the projects I'm proud of.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      </motion.p>
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         {projectsData.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <ProjectCard
+            key={index}
+            project={project}
+            prefersReducedMotion={prefersReducedMotion}
+          />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
 
-// ... ProjectCard (لا تغييرات هنا)
-function ProjectCard({ project }) {
+// ... ProjectCard (Animated)
+function ProjectCard({ project, prefersReducedMotion }) {
   const hasLinks = Boolean(project.githubUrl) || Boolean(project.liveUrl);
 
+  // دخول كل بطاقة
+  const card = {
+    hidden: { opacity: 0, y: 16, scale: 0.98 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 180, damping: 18 },
+    },
+  };
+
   return (
-    <div className="group relative rounded-2xl">
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                     bg-gradient-to-r from-blue-400 to-green-400 blur-xl"
+    <motion.div
+      variants={card}
+      whileHover={prefersReducedMotion ? {} : { y: -6 }}
+      className="group relative rounded-2xl"
+    >
+      {/* هالة خارجية عند الهوفر */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-400 to-green-400 blur-xl"
         aria-hidden
       />
-      <div
-        className="relative z-10 bg-white dark:bg-slate-800/80 rounded-2xl overflow-hidden
-                       shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300
-                       transform hover:-translate-y-1 border border-gray-200/50 dark:border-gray-700/50"
-      >
+      <div className="relative z-10 bg-white dark:bg-slate-800/80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50">
+        {/* صورة */}
         {project.imageUrl ? (
           <div className="flex items-center justify-center h-48 overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-slate-900">
-            <img
+            <motion.img
               src={project.imageUrl}
               loading="lazy"
               alt={project.title}
               className="object-contain h-full w-full p-4"
+              whileHover={
+                prefersReducedMotion ? {} : { scale: 1.04, rotate: 0.2 }
+              }
+              transition={{ type: "spring", stiffness: 220, damping: 18 }}
               onError={(e) => (e.target.src = "/projects/placeholder.png")}
             />
           </div>
         ) : (
           <div className="overflow-hidden rounded-t-2xl">
-            <img
+            <motion.img
               src={`https://placehold.co/600x400/d1fae5/222?text=${encodeURIComponent(
                 project.title
               )}`}
               loading="lazy"
               alt={project.title}
-              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-48 object-cover"
+              whileHover={prefersReducedMotion ? {} : { scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 200, damping: 16 }}
               onError={(e) =>
                 (e.target.src =
                   "https://placehold.co/600x400/ef4444/ffffff?text=Image+Error")
@@ -781,6 +1222,8 @@ function ProjectCard({ project }) {
             />
           </div>
         )}
+
+        {/* النص */}
         <div className="p-6">
           <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
             {project.title}
@@ -788,244 +1231,210 @@ function ProjectCard({ project }) {
           <p className="text-gray-600 dark:text-gray-400 mb-4 min-h-16 text-sm">
             {project.description}
           </p>
+
           {Array.isArray(project.tags) && project.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tags.map((tag, i) => (
-                <span
+                <motion.span
                   key={`${project.title}-tag-${i}`}
                   className="px-3 py-1 bg-blue-100/50 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 rounded-full text-xs font-medium"
+                  whileHover={prefersReducedMotion ? {} : { y: -1 }}
                 >
                   {tag}
-                </span>
+                </motion.span>
               ))}
             </div>
           )}
+
           {hasLinks && (
             <div className="flex flex-wrap gap-3">
               {project.githubUrl && (
-                <a
+                <motion.a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white
-                                 dark:bg-gray-200 dark:text-gray-900 rounded-lg font-medium
-                                 hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors text-sm"
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
+                  whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-900 rounded-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors text-sm"
                   aria-label={`View source code for ${project.title} on GitHub`}
                 >
                   <SiGithub size={18} />
                   Code
                   <ExternalLink size={16} />
-                </a>
+                </motion.a>
               )}
               {project.liveUrl && (
-                <a
+                <motion.a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg
-                                 font-medium hover:bg-blue-700 transition-colors text-sm"
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
+                  whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors text-sm"
                   aria-label={`View ${project.title} on Google Play`}
                 >
                   <SiGoogleplay size={18} />
                   Google Play
-                </a>
+                </motion.a>
               )}
             </div>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-// --------- About -----------
-// function About() {
-//   return (
-//     // 👈 NOTICE: هذا القسم يجب أن يكون له id="about"
-//     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
-//       <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
-//         <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-purple-500 to-blue-400 text-white rounded-2xl shadow-md">
-//           About Me
-//         </span>
-//       </h2>
-//       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-//         <div className="w-full md:w-2/3">
-//           <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-//             Information Engineering graduate specialized in Artificial
-//             Intelligence. 3+ years building Flutter apps end-to-end with Clean
-//             Architecture and robust state management. I like turning ambiguous
-//             product ideas into reliable, shippable mobile software.
-//           </p>
-//           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-//             On the mobile side: Flutter, Dart, Bloc/Provider, REST, Firebase,
-//             local storage, Google Maps, and AdMob. On the AI side: Python data
-//             stack (Pandas/NumPy/Scikit-learn) and Gen-AI workflows (RAG,
-//             LangChain, vector DBs like Qdrant/ChromaDB, and LLM integration with
-//             Mistral/OpenAI). I care about scalable code, evidence-based
-//             features, and shipping.
-//           </p>
-//           <div className="mt-4 text-gray-700 dark:text-gray-300 mb-8">
-//             <b>Languages:</b> Arabic (Native), English (Intermediate)
-//           </div>
-//           {/* <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-//             Hello! I'm <b>{NAME}</b>, an Information Engineering graduate
-//             specialized in Artificial Intelligence. I have over 3 years of
-//             hands-on experience in Flutter mobile development, delivering
-//             intelligent, user-focused apps.
-//           </p>
-//           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-//             My expertise covers Flutter, Dart, Firebase, Machine Learning, and
-//             Clean Architecture. I thrive on solving complex problems and
-//             building innovative solutions that blend mobile engineering with AI.
-//             Always eager to collaborate, learn, and create.
-//           </p>
-//           <div className="mt-4 text-gray-700 dark:text-gray-300 mb-8">
-//             <b>Languages:</b> Arabic (Native), English (Intermediate)
-//           </div> */}
-
-//           <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-//             <Briefcase size={22} className="text-blue-500" /> My Toolkit
-//           </h3>
-//           <div className="mb-4">
-//             <SkillsGrid items={skills} />
-//           </div>
-//         </div>
-//         <div className="w-full md:w-1/3 flex justify-center">
-//           <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
-//             <img
-//               src={PROFILE_IMG_SQUARE}
-//               loading="lazy"
-//               alt={NAME}
-//               className="rounded-xl shadow-lg w-full max-w-sm mx-auto"
-//               onError={(e) =>
-//                 (e.target.src =
-//                   "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
-//               }
-//             />
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="mt-16 max-w-3xl mx-auto bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-//         <h3 className="text-2xl font-semibold mb-6 text-center">
-//           Education & Certifications
-//         </h3>
-//         {/* <ul className="text-gray-700 dark:text-gray-300 space-y-4">
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <GraduationCap
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               B.Sc. in Information Engineering – Artificial Intelligence,
-//               Damascus University (2020–2025)
-//             </span>
-//           </li>
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <Award
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               Oracle SQL & APEX Training – EastMed Company (2024)
-//             </span>
-//           </li>
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <Award
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               AI & Machine Learning Training Program – SHAI for AI Club (2024)
-//             </span>
-//           </li>
-//         </ul> */}
-//         <ul className="text-gray-700 dark:text-gray-300 space-y-4">
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <GraduationCap
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               B.Sc. in Information Engineering – Artificial Intelligence,
-//               Damascus University (2019–2025)
-//               <br />
-//               <i>Graduation Project:</i> RAG-based conversational system for HR
-//               résumé evaluation using LLMs & vector databases (Qdrant), with
-//               semantic/hybrid retrieval via LangChain; achieved &gt;90% ranking
-//               alignment with human experts.
-//             </span>
-//           </li>
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <Award
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               Oracle SQL &amp; APEX Training – EastMed Company (Aug–Sep 2024, 80
-//               hours). Hands-on Oracle DB + APEX web solutions.
-//             </span>
-//           </li>
-//           <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-//             <Award
-//               size={24}
-//               className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-//             />
-//             <span className="text-lg">
-//               AI &amp; Machine Learning Training Program – SHAI for AI Club
-//               (2024). Foundations + advanced topics with project-based learning.
-//             </span>
-//           </li>
-//         </ul>
-//         <div className="mt-8 text-center">
-//           <a
-//             href={CV_URL}
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 transform hover:scale-105"
-//           >
-//             Download CV <Download size={20} />
-//           </a>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+// --------- About (Clean Premium Timeline) -----------
 function About() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const education = [
+    {
+      icon: <GraduationCap size={22} />,
+      type: "Degree",
+      title: "B.Sc. in Information Engineering – Artificial Intelligence",
+      institution: "Damascus University",
+      period: "2019–2025",
+      desc: "Graduation Project: RAG-based conversational system for HR résumé evaluation using LLMs & vector databases (Qdrant), with semantic/hybrid retrieval via LangChain; achieved >90% ranking alignment with human experts.",
+      gradient: "from-purple-500 via-pink-500 to-rose-500",
+      iconBg:
+        "bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30",
+      iconColor: "text-purple-600 dark:text-purple-300",
+    },
+    {
+      icon: <Award size={22} />,
+      type: "Professional Training",
+      title: "Oracle SQL & APEX Training",
+      institution: "EastMed Company",
+      period: "Aug–Sep 2024 (80 hours)",
+      desc: "Hands-on Oracle DB + APEX web solutions.",
+      gradient: "from-blue-500 via-cyan-500 to-teal-500",
+      iconBg:
+        "bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30",
+      iconColor: "text-blue-600 dark:text-blue-300",
+    },
+    {
+      icon: <Sparkles size={22} />,
+      type: "AI Training Program",
+      title: "AI & Machine Learning Training Program",
+      institution: "SHAI for AI Club",
+      period: "2024",
+      desc: "Foundations + advanced topics with project-based learning.",
+      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+      iconBg:
+        "bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30",
+      iconColor: "text-emerald-600 dark:text-emerald-300",
+    },
+  ];
+
+  // حركات ناعمة
+  const appear = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 160, damping: 18 },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+
   return (
     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
-      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
-        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-purple-500 to-blue-400 text-white rounded-2xl shadow-md">
-          About Me
-        </span>
-      </h2>
+      <motion.h2
+        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <motion.span
+          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-400 text-white rounded-2xl shadow-lg"
+          whileHover={
+            prefersReducedMotion
+              ? {}
+              : {
+                  scale: 1.08,
+                  rotate: -1,
+                  boxShadow: "0 20px 40px rgba(147, 51, 234, 0.4)",
+                }
+          }
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        >
+          <span className="relative z-10">About Me</span>
+          {/* هالة متوهجة */}
+          {!prefersReducedMotion && (
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400/50 via-pink-400/50 to-blue-400/50 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          )}
+        </motion.span>
+      </motion.h2>
 
-      {/* الصف العلوي: النصوص + الصورة جنب بعض */}
+      {/* الصف الأول: نبذة + صورة */}
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-12">
-        {/* النصوص (تأخذ عمودين على الشاشات المتوسطة+) */}
-        <div className="md:col-span-2">
-          <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+        <motion.div
+          className="md:col-span-2"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+          }}
+        >
+          <motion.p
+            className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
+            variants={appear}
+          >
             Information Engineering graduate specialized in Artificial
             Intelligence. 3+ years building Flutter apps end-to-end with Clean
             Architecture and robust state management. I like turning ambiguous
             product ideas into reliable, shippable mobile software.
-          </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-600 dark:text-gray-400 mb-6"
+            variants={appear}
+          >
             On the mobile side: Flutter, Dart, Bloc/Provider, REST, Firebase,
             local storage, Google Maps, and AdMob. On the AI side: Python data
             stack (Pandas/NumPy/Scikit-learn) and Gen-AI workflows (RAG,
             LangChain, vector DBs like Qdrant/ChromaDB, and LLM integration with
-            Mistral/OpenAI). I care about scalable code, evidence-based
-            features, and shipping.
-          </p>
-          <div className="mt-4 text-gray-700 dark:text-gray-300">
+            Mistral/OpenAI).
+          </motion.p>
+          <motion.div
+            className="mt-4 text-gray-700 dark:text-gray-300"
+            variants={appear}
+          >
             <b>Languages:</b> Arabic (Native), English (Intermediate)
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* الصورة (عمود واحد) */}
-        <div className="w-full flex justify-center">
-          <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 shadow-xl">
+        <motion.div
+          className="w-full flex justify-center"
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 160, damping: 16 }}
+        >
+          <div className="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-emerald-400 to-blue-400 shadow-xl">
             <img
               src={PROFILE_IMG_SQUARE}
               loading="lazy"
@@ -1036,271 +1445,534 @@ function About() {
                   "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
               }
             />
+            {!prefersReducedMotion && (
+              <motion.span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-xl"
+                animate={{
+                  boxShadow: [
+                    "0 0 0 rgba(59,130,246,0)",
+                    "0 0 28px rgba(59,130,246,0.22)",
+                    "0 0 0 rgba(59,130,246,0)",
+                  ],
+                }}
+                transition={{
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            )}
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* خط فاصل لطيف (اختياري) */}
+      {/* Skills */}
       <div className="mt-12 border-t border-gray-200 dark:border-gray-800/60" />
 
-      {/* My Toolkit تحت النص + الصورة وبعرض كامل */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-          <Briefcase size={22} className="text-blue-500" /> My Toolkit
-        </h3>
-        <div className="mb-4">
-          <SkillsGrid items={skills} />
-        </div>
-      </div>
+      <ToolkitSection />
 
-      {/* التعليم والشهادات */}
-      <div className="mt-16 max-w-3xl mx-auto bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-        <h3 className="text-2xl font-semibold mb-6 text-center">
-          Education & Certifications
-        </h3>
-        <ul className="text-gray-700 dark:text-gray-300 space-y-4">
-          <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-            <GraduationCap
-              size={24}
-              className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-            />
-            <span className="text-lg">
-              B.Sc. in Information Engineering – Artificial Intelligence,
-              Damascus University (2019–2025)
-              <br />
-              <i>Graduation Project:</i> RAG-based conversational system for HR
-              résumé evaluation using LLMs & vector databases (Qdrant), with
-              semantic/hybrid retrieval via LangChain; achieved &gt;90% ranking
-              alignment with human experts.
-            </span>
-          </li>
-          <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-            <Award
-              size={24}
-              className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-            />
-            <span className="text-lg">
-              Oracle SQL &amp; APEX Training – EastMed Company (Aug–Sep 2024, 80
-              hours). Hands-on Oracle DB + APEX web solutions.
-            </span>
-          </li>
-          <li className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
-            <Award
-              size={24}
-              className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1"
-            />
-            <span className="text-lg">
-              AI &amp; Machine Learning Training Program – SHAI for AI Club
-              (2024). Foundations + advanced topics with project-based learning.
-            </span>
-          </li>
-        </ul>
-        <div className="mt-8 text-center">
-          <a
-            href={CV_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 transform hover:scale-105"
+      {/* Education & Certifications — تصميم بريميوم محسّن */}
+      <motion.div
+        className="mt-20 max-w-4xl mx-auto relative"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ type: "spring", stiffness: 160, damping: 18 }}
+      >
+        {/* العنوان الرئيسي مع تأثيرات متوهجة */}
+        <motion.div
+          className="relative mb-12 text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          <motion.h3
+            className="relative inline-block text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent"
+            whileHover={
+              prefersReducedMotion
+                ? {}
+                : {
+                    scale: 1.05,
+                    transition: { type: "spring", stiffness: 400 },
+                  }
+            }
           >
-            Download CV <Download size={20} />
-          </a>
+            <BookOpen
+              className="inline-block mr-3 mb-1 text-purple-500"
+              size={32}
+            />
+            Education & Certifications
+            {!prefersReducedMotion && (
+              <motion.span
+                className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-2xl rounded-full"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            )}
+          </motion.h3>
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          />
+        </motion.div>
+
+        {/* إطار زجاجي متدرّج محسّن */}
+        <div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-purple-500/30 via-pink-500/30 via-blue-500/30 to-emerald-500/30 shadow-2xl">
+          <div className="rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-6 md:p-10 border border-white/30 dark:border-white/10">
+            {/* خط زمني متدرّج */}
+            <div className="relative">
+              <motion.div
+                className="absolute left-6 md:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 via-blue-500 to-emerald-500 rounded-full shadow-lg"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                style={{ originY: 0 }}
+              />
+
+              <div className="space-y-8">
+                {education.map((e, i) => (
+                  <motion.div
+                    key={i}
+                    variants={appear}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.3 }}
+                    whileHover={
+                      prefersReducedMotion
+                        ? {}
+                        : {
+                            y: -4,
+                            transition: { type: "spring", stiffness: 300 },
+                          }
+                    }
+                    className="relative pl-16 md:pl-20"
+                  >
+                    {/* نقطة متوهجة على الخط */}
+                    <motion.div
+                      className={`absolute left-[21px] md:left-[29px] top-6 h-5 w-5 rounded-full bg-gradient-to-br ${e.gradient} shadow-lg ring-4 ring-white dark:ring-slate-900 z-10`}
+                      whileHover={
+                        prefersReducedMotion ? {} : { scale: 1.3, rotate: 180 }
+                      }
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {!prefersReducedMotion && (
+                        <motion.span
+                          className={`absolute inset-0 rounded-full bg-gradient-to-br ${e.gradient}`}
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.6, 0, 0.6],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
+                      )}
+                    </motion.div>
+
+                    {/* البطاقة المحسّنة */}
+                    <motion.div
+                      className={`group relative rounded-2xl border-2 border-transparent bg-gradient-to-br ${e.gradient} p-[2px] shadow-xl hover:shadow-2xl transition-all duration-300`}
+                      whileHover={
+                        prefersReducedMotion
+                          ? {}
+                          : {
+                              scale: 1.02,
+                              boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                            }
+                      }
+                    >
+                      <div className="rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-5 md:p-6 border border-white/50 dark:border-white/10">
+                        {/* رأس البطاقة */}
+                        <div className="flex items-start justify-between gap-4 mb-3">
+                          <div className="flex items-center gap-3 flex-1">
+                            <motion.div
+                              className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${e.iconBg} ${e.iconColor} shadow-md ring-2 ring-white/50 dark:ring-slate-700/50`}
+                              whileHover={
+                                prefersReducedMotion
+                                  ? {}
+                                  : { rotate: [0, -10, 10, 0], scale: 1.1 }
+                              }
+                              transition={{ duration: 0.5 }}
+                            >
+                              {e.icon}
+                            </motion.div>
+                            <div className="flex-1">
+                              <motion.span
+                                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${e.gradient} text-white shadow-sm mb-2`}
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                              >
+                                {e.type}
+                              </motion.span>
+                              <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-tight">
+                                {e.title}
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* معلومات المؤسسة والوقت */}
+                        <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-gray-600 dark:text-gray-400">
+                          <div className="flex items-center gap-1.5">
+                            <MapPin size={14} className="text-purple-500" />
+                            <span className="font-medium">{e.institution}</span>
+                          </div>
+                          <span className="text-gray-400">•</span>
+                          <div className="flex items-center gap-1.5">
+                            <Calendar size={14} className="text-blue-500" />
+                            <span>{e.period}</span>
+                          </div>
+                        </div>
+
+                        {/* الوصف */}
+                        {e.desc && (
+                          <motion.p
+                            className="mt-3 text-gray-700 dark:text-gray-300 text-[15px] leading-relaxed pl-1 border-l-2 border-gray-200 dark:border-gray-700"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                          >
+                            {e.desc}
+                          </motion.p>
+                        )}
+
+                        {/* تأثير متوهج عند الهوفر */}
+                        {!prefersReducedMotion && (
+                          <motion.span
+                            className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${e.gradient} opacity-0 group-hover:opacity-10 blur-xl -z-10`}
+                            transition={{ duration: 0.3 }}
+                          />
+                        )}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* زر الـ CV محسّن */}
+            <motion.div
+              className="mt-12 text-center"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
+              <motion.a
+                href={CV_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={
+                  prefersReducedMotion
+                    ? {}
+                    : {
+                        scale: 1.05,
+                        boxShadow: "0 10px 30px rgba(16, 185, 129, 0.4)",
+                      }
+                }
+                whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+                className="relative inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 shadow-xl transition-all duration-300"
+              >
+                <Download size={20} />
+                <span>Download CV</span>
+                {!prefersReducedMotion && (
+                  <motion.span
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400/50 via-teal-400/50 to-cyan-400/50 blur-xl -z-10"
+                    animate={{
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                )}
+              </motion.a>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
-// ... SkillsGrid (لا تغييرات هنا)
 function SkillsGrid({ items }) {
+  const prefersReducedMotion = useReducedMotion();
+  const CORE = new Set(["Flutter", "Dart", "Python"]); // عدّل اللبّ حسب رغبتك
+
   return (
     <div
       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
       role="list"
       aria-label="Skills"
     >
-      {items.map((name) => {
-        const Icon = skillIconMap[name];
-        return (
-          <div
-            key={name}
-            role="listitem"
-            className="flex items-center justify-center gap-2 px-4 py-3
-                       rounded-xl bg-gray-100 dark:bg-slate-800
-                       shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5
-                       text-gray-800 dark:text-gray-200"
-            title={name}
-          >
-            {Icon ? (
-              <Icon className="shrink-0" size={20} aria-hidden />
-            ) : (
-              <span className="w-5 h-5 rounded-full bg-gray-300 dark:bg-gray-600" />
-            )}
-            <span className="text-sm font-medium">{name}</span>
-          </div>
-        );
-      })}
+      {items.map((name, idx) => (
+        <SkillPill
+          key={`${name}-${idx}`}
+          name={name}
+          Icon={skillIconMap[name]}
+          core={CORE.has(name)}
+          prefersReducedMotion={prefersReducedMotion}
+        />
+      ))}
     </div>
   );
 }
 
-// --------- Contact -----------
-// function Contact() {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     message: "",
-//   });
-//   const [isSubmitted, setIsSubmitted] = useState(false);
-//   const [error, setError] = useState("");
+// --------- عنصر واحد (Pill) بلمعات و3D Tilt -----------
+// function SkillPill({ name, Icon, core, prefersReducedMotion }) {
+//   const x = useMotionValue(0);
+//   const y = useMotionValue(0);
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({ ...prev, [name]: value }));
-//   };
+//   const rotateX = useTransform(y, [-40, 40], [8, -8]);
+//   const rotateY = useTransform(x, [-40, 40], [-10, 10]);
+//   const shineX = useTransform(x, [-40, 40], ["-20%", "120%"]);
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (!formData.name || !formData.email || !formData.message) {
-//       setError("Please fill out all fields.");
-//       return;
-//     }
-//     setError("");
-//     console.log("Form data submitted:", formData);
-//     setIsSubmitted(true);
-//     setFormData({ name: "", email: "", message: "" });
-//     setTimeout(() => setIsSubmitted(false), 3000);
-//   };
+//   function onMouseMove(e) {
+//     const rect = e.currentTarget.getBoundingClientRect();
+//     const px = e.clientX - rect.left;
+//     const py = e.clientY - rect.top;
+//     x.set(px - rect.width / 2);
+//     y.set(py - rect.height / 2);
+//   }
+
+//   function onMouseLeave() {
+//     x.set(0);
+//     y.set(0);
+//   }
 
 //   return (
-//     // 👈 NOTICE: هذا القسم يجب أن يكون له id="contact"
-//     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
-//       <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
-//         <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-green-500 to-blue-400 text-white rounded-2xl shadow-md">
-//           Get In Touch
-//         </span>
-//       </h2>
-//       <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
-//         Interested in working together or have a question? Reach out!
-//       </p>
+//     <motion.div
+//       role="listitem"
+//       onMouseMove={prefersReducedMotion ? undefined : onMouseMove}
+//       onMouseLeave={prefersReducedMotion ? undefined : onMouseLeave}
+//       style={
+//         prefersReducedMotion
+//           ? {}
+//           : { rotateX, rotateY, transformPerspective: 700 }
+//       }
+//       whileHover={prefersReducedMotion ? {} : { scale: 1.02, y: -2 }}
+//       whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+//       className="group relative"
+//     >
+//       {/* إطار متدرّج */}
+//       <div className="rounded-2xl p-[1px] bg-gradient-to-r from-slate-200 via-blue-300/60 to-slate-200 dark:from-slate-700 dark:via-blue-500/40 dark:to-slate-700">
+//         <div
+//           className="relative flex items-center justify-center gap-2 px-4 py-3 rounded-2xl
+//                         bg-white/80 dark:bg-slate-900/60 backdrop-blur-md
+//                         border border-gray-200/60 dark:border-gray-700/60
+//                         shadow-sm hover:shadow-md transition-all select-none"
+//         >
+//           {/* لمعة تتحرك على الهوفر */}
+//           {!prefersReducedMotion && (
+//             <motion.span
+//               aria-hidden
+//               className="pointer-events-none absolute top-0 -left-10 h-full w-16 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-0 group-hover:opacity-100"
+//               style={{ translateX: shineX }}
+//               transition={{ type: "spring", stiffness: 120, damping: 18 }}
+//             />
+//           )}
 
-//       <div className="flex flex-wrap justify-center gap-4 mb-10">
-//         <a
-//           href={`mailto:${EMAIL}`}
-//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-//         >
-//           <Mail size={18} className="text-blue-600 dark:text-blue-400" />
-//           <span className="text-sm font-medium">{EMAIL}</span>
-//         </a>
-//         <a
-//           href={LINKEDIN}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-//         >
-//           <GrLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
-//           <span className="text-sm font-medium">LinkedIn</span>
-//         </a>
-//         <a
-//           href={`tel:${PHONE}`}
-//           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
-//         >
-//           <Phone size={18} className="text-blue-600 dark:text-blue-400" />
-//           <span className="text-sm font-medium">{PHONE}</span>
-//         </a>
-//         <a
-//           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 hover:scale-105 transition-all duration-300 shadow-sm"
-//         >
-//           <SiWhatsapp
-//             size={18}
-//             className="text-green-600 dark:text-green-400"
-//           />
-//           <span className="text-sm font-medium">WhatsApp</span>
-//         </a>
-//       </div>
+//           {/* أيقونة */}
+//           {Icon ? (
+//             <span
+//               className={`shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full
+//                               ${
+//                                 core
+//                                   ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 ring-1 ring-blue-300/60 dark:ring-blue-700/60"
+//                                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200/70 dark:ring-slate-700/70"
+//                               }`}
+//             >
+//               <Icon size={16} aria-hidden />
+//             </span>
+//           ) : (
+//             <span className="w-5 h-5 rounded-full bg-gray-300 dark:bg-gray-600" />
+//           )}
 
-//       <div className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
-//         {isSubmitted ? (
-//           <div className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg">
-//             Thank you! Your message has been sent.
-//           </div>
-//         ) : (
-//           <form onSubmit={handleSubmit} className="space-y-6">
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//               <div>
-//                 <label
-//                   htmlFor="name"
-//                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-//                 >
-//                   Full Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="name"
-//                   name="name"
-//                   value={formData.name}
-//                   onChange={handleChange}
-//                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
-//                   placeholder="Your Name"
-//                 />
-//               </div>
-//               <div>
-//                 <label
-//                   htmlFor="email"
-//                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-//                 >
-//                   Email Address
-//                 </label>
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   name="email"
-//                   value={formData.email}
-//                   onChange={handleChange}
-//                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
-//                   placeholder="you@example.com"
-//                 />
-//               </div>
-//             </div>
-//             <div>
-//               <label
-//                 htmlFor="message"
-//                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-//               >
-//                 Message
-//               </label>
-//               <textarea
-//                 id="message"
-//                 name="message"
-//                 rows="5"
-//                 value={formData.message}
-//                 onChange={handleChange}
-//                 className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
-//                 placeholder="Your message..."
-//               />
-//             </div>
-//             {error && (
-//               <div className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg">
-//                 {error}
-//               </div>
-//             )}
-//             <div className="text-center">
-//               <button
-//                 type="submit"
-//                 className="w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
-//               >
-//                 Send Message <Send size={18} />
-//               </button>
-//             </div>
-//           </form>
-//         )}
+//           {/* الاسم */}
+//           <span className="text-sm font-medium text-gray-800 dark:text-gray-100">
+//             {name}
+//           </span>
+
+//           {/* هالة خفيفة للمهارات الأساسية */}
+//           {core && !prefersReducedMotion && (
+//             <motion.span
+//               aria-hidden
+//               className="absolute inset-0 rounded-2xl"
+//               animate={{
+//                 boxShadow: [
+//                   "0 0 0px rgba(59,130,246,0)",
+//                   "0 0 24px rgba(59,130,246,0.25)",
+//                   "0 0 0px rgba(59,130,246,0)",
+//                 ],
+//               }}
+//               transition={{
+//                 duration: 2.8,
+//                 repeat: Infinity,
+//                 ease: "easeInOut",
+//               }}
+//             />
+//           )}
+//         </div>
 //       </div>
-//     </section>
+//     </motion.div>
 //   );
 // }
-// 🔧 فعّل/عطّل الديبَغ من هنا أو عبر ?debug=1 في الرابط
+function SkillPill({ name, Icon, core, prefersReducedMotion }) {
+  return (
+    <motion.div
+      role="listitem"
+      whileHover={prefersReducedMotion ? {} : { scale: 1.03, y: -1 }}
+      whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
+      className="group relative"
+    >
+      <div className="rounded-2xl p-[1px] bg-gradient-to-r from-slate-200 via-blue-300/60 to-slate-200 dark:from-slate-700 dark:via-blue-500/40 dark:to-slate-700">
+        <div
+          className="relative flex items-center justify-center gap-2 px-4 py-3 rounded-2xl
+            bg-white/80 dark:bg-slate-900/60 backdrop-blur-md
+            border border-gray-200/60 dark:border-gray-700/60
+            shadow-sm hover:shadow-md transition-all select-none"
+        >
+          {Icon ? (
+            <span
+              className={`shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full
+                ${
+                  core
+                    ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 ring-1 ring-blue-300/60 dark:ring-blue-700/60"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200/70 dark:ring-slate-700/70"
+                }`}
+            >
+              <Icon size={16} aria-hidden />
+            </span>
+          ) : (
+            <span className="w-5 h-5 rounded-full bg-gray-300 dark:bg-gray-600" />
+          )}
+
+          <span className="text-sm font-medium text-gray-800 dark:text-gray-100">
+            {name}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// --------- Toolkit Section (Ultra Animated) -----------
+function ToolkitSection() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 14,
+        delay: 0.1,
+      },
+    },
+  };
+
+  const iconVariants = {
+    hidden: { opacity: 0, rotate: -180, scale: 0 },
+    show: {
+      opacity: 1,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 15,
+        delay: 0.2,
+      },
+    },
+  };
+
+  return (
+    <section id="toolkit" className="container mx-auto max-w-6xl px-4 py-20">
+      {/* عنوان محسّن مع أنيميشن مميز */}
+      <motion.div
+        className="text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <motion.h2
+          className="relative text-3xl md:text-4xl font-bold mb-4 inline-block"
+          whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -3 }}
+        >
+          <motion.span
+            className="relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 text-white rounded-2xl shadow-lg"
+            whileHover={
+              prefersReducedMotion
+                ? {}
+                : {
+                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
+                    rotate: 1,
+                  }
+            }
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          >
+            {/* أيقونة متحركة */}
+            <motion.span
+              variants={iconVariants}
+              className="inline-flex items-center justify-center"
+            >
+              <Briefcase size={24} className="drop-shadow-sm" />
+            </motion.span>
+            <span className="relative z-10">My Toolkit</span>
+
+            {/* هالة متوهجة */}
+            {!prefersReducedMotion && (
+              <motion.span
+                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/50 via-blue-400/50 to-indigo-400/50 blur-xl"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            )}
+          </motion.span>
+        </motion.h2>
+      </motion.div>
+
+      {/* الشبكة */}
+      <SkillsGrid items={skills} />
+    </section>
+  );
+}
+
+// --------- Contact ----------
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -1310,6 +1982,8 @@ function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const prefersReducedMotion = useReducedMotion();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -1360,65 +2034,337 @@ function Contact() {
     }
   };
 
+  // 🎬 أنيميشن محسّن للطائرة - مسار سلس وطبيعي
+  const iconVariants = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          // مسار منحني سلس يشبه قوس طيران حقيقي
+          x: [0, 8, 20, 28, 24, 12, 0],
+          y: [0, -12, -28, -38, -32, -16, 0],
+          rotate: [0, -45, -180, -360, -540, -720, -720],
+          scale: [1, 1.15, 1.2, 1.15, 1.08, 1.02, 1],
+          transition: {
+            duration: 1.5,
+            ease: [0.4, 0, 0.2, 1],
+            times: [0, 0.15, 0.35, 0.55, 0.75, 0.9, 1],
+          },
+        },
+        tap: { scale: 0.95, y: 2 },
+      };
+
+  // أنيميشن للزر نفسه - تأثير نبض وتوهج
+  const buttonVariants = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          scale: 1.02,
+          boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
+          transition: {
+            duration: 0.3,
+            ease: "easeOut",
+          },
+        },
+        tap: {
+          scale: 0.98,
+        },
+      };
+
+  // هالة دائرية متعددة الطبقات - تأثير توسع متدرج
+  const ringVariants = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          opacity: [0, 0.6, 0.4, 0],
+          scale: [0.8, 1.3, 1.6, 1.8],
+          transition: {
+            duration: 1.2,
+            ease: "easeOut",
+            times: [0, 0.3, 0.6, 1],
+          },
+        },
+      };
+
+  // هالة ثانية - طبقة إضافية للتأثير
+  const ringVariants2 = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          opacity: [0, 0.4, 0],
+          scale: [0.9, 1.5, 1.9],
+          transition: {
+            duration: 1.4,
+            ease: "easeOut",
+            delay: 0.1,
+            times: [0, 0.4, 1],
+          },
+        },
+      };
+
+  // أثر متحرك خلف الأيقونة - خط متوهج
+  const trailVariants = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          opacity: [0, 0.6, 0.4, 0],
+          x: [0, -15, -30, -40],
+          y: [0, 6, 12, 18],
+          scaleX: [0.5, 1, 1.2, 1.5],
+          transition: {
+            duration: 1.3,
+            ease: "easeInOut",
+            times: [0, 0.3, 0.7, 1],
+          },
+        },
+      };
+
+  // جزيئات متوهجة تتبع مسار الطائرة
+  const particleVariants = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          opacity: [0, 1, 0.8, 0],
+          scale: [0, 1, 0.8, 0],
+          x: [0, 15, 25, 35],
+          y: [0, -10, -20, -30],
+          transition: {
+            duration: 1.2,
+            ease: "easeOut",
+            times: [0, 0.2, 0.6, 1],
+          },
+        },
+      };
+
+  // جزيئة ثانية
+  const particleVariants2 = prefersReducedMotion
+    ? {}
+    : {
+        hover: {
+          opacity: [0, 0.8, 0],
+          scale: [0, 0.8, 0],
+          x: [0, 10, 20],
+          y: [0, -8, -16],
+          transition: {
+            duration: 1,
+            ease: "easeOut",
+            delay: 0.2,
+            times: [0, 0.3, 1],
+          },
+        },
+      };
+
+  // أنيميشن للعناوين
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+
+  // أنيميشن للروابط
+  const linkContainer = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const linkItem = {
+    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 200, damping: 15 },
+    },
+  };
+
+  // أنيميشن للحقول
+  const formContainer = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+  };
+
+  const formItem = {
+    hidden: { opacity: 0, y: 15 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 150, damping: 16 },
+    },
+  };
+
   return (
     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
-      <h2 className="relative text-3xl md:text-4xl font-bold text-center mb-12">
-        <span className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-green-500 to-blue-400 text-white rounded-2xl shadow-md">
-          Get In Touch
-        </span>
-      </h2>
-      <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
-        Interested in working together or have a question? Reach out!
-      </p>
-
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
-        <a
-          href={`mailto:${EMAIL}`}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+      <motion.h2
+        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <motion.span
+          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 via-emerald-500 to-blue-400 text-white rounded-2xl shadow-lg"
+          whileHover={
+            prefersReducedMotion
+              ? {}
+              : {
+                  scale: 1.08,
+                  rotate: 1,
+                  boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
+                }
+          }
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
-          <Mail size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">{EMAIL}</span>
-        </a>
+          <span className="relative z-10">Get In Touch</span>
+          {/* هالة متوهجة */}
+          {!prefersReducedMotion && (
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/50 via-emerald-400/50 to-blue-400/50 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          )}
+        </motion.span>
+      </motion.h2>
 
-        <a
+      <motion.p
+        className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        Interested in working together or have a question? Reach out!
+      </motion.p>
+
+      <motion.div
+        className="flex flex-wrap justify-center gap-4 mb-10"
+        variants={linkContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.a
+          href={`mailto:${EMAIL}`}
+          variants={linkItem}
+          whileHover={
+            prefersReducedMotion ? {} : { scale: 1.08, y: -3, rotate: 1 }
+          }
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-green-500/20 opacity-0 group-hover:opacity-100"
+            transition={{ duration: 0.3 }}
+          />
+          <Mail
+            size={18}
+            className="relative z-10 text-blue-600 dark:text-blue-400"
+          />
+          <span className="relative z-10 text-sm font-medium">{EMAIL}</span>
+        </motion.a>
+
+        <motion.a
           href={LINKEDIN}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+          variants={linkItem}
+          whileHover={
+            prefersReducedMotion ? {} : { scale: 1.08, y: -3, rotate: -1 }
+          }
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <GrLinkedin size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">LinkedIn</span>
-        </a>
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100"
+            transition={{ duration: 0.3 }}
+          />
+          <GrLinkedin
+            size={18}
+            className="relative z-10 text-blue-600 dark:text-blue-400"
+          />
+          <span className="relative z-10 text-sm font-medium">LinkedIn</span>
+        </motion.a>
 
-        <a
+        <motion.a
           href={`tel:${PHONE}`}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-sm"
+          variants={linkItem}
+          whileHover={
+            prefersReducedMotion ? {} : { scale: 1.08, y: -3, rotate: 1 }
+          }
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <Phone size={18} className="text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium">{PHONE}</span>
-        </a>
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100"
+            transition={{ duration: 0.3 }}
+          />
+          <Phone
+            size={18}
+            className="relative z-10 text-blue-600 dark:text-blue-400"
+          />
+          <span className="relative z-10 text-sm font-medium">{PHONE}</span>
+        </motion.a>
 
-        <a
+        <motion.a
           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 hover:scale-105 transition-all duration-300 shadow-sm"
+          variants={linkItem}
+          whileHover={
+            prefersReducedMotion ? {} : { scale: 1.08, y: -3, rotate: -1 }
+          }
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          className="relative flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-all duration-300 shadow-sm overflow-hidden group"
         >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-green-500/30 to-emerald-500/30 opacity-0 group-hover:opacity-100"
+            transition={{ duration: 0.3 }}
+          />
           <SiWhatsapp
             size={18}
-            className="text-green-600 dark:text-green-400"
+            className="relative z-10 text-green-600 dark:text-green-400"
           />
-          <span className="text-sm font-medium">WhatsApp</span>
-        </a>
-      </div>
+          <span className="relative z-10 text-sm font-medium">WhatsApp</span>
+        </motion.a>
+      </motion.div>
 
-      <div className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+      <motion.div
+        className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ type: "spring", stiffness: 120, damping: 16 }}
+      >
         {isSubmitted ? (
-          <div className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg"
+          >
             Thank you! Your message has been sent.
-          </div>
+          </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="space-y-6"
+            variants={formContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* honeypot للحماية من السبام */}
             <input
               type="text"
@@ -1430,132 +2376,241 @@ function Contact() {
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
+              <motion.div variants={formItem}>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >
                   Full Name
                 </label>
-                <input
+                <motion.input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                  whileFocus={
+                    prefersReducedMotion
+                      ? {}
+                      : { scale: 1.01, borderColor: "#3b82f6" }
+                  }
+                  className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300"
                   placeholder="Your Name"
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div variants={formItem}>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >
                   Email Address
                 </label>
-                <input
+                <motion.input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                  whileFocus={
+                    prefersReducedMotion
+                      ? {}
+                      : { scale: 1.01, borderColor: "#3b82f6" }
+                  }
+                  className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300"
                   placeholder="you@example.com"
                 />
-              </div>
+              </motion.div>
             </div>
 
-            <div>
+            <motion.div variants={formItem}>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Message
               </label>
-              <textarea
+              <motion.textarea
                 id="message"
                 name="message"
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                whileFocus={
+                  prefersReducedMotion
+                    ? {}
+                    : { scale: 1.01, borderColor: "#3b82f6" }
+                }
+                className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 resize-none"
                 placeholder="Your message..."
               />
-            </div>
+            </motion.div>
 
             {error && (
-              <div className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg"
+              >
                 {error}
-              </div>
+              </motion.div>
             )}
 
-            <div className="text-center">
-              <button
+            <motion.div className="text-center" variants={formItem}>
+              <motion.button
                 type="submit"
                 disabled={loading}
-                className="w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto disabled:opacity-60"
+                className="relative w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 mx-auto disabled:opacity-60 flex items-center justify-center gap-3"
+                whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
+                whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
               >
                 {loading ? (
                   "Sending..."
                 ) : (
                   <>
-                    Send Message <Send size={18} />
+                    <span>Send Message</span>
+                    <motion.span
+                      whileHover={
+                        prefersReducedMotion
+                          ? {}
+                          : {
+                              x: [0, 4, 0],
+                              y: [0, -2, 0],
+                              transition: {
+                                duration: 0.6,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              },
+                            }
+                      }
+                      className="inline-flex items-center justify-center"
+                    >
+                      <Send size={18} className="drop-shadow-sm" />
+                    </motion.span>
                   </>
                 )}
-              </button>
-            </div>
-          </form>
+              </motion.button>
+            </motion.div>
+          </motion.form>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 }
 
-// --------- Footer -----------
-// 👈 CHANGED: أزلنا prop الـ navigateTo
+/// --------- Footer -----------
 function Footer() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 16 },
+    },
+  };
+
   return (
-    <footer className="bg-gray-50 dark:bg-slate-950/50 border-t border-gray-200 dark:border-gray-800/50">
-      <div className="container mx-auto max-w-6xl px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-center md:text-left">
-          {/* 👈 CHANGED: حولنا الـ div إلى <a> للعودة للرئيسية */}
-          <a
+    <motion.footer
+      className="bg-gray-50 dark:bg-slate-950/50 border-t border-gray-200 dark:border-gray-800/50 relative overflow-hidden"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={container}
+    >
+      {/* خلفية متوهجة */}
+      {!prefersReducedMotion && (
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-green-500/5"
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      )}
+
+      <div className="container mx-auto max-w-6xl px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+        <motion.div className="text-center md:text-left" variants={item}>
+          <motion.a
             href="#home"
-            className="text-xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer mb-2"
-            // onClick={() => navigateTo("home")} // 👈 REMOVED
+            className="text-xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer mb-2 inline-block"
+            whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
+            whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           >
             {NAME}
-          </a>
-          <div className="text-gray-600 dark:text-gray-400">
+          </motion.a>
+          <motion.div
+            className="text-gray-600 dark:text-gray-400"
+            variants={item}
+          >
             {TITLE} <br />
             <span className="text-sm">{EMAIL}</span> |{" "}
             <span className="text-sm">{LOCATION}</span>
-          </div>
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
+          </motion.div>
+          <motion.p
+            className="text-gray-600 dark:text-gray-400 mt-2 text-sm"
+            variants={item}
+          >
             © {new Date().getFullYear()} All rights reserved.
-          </p>
-        </div>
-        <div className="flex gap-6">
-          <a
+          </motion.p>
+        </motion.div>
+
+        <motion.div className="flex gap-6" variants={item}>
+          <motion.a
             href={GITHUB}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors transform hover:scale-110"
+            whileHover={
+              prefersReducedMotion ? {} : { scale: 1.2, rotate: 5, y: -3 }
+            }
+            whileTap={prefersReducedMotion ? {} : { scale: 0.9 }}
+            className="relative text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <SiGithub size={24} />
-          </a>
-          <a
+            {!prefersReducedMotion && (
+              <motion.span
+                className="absolute inset-0 rounded-full bg-blue-500/20"
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 2, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              />
+            )}
+          </motion.a>
+
+          <motion.a
             href={LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors transform hover:scale-110"
+            whileHover={
+              prefersReducedMotion ? {} : { scale: 1.2, rotate: -5, y: -3 }
+            }
+            whileTap={prefersReducedMotion ? {} : { scale: 0.9 }}
+            className="relative text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <SiLinkedin size={24} />
-          </a>
-        </div>
+            {!prefersReducedMotion && (
+              <motion.span
+                className="absolute inset-0 rounded-full bg-blue-500/20"
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 2, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              />
+            )}
+          </motion.a>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
