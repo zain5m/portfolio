@@ -566,13 +566,59 @@ const skillIconMap = {
 // --------- Theme Context -----------
 const ThemeContext = React.createContext();
 
+const experienceData = [
+  {
+    company: "East Med",
+    role: "Flutter Developer (Freelance → On-site)",
+    location: "Damascus, Syria",
+    period: "09/2024 – 05/2025 | 09/2025 – Present",
+    description: [
+      "Develop Flutter mobile applications with REST API integration.",
+      "Prepare backend endpoints to support mobile workflows.",
+      "Implement PL/SQL logic for production backend operations.",
+      "Support enterprise-level internal mobile systems."
+    ],
+    type: "on site"
+  },
+  {
+    company: "Learn For You",
+    role: "Flutter Developer (Remote)",
+    location: "Daraa, Syria",
+    period: "08/2024 – 05/2025",
+    description: [
+      "Contributed to e-commerce and educational Flutter applications.",
+      "Delivered apps exceeding 1,000+ downloads.",
+      "Improved UI/UX and application performance.",
+      "Integrated monetization strategies (AdMob)."
+    ],
+    type: "Remote Collaboration"
+  },
+  {
+    company: "Freelance Flutter Developer",
+    role: "Self-Employed",
+    location: "Damascus, Syria",
+    period: "01/2023 – Present",
+    description: [
+      "Delivered multiple production-ready Flutter applications end-to-end.",
+      "Designed scalable architecture using Clean Architecture principles.",
+      "Implemented backend integration and REST APIs.",
+      "Managed full development lifecycle (design → implementation → testing → deployment).",
+      "Published applications to Google Play."
+    ],
+    type: "Freelance"
+  }
+];
 // 👈 ADDED: نقلنا هذا المتغير هنا ليصبح عام
 const navItems = [
   { name: "Home", id: "home" },
+  { name: "Experience", id: "experience" },
   { name: "Projects", id: "projects" },
   { name: "About", id: "about" },
   { name: "Contact", id: "contact" },
 ];
+
+
+
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -631,6 +677,7 @@ export default function App() {
 
         <main className="pt-20 page-content relative z-10">
           <Home />
+          <Experience />
           <Projects />
           <About />
           <Contact />
@@ -1240,6 +1287,128 @@ function ProjectCard({ project, prefersReducedMotion }) {
         </div>
       </div>
     </motion.div>
+  );
+}
+
+// --------- Experience (New Section) -----------
+function Experience() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+    },
+  };
+
+  const itemVariant = {
+    hidden: { opacity: 0, x: -20 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 100, damping: 15 },
+    },
+  };
+
+  return (
+    <section id="experience" className="container mx-auto max-w-4xl px-4 py-20">
+      <motion.h2
+        className="relative text-3xl md:text-4xl font-bold text-center mb-16"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <motion.span
+          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white rounded-2xl shadow-lg"
+          whileHover={
+            prefersReducedMotion
+              ? {}
+              : {
+                scale: 1.08,
+                rotate: -1,
+                boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)",
+              }
+          }
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        >
+          <span className="relative z-10">Work Experience</span>
+          {!prefersReducedMotion && (
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400/50 via-orange-400/50 to-red-400/50 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          )}
+        </motion.span>
+      </motion.h2>
+
+      <motion.div
+        className="relative border-l-2 border-gray-200 dark:border-gray-800 ml-4 md:ml-6 space-y-12"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {experienceData.map((exp, index) => (
+          <motion.div
+            key={index}
+            className="relative pl-8 md:pl-12"
+            variants={itemVariant}
+          >
+            {/* Dot on Timeline */}
+            <span className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-white dark:bg-slate-900 border-4 border-blue-500 dark:border-blue-400 shadow-sm" />
+
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                {exp.company}
+              </h3>
+              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1 sm:mt-0 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/20 rounded-md whitespace-nowrap">
+                {exp.period}
+              </span>
+            </div>
+
+            <div className="mb-3">
+              <h4 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                {exp.role}
+              </h4>
+              <div className="flex flex-wrap gap-4 mt-1 text-sm text-gray-500 dark:text-gray-400">
+                <span className="flex items-center gap-1">
+                  <MapPin size={14} /> {exp.location}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Briefcase size={14} /> {exp.type}
+                </span>
+              </div>
+            </div>
+
+            <ul className="list-disc list-outside ml-4 space-y-2 text-gray-600 dark:text-gray-300">
+              {exp.description.map((point, i) => (
+                <li key={i} className="pl-1">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
   );
 }
 
