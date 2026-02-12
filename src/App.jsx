@@ -1,76 +1,66 @@
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/react";
 
-import React, { useState, useEffect } from "react";
 import {
-  Sun,
-  Moon,
-  Menu,
-  X,
-  Send,
-  Mail,
-  Phone,
-  MapPin,
+  Award,
+  BookOpen,
+  Briefcase,
+  Calendar,
+  Download,
   ExternalLink,
   GraduationCap,
-  Award,
-  Download,
-  Briefcase,
-  BookOpen,
-  Calendar,
+  Mail,
+  MapPin,
+  Menu,
+  Moon,
+  Phone,
+  Send,
   Sparkles,
+  Sun,
+  X,
 } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import { IoRocketSharp } from "react-icons/io5";
 
 //
 import { GrLinkedin } from "react-icons/gr";
-import { BsSpeedometer2, BsBarChartFill } from "react-icons/bs";
-import { VscBeaker } from "react-icons/vsc";
-import { MdAccessibilityNew, MdDeveloperMode } from "react-icons/md";
+import { MdDeveloperMode } from "react-icons/md";
 import { TbLock, TbSql } from "react-icons/tb";
 
 import {
-  SiGoogleplay,
-  SiWhatsapp,
-  SiLinkedin,
-  SiGithub,
-  SiFlutter,
+  SiApollographql,
   SiDart,
   SiFirebase,
-  SiPython,
-  SiTensorflow,
+  SiFlutter,
   SiGit,
+  SiGithub,
+  SiGitlab,
+  SiGoogleadmob,
   SiGooglemaps,
+  SiGoogleplay,
   SiHive,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
   SiLangchain,
+  SiLinkedin,
+  SiNumpy,
   SiOpenai,
   // SiQdrant,
   SiOracle,
-  SiApollographql,
-  SiMysql,
-  SiGitlab,
-  SiGoogleadmob,
-  SiSentry,
-  SiGithubactions,
-  SiPostman,
+  SiPandas,
+  SiPython,
+  SiScikitlearn,
+  SiTensorflow,
+  SiWhatsapp
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
 
-import { FaDatabase, FaLanguage } from "react-icons/fa6";
-import { PiVectorThreeBold } from "react-icons/pi";
-import {} from "react-icons/tb";
-import { GiArtificialIntelligence } from "react-icons/gi";
 import {
   motion,
+  useReducedMotion,
   useScroll,
   useSpring,
-  useTransform,
-  useReducedMotion,
-  useMotionValue,
+  useTransform
 } from "framer-motion";
+import { FaDatabase, FaLanguage } from "react-icons/fa6";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { PiVectorThreeBold } from "react-icons/pi";
+import { } from "react-icons/tb";
 
 //////////////////////////////////////////////////////NEW -------------------------------------------
 
@@ -318,7 +308,7 @@ const LOCATION = "Damascus, Syria";
 const LINKEDIN = "https://www.linkedin.com/in/zain-mhesn-48624920b";
 const GITHUB = "https://github.com/zain5m";
 
-const CV_URL = "/projects/ZAIN_MHESN.pdf";
+const CV_URL = "/cv/Zain Mhesn CV.pdf";
 
 const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
 const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
@@ -391,6 +381,16 @@ const projectsData = [
     liveUrl: "",
   },
   {
+    title: "Loujen – UI Enhancement Project",
+    description:
+      "UI-focused enhancement project. Redesigned user interface to improve usability, consistency, and visual clarity.",
+    imageUrl: "",
+    tags: ["Flutter", "UI/UX Redesign", "Optimization"],
+    githubUrl: "",
+    liveUrl: "",
+
+  },
+  {
     title: "Bankid.SY – Secure App↔Backend Exchange",
     description:
       "Implemented AES-256-CBC (random IV) + RSA-OAEP key wrapping, public-key handshake, secure key caching, JSON/file encryption, and FCM push notifications. Refactored legacy code and improved stability.",
@@ -425,6 +425,15 @@ const projectsData = [
     githubUrl: "",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.musictones.apporg.musictones",
+  },
+  {
+    title: "CarX – Automotive AI Platform",
+    description:
+      "Full automotive service platform featuring AI-driven maintenance suggestions (TensorFlow Lite), Google Maps integration, and secure Stripe payments.",
+    imageUrl: "/projects/carx.png",
+    tags: ["Flutter, TensorFlow Lite", "AI", "Google Maps", "Stripe", "Payments"],
+    githubUrl: "",
+    liveUrl: "https://play.google.com/store/apps/details?id=com.carx.app",
   },
   {
     title: "To-do App (Personal)",
@@ -664,21 +673,19 @@ function Navbar({ currentPage }) {
                   key={item.id}
                   href={`#${item.id}`}
                   className={`relative px-4 py-2 rounded-lg text-base font-medium transition-all duration-300
-                    ${
-                      active
-                        ? "text-blue-600 dark:text-blue-300"
-                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ${active
+                      ? "text-blue-600 dark:text-blue-300"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                     }`}
                 >
                   {item.name}
                   {/* underline متحرك */}
                   <span
                     className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full transition-all duration-300
-                    ${
-                      active
+                    ${active
                         ? "bg-blue-500 dark:bg-blue-400 scale-x-100"
                         : "bg-blue-500/50 dark:bg-blue-400/50 scale-x-0 group-hover:scale-x-100"
-                    }`}
+                      }`}
                     style={{ transformOrigin: "left" }}
                   />
                 </a>
@@ -754,10 +761,9 @@ function Navbar({ currentPage }) {
                 href={`#${item.id}`}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-lg font-medium transition-colors
-                  ${
-                    currentPage === item.id
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  ${currentPage === item.id
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   }`}
               >
                 {item.name}
@@ -862,8 +868,8 @@ function Home() {
               }
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
               onError={(e) =>
-                (e.target.src =
-                  "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
+              (e.target.src =
+                "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
               }
             />
             {/* هالة ضوء تتنفس */}
@@ -1060,10 +1066,10 @@ function Projects() {
             prefersReducedMotion
               ? {}
               : {
-                  scale: 1.08,
-                  rotate: 1,
-                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-                }
+                scale: 1.08,
+                rotate: 1,
+                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
+              }
           }
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
@@ -1168,8 +1174,8 @@ function ProjectCard({ project, prefersReducedMotion }) {
               whileHover={prefersReducedMotion ? {} : { scale: 1.08 }}
               transition={{ type: "spring", stiffness: 200, damping: 16 }}
               onError={(e) =>
-                (e.target.src =
-                  "https://placehold.co/600x400/ef4444/ffffff?text=Image+Error")
+              (e.target.src =
+                "https://placehold.co/600x400/ef4444/ffffff?text=Image+Error")
               }
             />
           </div>
@@ -1340,10 +1346,10 @@ function About() {
             prefersReducedMotion
               ? {}
               : {
-                  scale: 1.08,
-                  rotate: -1,
-                  boxShadow: "0 20px 40px rgba(147, 51, 234, 0.4)",
-                }
+                scale: 1.08,
+                rotate: -1,
+                boxShadow: "0 20px 40px rgba(147, 51, 234, 0.4)",
+              }
           }
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
@@ -1419,8 +1425,8 @@ function About() {
               alt={NAME}
               className="rounded-xl shadow-lg w-full max-w-sm mx-auto"
               onError={(e) =>
-                (e.target.src =
-                  "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
+              (e.target.src =
+                "https://placehold.co/500x500/ef4444/ffffff?text=Image+Error")
               }
             />
             {!prefersReducedMotion && (
@@ -1664,10 +1670,9 @@ function SkillPill({ name, Icon, core, prefersReducedMotion }) {
           {Icon ? (
             <span
               className={`shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full
-                ${
-                  core
-                    ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 ring-1 ring-blue-300/60 dark:ring-blue-700/60"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200/70 dark:ring-slate-700/70"
+                ${core
+                  ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 ring-1 ring-blue-300/60 dark:ring-blue-700/60"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200/70 dark:ring-slate-700/70"
                 }`}
             >
               <Icon size={16} aria-hidden />
@@ -1739,9 +1744,9 @@ function ToolkitSection() {
               prefersReducedMotion
                 ? {}
                 : {
-                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-                    rotate: 1,
-                  }
+                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
+                  rotate: 1,
+                }
             }
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
           >
@@ -1846,120 +1851,120 @@ function Contact() {
   const iconVariants = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          // مسار منحني سلس يشبه قوس طيران حقيقي
-          x: [0, 8, 20, 28, 24, 12, 0],
-          y: [0, -12, -28, -38, -32, -16, 0],
-          rotate: [0, -45, -180, -360, -540, -720, -720],
-          scale: [1, 1.15, 1.2, 1.15, 1.08, 1.02, 1],
-          transition: {
-            duration: 1.5,
-            ease: [0.4, 0, 0.2, 1],
-            times: [0, 0.15, 0.35, 0.55, 0.75, 0.9, 1],
-          },
+      hover: {
+        // مسار منحني سلس يشبه قوس طيران حقيقي
+        x: [0, 8, 20, 28, 24, 12, 0],
+        y: [0, -12, -28, -38, -32, -16, 0],
+        rotate: [0, -45, -180, -360, -540, -720, -720],
+        scale: [1, 1.15, 1.2, 1.15, 1.08, 1.02, 1],
+        transition: {
+          duration: 1.5,
+          ease: [0.4, 0, 0.2, 1],
+          times: [0, 0.15, 0.35, 0.55, 0.75, 0.9, 1],
         },
-        tap: { scale: 0.95, y: 2 },
-      };
+      },
+      tap: { scale: 0.95, y: 2 },
+    };
 
   // أنيميشن للزر نفسه - تأثير نبض وتوهج
   const buttonVariants = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          scale: 1.02,
-          boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
-          transition: {
-            duration: 0.3,
-            ease: "easeOut",
-          },
+      hover: {
+        scale: 1.02,
+        boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
+        transition: {
+          duration: 0.3,
+          ease: "easeOut",
         },
-        tap: {
-          scale: 0.98,
-        },
-      };
+      },
+      tap: {
+        scale: 0.98,
+      },
+    };
 
   // هالة دائرية متعددة الطبقات - تأثير توسع متدرج
   const ringVariants = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          opacity: [0, 0.6, 0.4, 0],
-          scale: [0.8, 1.3, 1.6, 1.8],
-          transition: {
-            duration: 1.2,
-            ease: "easeOut",
-            times: [0, 0.3, 0.6, 1],
-          },
+      hover: {
+        opacity: [0, 0.6, 0.4, 0],
+        scale: [0.8, 1.3, 1.6, 1.8],
+        transition: {
+          duration: 1.2,
+          ease: "easeOut",
+          times: [0, 0.3, 0.6, 1],
         },
-      };
+      },
+    };
 
   // هالة ثانية - طبقة إضافية للتأثير
   const ringVariants2 = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          opacity: [0, 0.4, 0],
-          scale: [0.9, 1.5, 1.9],
-          transition: {
-            duration: 1.4,
-            ease: "easeOut",
-            delay: 0.1,
-            times: [0, 0.4, 1],
-          },
+      hover: {
+        opacity: [0, 0.4, 0],
+        scale: [0.9, 1.5, 1.9],
+        transition: {
+          duration: 1.4,
+          ease: "easeOut",
+          delay: 0.1,
+          times: [0, 0.4, 1],
         },
-      };
+      },
+    };
 
   // أثر متحرك خلف الأيقونة - خط متوهج
   const trailVariants = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          opacity: [0, 0.6, 0.4, 0],
-          x: [0, -15, -30, -40],
-          y: [0, 6, 12, 18],
-          scaleX: [0.5, 1, 1.2, 1.5],
-          transition: {
-            duration: 1.3,
-            ease: "easeInOut",
-            times: [0, 0.3, 0.7, 1],
-          },
+      hover: {
+        opacity: [0, 0.6, 0.4, 0],
+        x: [0, -15, -30, -40],
+        y: [0, 6, 12, 18],
+        scaleX: [0.5, 1, 1.2, 1.5],
+        transition: {
+          duration: 1.3,
+          ease: "easeInOut",
+          times: [0, 0.3, 0.7, 1],
         },
-      };
+      },
+    };
 
   // جزيئات متوهجة تتبع مسار الطائرة
   const particleVariants = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          opacity: [0, 1, 0.8, 0],
-          scale: [0, 1, 0.8, 0],
-          x: [0, 15, 25, 35],
-          y: [0, -10, -20, -30],
-          transition: {
-            duration: 1.2,
-            ease: "easeOut",
-            times: [0, 0.2, 0.6, 1],
-          },
+      hover: {
+        opacity: [0, 1, 0.8, 0],
+        scale: [0, 1, 0.8, 0],
+        x: [0, 15, 25, 35],
+        y: [0, -10, -20, -30],
+        transition: {
+          duration: 1.2,
+          ease: "easeOut",
+          times: [0, 0.2, 0.6, 1],
         },
-      };
+      },
+    };
 
   // جزيئة ثانية
   const particleVariants2 = prefersReducedMotion
     ? {}
     : {
-        hover: {
-          opacity: [0, 0.8, 0],
-          scale: [0, 0.8, 0],
-          x: [0, 10, 20],
-          y: [0, -8, -16],
-          transition: {
-            duration: 1,
-            ease: "easeOut",
-            delay: 0.2,
-            times: [0, 0.3, 1],
-          },
+      hover: {
+        opacity: [0, 0.8, 0],
+        scale: [0, 0.8, 0],
+        x: [0, 10, 20],
+        y: [0, -8, -16],
+        transition: {
+          duration: 1,
+          ease: "easeOut",
+          delay: 0.2,
+          times: [0, 0.3, 1],
         },
-      };
+      },
+    };
 
   // أنيميشن للعناوين
   const titleVariants = {
@@ -2021,10 +2026,10 @@ function Contact() {
             prefersReducedMotion
               ? {}
               : {
-                  scale: 1.08,
-                  rotate: 1,
-                  boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
-                }
+                scale: 1.08,
+                rotate: 1,
+                boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
+              }
           }
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
@@ -2282,14 +2287,14 @@ function Contact() {
                         prefersReducedMotion
                           ? {}
                           : {
-                              x: [0, 4, 0],
-                              y: [0, -2, 0],
-                              transition: {
-                                duration: 0.6,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                              },
-                            }
+                            x: [0, 4, 0],
+                            y: [0, -2, 0],
+                            transition: {
+                              duration: 0.6,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            },
+                          }
                       }
                       className="inline-flex items-center justify-center"
                     >
