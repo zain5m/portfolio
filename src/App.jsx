@@ -1092,6 +1092,39 @@ function Home() {
 }
 
 // --------- Projects (Animated Grid) -----------
+function SectionHeading({ eyebrow, title, subtitle, Icon }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      className="mb-12 text-center"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ type: "spring", stiffness: 130, damping: 16 }}
+    >
+      <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 dark:border-blue-400/30 bg-blue-50/70 dark:bg-blue-900/20 px-4 py-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-blue-700 dark:text-blue-300">
+        {Icon && <Icon size={14} />}
+        <span>{eyebrow}</span>
+      </div>
+      <motion.h2
+        className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white"
+        whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
+      >
+        <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
+          {title}
+        </span>
+      </motion.h2>
+      {subtitle && (
+        <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-gray-600 dark:text-gray-400">
+          {subtitle}
+        </p>
+      )}
+      <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500" />
+    </motion.div>
+  );
+}
+
 function Projects() {
   const prefersReducedMotion = useReducedMotion();
 
@@ -1102,64 +1135,14 @@ function Projects() {
     },
   };
 
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 120, damping: 14 },
-    },
-  };
-
   return (
     <section id="projects" className="container mx-auto max-w-6xl px-4 py-20">
-      <motion.h2
-        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        <motion.span
-          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-green-400 text-white rounded-2xl shadow-lg"
-          whileHover={
-            prefersReducedMotion
-              ? {}
-              : {
-                scale: 1.08,
-                rotate: 1,
-                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-              }
-          }
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-        >
-          <span className="relative z-10">Projects I've Built</span>
-          {/* هالة متوهجة */}
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/50 via-cyan-400/50 to-green-400/50 blur-xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          )}
-        </motion.span>
-      </motion.h2>
-      <motion.p
-        className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        Here are some of the projects I'm proud of.
-      </motion.p>
+      <SectionHeading
+        eyebrow="Featured Work"
+        title="Projects I've Built"
+        subtitle="Here are some of the projects I'm proud of."
+        Icon={Sparkles}
+      />
 
       <motion.div
         variants={container}
@@ -1305,17 +1288,6 @@ function ProjectCard({ project, prefersReducedMotion }) {
 
 // --------- Experience (New Section) -----------
 function Experience() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 120, damping: 14 },
-    },
-  };
-
   const container = {
     hidden: {},
     show: {
@@ -1334,43 +1306,12 @@ function Experience() {
 
   return (
     <section id="experience" className="container mx-auto max-w-4xl px-4 py-20">
-      <motion.h2
-        className="relative text-3xl md:text-4xl font-bold text-center mb-16"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        <motion.span
-          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white rounded-2xl shadow-lg"
-          whileHover={
-            prefersReducedMotion
-              ? {}
-              : {
-                scale: 1.08,
-                rotate: -1,
-                boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)",
-              }
-          }
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-        >
-          <span className="relative z-10">Work Experience</span>
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400/50 via-orange-400/50 to-red-400/50 blur-xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          )}
-        </motion.span>
-      </motion.h2>
+      <SectionHeading
+        eyebrow="Career Path"
+        title="Work Experience"
+        subtitle="Roles, products, and impact across freelance and on-site work."
+        Icon={Briefcase}
+      />
 
       <motion.div
         className="relative border-l-2 border-gray-200 dark:border-gray-800 ml-4 md:ml-6 space-y-12"
@@ -1504,55 +1445,14 @@ function About() {
     },
   };
 
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 120, damping: 14 },
-    },
-  };
-
   return (
     <section id="about" className="container mx-auto max-w-6xl px-4 py-20">
-      <motion.h2
-        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        <motion.span
-          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-400 text-white rounded-2xl shadow-lg"
-          whileHover={
-            prefersReducedMotion
-              ? {}
-              : {
-                scale: 1.08,
-                rotate: -1,
-                boxShadow: "0 20px 40px rgba(147, 51, 234, 0.4)",
-              }
-          }
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-        >
-          <span className="relative z-10">About Me</span>
-          {/* هالة متوهجة */}
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400/50 via-pink-400/50 to-blue-400/50 blur-xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          )}
-        </motion.span>
-      </motion.h2>
+      <SectionHeading
+        eyebrow="Profile"
+        title="About Me"
+        subtitle="A concise snapshot of my background, engineering style, and focus areas."
+        Icon={GraduationCap}
+      />
 
       {/* الصف الأول: نبذة + صورة */}
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-12">
@@ -1874,91 +1774,14 @@ function SkillPill({ name, Icon, core, prefersReducedMotion }) {
 
 // --------- Toolkit Section (Ultra Animated) -----------
 function ToolkitSection() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 14,
-        delay: 0.1,
-      },
-    },
-  };
-
-  const iconVariants = {
-    hidden: { opacity: 0, rotate: -180, scale: 0 },
-    show: {
-      opacity: 1,
-      rotate: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
-        delay: 0.2,
-      },
-    },
-  };
-
   return (
     <section id="toolkit" className="container mx-auto max-w-6xl px-4 py-20">
-      {/* عنوان محسّن مع أنيميشن مميز */}
-      <motion.div
-        className="text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        <motion.h2
-          className="relative text-3xl md:text-4xl font-bold mb-4 inline-block"
-          whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -3 }}
-        >
-          <motion.span
-            className="relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 text-white rounded-2xl shadow-lg"
-            whileHover={
-              prefersReducedMotion
-                ? {}
-                : {
-                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-                  rotate: 1,
-                }
-            }
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          >
-            {/* أيقونة متحركة */}
-            <motion.span
-              variants={iconVariants}
-              className="inline-flex items-center justify-center"
-            >
-              <Briefcase size={24} className="drop-shadow-sm" />
-            </motion.span>
-            <span className="relative z-10">My Toolkit</span>
-
-            {/* هالة متوهجة */}
-            {!prefersReducedMotion && (
-              <motion.span
-                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/50 via-blue-400/50 to-indigo-400/50 blur-xl"
-                animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            )}
-          </motion.span>
-        </motion.h2>
-      </motion.div>
+      <SectionHeading
+        eyebrow="Stack"
+        title="My Toolkit"
+        subtitle="Core technologies and tools I use to deliver production-ready apps."
+        Icon={Award}
+      />
 
       {/* الشبكة */}
       <SkillsGrid items={skills} />
@@ -2029,135 +1852,6 @@ function Contact() {
     }
   };
 
-  // 🎬 أنيميشن محسّن للطائرة - مسار سلس وطبيعي
-  const iconVariants = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        // مسار منحني سلس يشبه قوس طيران حقيقي
-        x: [0, 8, 20, 28, 24, 12, 0],
-        y: [0, -12, -28, -38, -32, -16, 0],
-        rotate: [0, -45, -180, -360, -540, -720, -720],
-        scale: [1, 1.15, 1.2, 1.15, 1.08, 1.02, 1],
-        transition: {
-          duration: 1.5,
-          ease: [0.4, 0, 0.2, 1],
-          times: [0, 0.15, 0.35, 0.55, 0.75, 0.9, 1],
-        },
-      },
-      tap: { scale: 0.95, y: 2 },
-    };
-
-  // أنيميشن للزر نفسه - تأثير نبض وتوهج
-  const buttonVariants = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        scale: 1.02,
-        boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
-        transition: {
-          duration: 0.3,
-          ease: "easeOut",
-        },
-      },
-      tap: {
-        scale: 0.98,
-      },
-    };
-
-  // هالة دائرية متعددة الطبقات - تأثير توسع متدرج
-  const ringVariants = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        opacity: [0, 0.6, 0.4, 0],
-        scale: [0.8, 1.3, 1.6, 1.8],
-        transition: {
-          duration: 1.2,
-          ease: "easeOut",
-          times: [0, 0.3, 0.6, 1],
-        },
-      },
-    };
-
-  // هالة ثانية - طبقة إضافية للتأثير
-  const ringVariants2 = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        opacity: [0, 0.4, 0],
-        scale: [0.9, 1.5, 1.9],
-        transition: {
-          duration: 1.4,
-          ease: "easeOut",
-          delay: 0.1,
-          times: [0, 0.4, 1],
-        },
-      },
-    };
-
-  // أثر متحرك خلف الأيقونة - خط متوهج
-  const trailVariants = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        opacity: [0, 0.6, 0.4, 0],
-        x: [0, -15, -30, -40],
-        y: [0, 6, 12, 18],
-        scaleX: [0.5, 1, 1.2, 1.5],
-        transition: {
-          duration: 1.3,
-          ease: "easeInOut",
-          times: [0, 0.3, 0.7, 1],
-        },
-      },
-    };
-
-  // جزيئات متوهجة تتبع مسار الطائرة
-  const particleVariants = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        opacity: [0, 1, 0.8, 0],
-        scale: [0, 1, 0.8, 0],
-        x: [0, 15, 25, 35],
-        y: [0, -10, -20, -30],
-        transition: {
-          duration: 1.2,
-          ease: "easeOut",
-          times: [0, 0.2, 0.6, 1],
-        },
-      },
-    };
-
-  // جزيئة ثانية
-  const particleVariants2 = prefersReducedMotion
-    ? {}
-    : {
-      hover: {
-        opacity: [0, 0.8, 0],
-        scale: [0, 0.8, 0],
-        x: [0, 10, 20],
-        y: [0, -8, -16],
-        transition: {
-          duration: 1,
-          ease: "easeOut",
-          delay: 0.2,
-          times: [0, 0.3, 1],
-        },
-      },
-    };
-
-  // أنيميشن للعناوين
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 120, damping: 14 },
-    },
-  };
-
   // أنيميشن للروابط
   const linkContainer = {
     hidden: {},
@@ -2195,54 +1889,12 @@ function Contact() {
 
   return (
     <section id="contact" className="container mx-auto max-w-3xl px-4 py-20">
-      <motion.h2
-        className="relative text-3xl md:text-4xl font-bold text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        <motion.span
-          className="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 via-emerald-500 to-blue-400 text-white rounded-2xl shadow-lg"
-          whileHover={
-            prefersReducedMotion
-              ? {}
-              : {
-                scale: 1.08,
-                rotate: 1,
-                boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
-              }
-          }
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-        >
-          <span className="relative z-10">Get In Touch</span>
-          {/* هالة متوهجة */}
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/50 via-emerald-400/50 to-blue-400/50 blur-xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          )}
-        </motion.span>
-      </motion.h2>
-
-      <motion.p
-        className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={titleVariants}
-      >
-        Interested in working together or have a question? Reach out!
-      </motion.p>
+      <SectionHeading
+        eyebrow="Contact"
+        title="Get In Touch"
+        subtitle="Interested in working together or have a question? Reach out!"
+        Icon={Mail}
+      />
 
       <motion.div
         className="flex flex-wrap justify-center gap-4 mb-10"
