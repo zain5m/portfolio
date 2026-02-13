@@ -47,7 +47,7 @@ import {
   SiPython,
   SiScikitlearn,
   SiTensorflow,
-  SiWhatsapp
+  SiWhatsapp,SiMedium
 } from "react-icons/si";
 
 import {
@@ -307,6 +307,8 @@ const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
 const LINKEDIN = "https://www.linkedin.com/in/zain-mhesn-48624920b";
 const GITHUB = "https://github.com/zain5m";
+const MEDIUM = "https://zainmhesn.medium.com/";
+
 
 const CV_URL = "/cv/Zain Mhesn CV.pdf";
 
@@ -1039,6 +1041,17 @@ function Home() {
                   />
                 ),
                 label: "LinkedIn",
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+              {
+                href: MEDIUM,
+                icon: (
+                  <SiMedium
+                    size={18}
+                    className="text-black-600 dark:text-black-400"
+                  />
+                ),
+                label: "Medium",
                 classes: "bg-gray-100 dark:bg-slate-800",
               },
               {
