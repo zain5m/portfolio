@@ -47,7 +47,9 @@ import {
   SiPython,
   SiScikitlearn,
   SiTensorflow,
-  SiWhatsapp,SiMedium
+  SiWhatsapp,
+  SiMedium,
+  SiKaggle,
 } from "react-icons/si";
 
 import {
@@ -60,7 +62,6 @@ import {
 import { FaDatabase, FaLanguage } from "react-icons/fa6";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { PiVectorThreeBold } from "react-icons/pi";
-import { } from "react-icons/tb";
 
 //////////////////////////////////////////////////////NEW -------------------------------------------
 
@@ -305,12 +306,15 @@ const TITLE = "Flutter Developer | AI Specialist | Information Engineer";
 const EMAIL = "zayanmhesn22@gmail.com";
 const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
-const LINKEDIN = "https://www.linkedin.com/in/zain-mhesn-48624920b";
+const LINKEDIN = "https://linkedin.com/in/zainmhesn/";
 const GITHUB = "https://github.com/zain5m";
 const MEDIUM = "https://zainmhesn.medium.com/";
+const KAGGLE = "https://www.kaggle.com/zainmhes";
+// const WEBSITE = "https://zain-mhesn.vercel.app/";
 
 
-const CV_URL = "/cv/Zain Mhesn CV.pdf";
+const FLUTTER_CV_URL = "/cv/Zain Mhesn CV.pdf";
+const AI_CV_URL = "/cv/Zain Mhesn Ai.pdf";
 
 const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
 const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
@@ -722,6 +726,7 @@ function Navbar({ currentPage }) {
                   key={item.id}
                   href={`#${item.id}`}
                   className={`relative px-4 py-2 rounded-lg text-base font-medium transition-all duration-300
+                    group
                     ${active
                       ? "text-blue-600 dark:text-blue-300"
                       : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
@@ -756,6 +761,15 @@ function Navbar({ currentPage }) {
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
             >
               <SiLinkedin size={20} />
+            </a>
+            <a
+              href={KAGGLE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+              aria-label="Kaggle"
+            >
+              <SiKaggle size={20} />
             </a>
 
             <button
@@ -834,6 +848,15 @@ function Navbar({ currentPage }) {
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <SiLinkedin size={22} />
+              </a>
+              <a
+                href={KAGGLE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                aria-label="Kaggle"
+              >
+                <SiKaggle size={22} />
               </a>
             </div>
           </nav>
@@ -981,14 +1004,35 @@ function Home() {
             </motion.a>
 
             <motion.a
-              href={CV_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={FLUTTER_CV_URL}
+              download="Zain Mhesn Flutter CV.pdf"
+              aria-label="Download Flutter CV"
               whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 flex items-center justify-center gap-2"
+              className="group relative overflow-hidden sm:min-w-[220px] px-7 py-3.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white text-base md:text-lg font-semibold rounded-xl border border-white/20 shadow-lg hover:shadow-emerald-500/35 transition-all duration-300 flex items-center justify-center gap-2.5"
             >
-              Download CV <Download size={20} />
+              <span
+                aria-hidden
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"
+              />
+              <span className="relative z-10">Download Flutter CV</span>
+              <Download size={19} className="relative z-10" />
+            </motion.a>
+
+            <motion.a
+              href={AI_CV_URL}
+              download="Zain Mhesn AI CV.pdf"
+              aria-label="Download AI CV"
+              whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+              className="group relative overflow-hidden sm:min-w-[220px] px-7 py-3.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white text-base md:text-lg font-semibold rounded-xl border border-white/20 shadow-lg hover:shadow-cyan-500/35 transition-all duration-300 flex items-center justify-center gap-2.5"
+            >
+              <span
+                aria-hidden
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"
+              />
+              <span className="relative z-10">Download AI CV</span>
+              <Download size={19} className="relative z-10" />
             </motion.a>
           </motion.div>
 
@@ -1048,10 +1092,21 @@ function Home() {
                 icon: (
                   <SiMedium
                     size={18}
-                    className="text-black-600 dark:text-black-400"
+                    className="text-slate-900 dark:text-slate-200"
                   />
                 ),
                 label: "Medium",
+                classes: "bg-gray-100 dark:bg-slate-800",
+              },
+              {
+                href: KAGGLE,
+                icon: (
+                  <SiKaggle
+                    size={18}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
+                ),
+                label: "Kaggle",
                 classes: "bg-gray-100 dark:bg-slate-800",
               },
               {
@@ -1595,16 +1650,25 @@ function About() {
           ))}
         </div>
 
-        {/* زر الـ CV بسيط وخفيف */}
-        <div className="mt-8 text-center md:text-left">
+        {/* أزرار CV بسيطة وخفيفة */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
           <a
-            href={CV_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={FLUTTER_CV_URL}
+            download="Zain Mhesn Flutter CV.pdf"
+            aria-label="Download Flutter CV"
             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-semibold text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 shadow-md hover:shadow-lg transition-all duration-200 text-sm md:text-base"
           >
             <Download size={18} />
-            <span>Download CV</span>
+            <span>Download Flutter CV</span>
+          </a>
+          <a
+            href={AI_CV_URL}
+            download="Zain Mhesn AI CV.pdf"
+            aria-label="Download AI CV"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-semibold text-white bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-700 hover:via-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all duration-200 text-sm md:text-base"
+          >
+            <Download size={18} />
+            <span>Download AI CV</span>
           </a>
         </div>
       </div>
@@ -1946,6 +2010,28 @@ function Contact() {
         </motion.a>
 
         <motion.a
+          href={KAGGLE}
+          target="_blank"
+          rel="noopener noreferrer"
+          variants={linkItem}
+          whileHover={
+            prefersReducedMotion ? {} : { scale: 1.08, y: -3, rotate: 1 }
+          }
+          whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+          className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100"
+            transition={{ duration: 0.3 }}
+          />
+          <SiKaggle
+            size={18}
+            className="relative z-10 text-blue-600 dark:text-blue-400"
+          />
+          <span className="relative z-10 text-sm font-medium">Kaggle</span>
+        </motion.a>
+
+        <motion.a
           href={`tel:${PHONE}`}
           variants={linkItem}
           whileHover={
@@ -2247,6 +2333,28 @@ function Footer() {
             className="relative text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <SiLinkedin size={24} />
+            {!prefersReducedMotion && (
+              <motion.span
+                className="absolute inset-0 rounded-full bg-blue-500/20"
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 2, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              />
+            )}
+          </motion.a>
+
+          <motion.a
+            href={KAGGLE}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={
+              prefersReducedMotion ? {} : { scale: 1.2, rotate: 5, y: -3 }
+            }
+            whileTap={prefersReducedMotion ? {} : { scale: 0.9 }}
+            className="relative text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            aria-label="Kaggle"
+          >
+            <SiKaggle size={24} />
             {!prefersReducedMotion && (
               <motion.span
                 className="absolute inset-0 rounded-full bg-blue-500/20"
