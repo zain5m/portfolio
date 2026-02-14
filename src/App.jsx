@@ -991,7 +991,7 @@ function Home() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            className="flex justify-center lg:justify-start"
             variants={item}
           >
             <motion.a
@@ -1002,38 +1002,42 @@ function Home() {
             >
               View My Projects <IoRocketSharp size={20} />
             </motion.a>
+          </motion.div>
 
-            <motion.a
-              href={FLUTTER_CV_URL}
-              download="Zain Mhesn Flutter CV.pdf"
-              aria-label="Download Flutter CV"
-              whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
-              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="group relative overflow-hidden sm:min-w-[220px] px-7 py-3.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white text-base md:text-lg font-semibold rounded-xl border border-white/20 shadow-lg hover:shadow-emerald-500/35 transition-all duration-300 flex items-center justify-center gap-2.5"
-            >
-              <span
-                aria-hidden
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"
-              />
-              <span className="relative z-10">Download Flutter CV</span>
-              <Download size={19} className="relative z-10" />
-            </motion.a>
+          <motion.div
+            className="mt-4 flex flex-col items-center lg:items-start gap-2.5"
+            variants={item}
+          >
+            <div className="inline-flex items-center gap-2 text-sm md:text-base font-semibold text-gray-200 dark:text-gray-100">
+              <Download size={16} className="text-blue-300 dark:text-blue-200" />
+              <span className="tracking-wide">Download CVs</span>
+            </div>
 
-            <motion.a
-              href={AI_CV_URL}
-              download="Zain Mhesn AI CV.pdf"
-              aria-label="Download AI CV"
-              whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
-              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="group relative overflow-hidden sm:min-w-[220px] px-7 py-3.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white text-base md:text-lg font-semibold rounded-xl border border-white/20 shadow-lg hover:shadow-cyan-500/35 transition-all duration-300 flex items-center justify-center gap-2.5"
-            >
-              <span
-                aria-hidden
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"
-              />
-              <span className="relative z-10">Download AI CV</span>
-              <Download size={19} className="relative z-10" />
-            </motion.a>
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+              <motion.a
+                href={FLUTTER_CV_URL}
+                download="Zain Mhesn Flutter CV.pdf"
+                aria-label="Download Flutter CV"
+                whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+                className="inline-flex min-w-[136px] items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-300/35 bg-slate-900/60 text-slate-100 hover:bg-emerald-500/20 hover:border-emerald-300/60 transition-all duration-300 shadow-sm hover:shadow-emerald-500/20"
+              >
+                <span className="h-2 w-2 rounded-full bg-emerald-300" />
+                <span className="text-sm font-semibold">Flutter CV</span>
+              </motion.a>
+
+              <motion.a
+                href={AI_CV_URL}
+                download="Zain Mhesn AI CV.pdf"
+                aria-label="Download AI CV"
+                whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+                className="inline-flex min-w-[136px] items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-cyan-300/35 bg-slate-900/60 text-slate-100 hover:bg-cyan-500/20 hover:border-cyan-300/60 transition-all duration-300 shadow-sm hover:shadow-cyan-500/20"
+              >
+                <span className="h-2 w-2 rounded-full bg-cyan-300" />
+                <span className="text-sm font-semibold">AI CV</span>
+              </motion.a>
+            </div>
           </motion.div>
 
           {/* روابط سريعة؛ كل واحدة لها micro hover */}
