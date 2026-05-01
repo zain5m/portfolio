@@ -302,7 +302,7 @@ function NeuralNetworkBG() {
 // -------------------------------------------
 
 const NAME = "Zain Mhesn";
-const TITLE = "Flutter Developer | AI Specialist | Information Engineer";
+const TITLE = "Mobile Engineer | Flutter Developer | AI & Machine Learning Engineer Data Scientist | AI Engineer";
 const EMAIL = "zayanmhesn22@gmail.com";
 const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
@@ -313,7 +313,7 @@ const KAGGLE = "https://www.kaggle.com/zainmhes";
 // const WEBSITE = "https://zain-mhesn.vercel.app/";
 
 
-const FLUTTER_CV_URL = "/cv/Zain Mhesn CV.pdf";
+const FLUTTER_CV_URL = "/cv/Zain Mhesn Flutter.pdf";
 const AI_CV_URL = "/cv/Zain Mhesn Ai.pdf";
 
 const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
