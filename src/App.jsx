@@ -986,11 +986,7 @@ function Home() {
             className="max-w-2xl text-lg text-gray-600 dark:text-gray-400 mb-8 mx-auto lg:mx-0"
             variants={item}
           >
-            Information Engineering graduate specialized in Artificial
-            Intelligence, with 4+ years in Flutter. Built and shipped 5+
-            cross-platform apps using Clean Architecture, Firebase, and
-            Bloc/Provider. Comfortable integrating AI (RAG, LangChain, vector
-            DBs) to deliver scalable, user-focused mobile products.
+            {SUMMARY}
           </motion.p>
 
           <motion.div
