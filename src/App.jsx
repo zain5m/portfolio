@@ -311,8 +311,11 @@ const GITHUB = "https://github.com/zain5m";
 const MEDIUM = "https://zainmhesn.medium.com/";
 const KAGGLE = "https://www.kaggle.com/zainmhes";
 // const WEBSITE = "https://zain-mhesn.vercel.app/";
+const SUMMARY = `
+AI Engineer and Flutter Developer with hands-on experience building intelligent systems and scalable mobile applications. Specialized in developing AI-powered solutions using RAG pipelines, LLM-based applications, semantic search, and automation systems, alongside production-ready cross-platform mobile apps using Flutter.
 
-
+Experienced in transforming complex ideas into real-world products by combining artificial intelligence, backend integrations, and modern mobile engineering practices. Passionate about building practical AI-driven applications that deliver high performance, seamless user experiences, and measurable real-world impact.
+`;
 const FLUTTER_CV_URL = "/cv/Zain Mhesn Flutter.pdf";
 const AI_CV_URL = "/cv/Zain Mhesn Ai.pdf";
 
@@ -575,14 +578,14 @@ const ThemeContext = React.createContext();
 const experienceData = [
   {
     company: "East Med",
-    role: "Flutter Developer (Freelance → On-site)",
+    role: "Flutter Developer (On-site)",
     location: "Damascus, Syria",
-    period: "09/2024 – 05/2025 | 09/2025 – Present",
+    period: "09/2024 – Present",
     description: [
-      "Develop Flutter mobile applications with REST API integration.",
-      "Prepare backend endpoints to support mobile workflows.",
-      "Implement PL/SQL logic for production backend operations.",
-      "Support enterprise-level internal mobile systems."
+      "Developed and maintained Flutter mobile applications integrated with RESTful APIs, supporting scalable mobile solutions.",
+      "Designed and implemented PL/SQL backend logic to support data operations and mobile system workflows.",
+      "Built an AI-powered conversational system using Retrieval-Augmented Generation (RAG) and LLMs to assist with insurance-related queries.",
+      "Contributed to the development and testing of RAG-based solutions as part of internal AI training and applied projects."
     ],
     type: "on site"
   },
@@ -984,7 +987,7 @@ function Home() {
             variants={item}
           >
             Information Engineering graduate specialized in Artificial
-            Intelligence, with 3+ years in Flutter. Built and shipped 5+
+            Intelligence, with 4+ years in Flutter. Built and shipped 5+
             cross-platform apps using Clean Architecture, Firebase, and
             Bloc/Provider. Comfortable integrating AI (RAG, LangChain, vector
             DBs) to deliver scalable, user-focused mobile products.
@@ -1529,10 +1532,7 @@ function About() {
             className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
             variants={appear}
           >
-            Information Engineering graduate specialized in Artificial
-            Intelligence. 3+ years building Flutter apps end-to-end with Clean
-            Architecture and robust state management. I like turning ambiguous
-            product ideas into reliable, shippable mobile software.
+            {SUMMARY}
           </motion.p>
           <motion.p
             className="text-lg text-gray-600 dark:text-gray-400 mb-6"
