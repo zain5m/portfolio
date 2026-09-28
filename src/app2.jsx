@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { cvDocuments } from "./data/profile";
 import { IoRocketSharp } from "react-icons/io5";
 
 //
@@ -53,7 +54,7 @@ import {
 } from "react-icons/si";
 
 import {
-  motion,
+  motion as Motion,
   useReducedMotion,
   useScroll,
   useSpring,
@@ -103,7 +104,7 @@ import { PiVectorThreeBold } from "react-icons/pi";
 //   const nodeColor = "#60a5fa"; // blue-400
 
 //   return (
-//     <motion.svg
+//     <Motion.svg
 //       // ✅ تموضع Responsive: أنزلها شوي وزِحها يمين، وتكبر تدريجيًا مع الشاشات
 //       className="
 //         fixed pointer-events-none select-none opacity-70
@@ -139,7 +140,7 @@ import { PiVectorThreeBold } from "react-icons/pi";
 //       </defs>
 
 //       {connections.map((c, i) => (
-//         <motion.line
+//         <Motion.line
 //           key={c.key}
 //           x1={c.x1}
 //           y1={c.y1}
@@ -167,7 +168,7 @@ import { PiVectorThreeBold } from "react-icons/pi";
 //       ))}
 
 //       {nodes.map((n, i) => (
-//         <motion.circle
+//         <Motion.circle
 //           key={n.key}
 //           cx={n.cx}
 //           cy={n.cy}
@@ -191,7 +192,7 @@ import { PiVectorThreeBold } from "react-icons/pi";
 //           }
 //         />
 //       ))}
-//     </motion.svg>
+//     </Motion.svg>
 //   );
 // }
 
@@ -234,7 +235,7 @@ function NeuralNetworkBG() {
   const nodeColor = "#60a5fa"; // blue-400
 
   return (
-    <motion.svg
+    <Motion.svg
       className="
         fixed pointer-events-none select-none opacity-40
         z-0
@@ -294,7 +295,7 @@ function NeuralNetworkBG() {
           filter="url(#nn-glow)"
         />
       ))}
-    </motion.svg>
+    </Motion.svg>
   );
 }
 
@@ -312,7 +313,6 @@ const MEDIUM = "https://zainmhesn.medium.com/";
 const KAGGLE = "https://www.kaggle.com/zainmhes";
 
 
-const CV_URL = "/cv/Zain Mhesn CV.pdf";
 
 const PROFILE_IMG_ROUND = "/projects/profile-pic_round.png";
 const PROFILE_IMG_SQUARE = "/projects/profile-pic_square.png";
@@ -800,7 +800,7 @@ function Navbar({ currentPage }) {
 
         {/* شريط التقدم أعلى الناف */}
         {!prefersReducedMotion && (
-          <motion.div
+          <Motion.div
             className="h-[3px] bg-blue-600/80 dark:bg-blue-400/90 origin-left"
             style={{ scaleX }}
           />
@@ -809,7 +809,7 @@ function Navbar({ currentPage }) {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <motion.div
+        <Motion.div
           initial={{ y: -12, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 180, damping: 20 }}
@@ -858,7 +858,7 @@ function Navbar({ currentPage }) {
               </a>
             </div>
           </nav>
-        </motion.div>
+        </Motion.div>
       )}
     </header>
   );
@@ -914,12 +914,12 @@ function Home() {
     >
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* الصورة مع Parallax + لمعة */}
-        <motion.div
+        <Motion.div
           className="w-full lg:w-1/3 flex justify-center lg:justify-start"
           style={{ y }}
         >
           <div className="relative">
-            <motion.div
+            <Motion.div
               className="absolute -inset-3 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 blur-lg opacity-60 dark:opacity-70"
               animate={
                 prefersReducedMotion
@@ -928,7 +928,7 @@ function Home() {
               }
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
-            <motion.img
+            <Motion.img
               src={PROFILE_IMG_ROUND}
               loading="lazy"
               alt={NAME}
@@ -944,23 +944,23 @@ function Home() {
             />
             {/* هالة ضوء تتنفس */}
             {!prefersReducedMotion && (
-              <motion.div
+              <Motion.div
                 className="absolute inset-0 rounded-full ring-2 ring-blue-400/30"
                 style={{ scale: glowScale }}
               />
             )}
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* النصوص + الأزرار مع stagger */}
-        <motion.div
+        <Motion.div
           className="w-full lg:w-2/3 text-center lg:text-left"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.h1
+          <Motion.h1
             className="text-4xl md:text-6xl font-extrabold mb-2 text-gray-900 dark:text-white"
             variants={item}
           >
@@ -968,16 +968,16 @@ function Home() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-400 dark:from-blue-400 dark:to-blue-300">
               {NAME}
             </span>
-          </motion.h1>
+          </Motion.h1>
 
-          <motion.h2
+          <Motion.h2
             className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-6"
             variants={item}
           >
             {TITLE}
-          </motion.h2>
+          </Motion.h2>
 
-          <motion.p
+          <Motion.p
             className="max-w-2xl text-lg text-gray-600 dark:text-gray-400 mb-8 mx-auto lg:mx-0"
             variants={item}
           >
@@ -986,35 +986,39 @@ function Home() {
             cross-platform apps using Clean Architecture, Firebase, and
             Bloc/Provider. Comfortable integrating AI (RAG, LangChain, vector
             DBs) to deliver scalable, user-focused mobile products.
-          </motion.p>
+          </Motion.p>
 
-          <motion.div
+          <Motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             variants={item}
           >
-            <motion.a
+            <Motion.a
               href="#projects"
               whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 flex items-center justify-center gap-2"
             >
               View My Projects <IoRocketSharp size={20} />
-            </motion.a>
+            </Motion.a>
 
-            <motion.a
-              href={CV_URL}
+            {cvDocuments.map((cv) => (
+<Motion.a
+              key={cv.href}
+              href={cv.href}
+              download={cv.download}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={prefersReducedMotion ? {} : { scale: 1.04 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
               className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-green-500/40 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              Download CV <Download size={20} />
-            </motion.a>
-          </motion.div>
+              {cv.title} <Download size={20} />
+            </Motion.a>
+          ))}
+          </Motion.div>
 
           {/* روابط سريعة؛ كل واحدة لها micro hover */}
-          <motion.div
+          <Motion.div
             className="mt-10 flex flex-wrap gap-4 items-center justify-center lg:justify-start"
             variants={item}
           >
@@ -1100,7 +1104,7 @@ function Home() {
                 classes: "bg-gray-100 dark:bg-slate-800",
               },
             ].map((btn, i) => (
-              <motion.a
+              <Motion.a
                 key={i}
                 href={btn.href}
                 target={btn.href.startsWith("http") ? "_blank" : undefined}
@@ -1114,10 +1118,10 @@ function Home() {
               >
                 {btn.icon}
                 <span className="text-sm font-medium">{btn.label}</span>
-              </motion.a>
+              </Motion.a>
             ))}
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </div>
     </section>
   );
@@ -1128,7 +1132,7 @@ function SectionHeading({ eyebrow, title, subtitle, Icon }) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <motion.div
+    <Motion.div
       className="mb-12 text-center"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -1139,21 +1143,21 @@ function SectionHeading({ eyebrow, title, subtitle, Icon }) {
         {Icon && <Icon size={14} />}
         <span>{eyebrow}</span>
       </div>
-      <motion.h2
+      <Motion.h2
         className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white"
         whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
       >
         <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
           {title}
         </span>
-      </motion.h2>
+      </Motion.h2>
       {subtitle && (
         <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-gray-600 dark:text-gray-400">
           {subtitle}
         </p>
       )}
       <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500" />
-    </motion.div>
+    </Motion.div>
   );
 }
 
@@ -1176,7 +1180,7 @@ function Projects() {
         Icon={Sparkles}
       />
 
-      <motion.div
+      <Motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -1190,7 +1194,7 @@ function Projects() {
             prefersReducedMotion={prefersReducedMotion}
           />
         ))}
-      </motion.div>
+      </Motion.div>
     </section>
   );
 }
@@ -1211,13 +1215,13 @@ function ProjectCard({ project, prefersReducedMotion }) {
   };
 
   return (
-    <motion.div
+    <Motion.div
       variants={card}
       whileHover={prefersReducedMotion ? {} : { y: -6 }}
       className="group relative rounded-2xl"
     >
       {/* هالة خارجية عند الهوفر */}
-      <motion.div
+      <Motion.div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-400 to-green-400 blur-xl"
         aria-hidden
       />
@@ -1225,7 +1229,7 @@ function ProjectCard({ project, prefersReducedMotion }) {
         {/* صورة */}
         {project.imageUrl ? (
           <div className="flex items-center justify-center h-48 overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-slate-900">
-            <motion.img
+            <Motion.img
               src={project.imageUrl}
               loading="lazy"
               alt={project.title}
@@ -1239,7 +1243,7 @@ function ProjectCard({ project, prefersReducedMotion }) {
           </div>
         ) : (
           <div className="overflow-hidden rounded-t-2xl">
-            <motion.img
+            <Motion.img
               src={`https://placehold.co/600x400/d1fae5/222?text=${encodeURIComponent(
                 project.title
               )}`}
@@ -1268,13 +1272,13 @@ function ProjectCard({ project, prefersReducedMotion }) {
           {Array.isArray(project.tags) && project.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tags.map((tag, i) => (
-                <motion.span
+                <Motion.span
                   key={`${project.title}-tag-${i}`}
                   className="px-3 py-1 bg-blue-100/50 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 rounded-full text-xs font-medium"
                   whileHover={prefersReducedMotion ? {} : { y: -1 }}
                 >
                   {tag}
-                </motion.span>
+                </Motion.span>
               ))}
             </div>
           )}
@@ -1282,7 +1286,7 @@ function ProjectCard({ project, prefersReducedMotion }) {
           {hasLinks && (
             <div className="flex flex-wrap gap-3">
               {project.githubUrl && (
-                <motion.a
+                <Motion.a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1294,10 +1298,10 @@ function ProjectCard({ project, prefersReducedMotion }) {
                   <SiGithub size={18} />
                   Code
                   <ExternalLink size={16} />
-                </motion.a>
+                </Motion.a>
               )}
               {project.liveUrl && (
-                <motion.a
+                <Motion.a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1308,13 +1312,13 @@ function ProjectCard({ project, prefersReducedMotion }) {
                 >
                   <SiGoogleplay size={18} />
                   Google Play
-                </motion.a>
+                </Motion.a>
               )}
             </div>
           )}
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }
 
@@ -1345,7 +1349,7 @@ function Experience() {
         Icon={Briefcase}
       />
 
-      <motion.div
+      <Motion.div
         className="relative border-l-2 border-gray-200 dark:border-gray-800 ml-4 md:ml-6 space-y-12"
         variants={container}
         initial="hidden"
@@ -1353,7 +1357,7 @@ function Experience() {
         viewport={{ once: true, amount: 0.2 }}
       >
         {experienceData.map((exp, index) => (
-          <motion.div
+          <Motion.div
             key={index}
             className="relative pl-8 md:pl-12"
             variants={itemVariant}
@@ -1391,9 +1395,9 @@ function Experience() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </Motion.div>
         ))}
-      </motion.div>
+      </Motion.div>
     </section>
   );
 }
@@ -1488,7 +1492,7 @@ function About() {
 
       {/* الصف الأول: نبذة + صورة */}
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-12">
-        <motion.div
+        <Motion.div
           className="md:col-span-2"
           initial="hidden"
           whileInView="show"
@@ -1498,7 +1502,7 @@ function About() {
             show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
           }}
         >
-          <motion.p
+          <Motion.p
             className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
             variants={appear}
           >
@@ -1506,8 +1510,8 @@ function About() {
             Intelligence. 3+ years building Flutter apps end-to-end with Clean
             Architecture and robust state management. I like turning ambiguous
             product ideas into reliable, shippable mobile software.
-          </motion.p>
-          <motion.p
+          </Motion.p>
+          <Motion.p
             className="text-lg text-gray-600 dark:text-gray-400 mb-6"
             variants={appear}
           >
@@ -1516,16 +1520,16 @@ function About() {
             stack (Pandas/NumPy/Scikit-learn) and Gen-AI workflows (RAG,
             LangChain, vector DBs like Qdrant/ChromaDB, and LLM integration with
             Mistral/OpenAI).
-          </motion.p>
-          <motion.div
+          </Motion.p>
+          <Motion.div
             className="mt-4 text-gray-700 dark:text-gray-300"
             variants={appear}
           >
             <b>Languages:</b> Arabic (Native), English (Intermediate)
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
 
-        <motion.div
+        <Motion.div
           className="w-full flex justify-center"
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -1544,7 +1548,7 @@ function About() {
               }
             />
             {!prefersReducedMotion && (
-              <motion.span
+              <Motion.span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 rounded-xl"
                 animate={{
@@ -1562,7 +1566,7 @@ function About() {
               />
             )}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Skills */}
@@ -1629,15 +1633,19 @@ function About() {
 
         {/* زر الـ CV بسيط وخفيف */}
         <div className="mt-8 text-center md:text-left">
-          <a
-            href={CV_URL}
+          {cvDocuments.map((cv) => (
+<a
+            key={cv.href}
+              href={cv.href}
+              download={cv.download}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-semibold text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 shadow-md hover:shadow-lg transition-all duration-200 text-sm md:text-base"
           >
             <Download size={18} />
-            <span>Download CV</span>
+            <span>{cv.title}</span>
           </a>
+          ))}
         </div>
       </div>
     </section>
@@ -1690,7 +1698,7 @@ function SkillsGrid({ items }) {
 //   }
 
 //   return (
-//     <motion.div
+//     <Motion.div
 //       role="listitem"
 //       onMouseMove={prefersReducedMotion ? undefined : onMouseMove}
 //       onMouseLeave={prefersReducedMotion ? undefined : onMouseLeave}
@@ -1713,7 +1721,7 @@ function SkillsGrid({ items }) {
 //         >
 //           {/* لمعة تتحرك على الهوفر */}
 //           {!prefersReducedMotion && (
-//             <motion.span
+//             <Motion.span
 //               aria-hidden
 //               className="pointer-events-none absolute top-0 -left-10 h-full w-16 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-0 group-hover:opacity-100"
 //               style={{ translateX: shineX }}
@@ -1744,7 +1752,7 @@ function SkillsGrid({ items }) {
 
 //           {/* هالة خفيفة للمهارات الأساسية */}
 //           {core && !prefersReducedMotion && (
-//             <motion.span
+//             <Motion.span
 //               aria-hidden
 //               className="absolute inset-0 rounded-2xl"
 //               animate={{
@@ -1763,12 +1771,12 @@ function SkillsGrid({ items }) {
 //           )}
 //         </div>
 //       </div>
-//     </motion.div>
+//     </Motion.div>
 //   );
 // }
 function SkillPill({ name, Icon, core, prefersReducedMotion }) {
   return (
-    <motion.div
+    <Motion.div
       role="listitem"
       whileHover={prefersReducedMotion ? {} : { scale: 1.03, y: -1 }}
       whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
@@ -1800,7 +1808,7 @@ function SkillPill({ name, Icon, core, prefersReducedMotion }) {
           </span>
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }
 
@@ -1928,14 +1936,14 @@ function Contact() {
         Icon={Mail}
       />
 
-      <motion.div
+      <Motion.div
         className="flex flex-wrap justify-center gap-4 mb-10"
         variants={linkContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.a
+        <Motion.a
           href={`mailto:${EMAIL}`}
           variants={linkItem}
           whileHover={
@@ -1944,7 +1952,7 @@ function Contact() {
           whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <motion.div
+          <Motion.div
             className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-green-500/20 opacity-0 group-hover:opacity-100"
             transition={{ duration: 0.3 }}
           />
@@ -1953,9 +1961,9 @@ function Contact() {
             className="relative z-10 text-blue-600 dark:text-blue-400"
           />
           <span className="relative z-10 text-sm font-medium">{EMAIL}</span>
-        </motion.a>
+        </Motion.a>
 
-        <motion.a
+        <Motion.a
           href={LINKEDIN}
           target="_blank"
           rel="noopener noreferrer"
@@ -1966,7 +1974,7 @@ function Contact() {
           whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <motion.div
+          <Motion.div
             className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100"
             transition={{ duration: 0.3 }}
           />
@@ -1975,9 +1983,9 @@ function Contact() {
             className="relative z-10 text-blue-600 dark:text-blue-400"
           />
           <span className="relative z-10 text-sm font-medium">LinkedIn</span>
-        </motion.a>
+        </Motion.a>
 
-        <motion.a
+        <Motion.a
           href={KAGGLE}
           target="_blank"
           rel="noopener noreferrer"
@@ -1988,7 +1996,7 @@ function Contact() {
           whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <motion.div
+          <Motion.div
             className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100"
             transition={{ duration: 0.3 }}
           />
@@ -1997,9 +2005,9 @@ function Contact() {
             className="relative z-10 text-blue-600 dark:text-blue-400"
           />
           <span className="relative z-10 text-sm font-medium">Kaggle</span>
-        </motion.a>
+        </Motion.a>
 
-        <motion.a
+        <Motion.a
           href={`tel:${PHONE}`}
           variants={linkItem}
           whileHover={
@@ -2008,7 +2016,7 @@ function Contact() {
           whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           className="relative flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <motion.div
+          <Motion.div
             className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100"
             transition={{ duration: 0.3 }}
           />
@@ -2017,9 +2025,9 @@ function Contact() {
             className="relative z-10 text-blue-600 dark:text-blue-400"
           />
           <span className="relative z-10 text-sm font-medium">{PHONE}</span>
-        </motion.a>
+        </Motion.a>
 
-        <motion.a
+        <Motion.a
           href={`https://wa.me/${PHONE.replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -2030,7 +2038,7 @@ function Contact() {
           whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           className="relative flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-all duration-300 shadow-sm overflow-hidden group"
         >
-          <motion.div
+          <Motion.div
             className="absolute inset-0 bg-gradient-to-r from-green-500/30 to-emerald-500/30 opacity-0 group-hover:opacity-100"
             transition={{ duration: 0.3 }}
           />
@@ -2039,10 +2047,10 @@ function Contact() {
             className="relative z-10 text-green-600 dark:text-green-400"
           />
           <span className="relative z-10 text-sm font-medium">WhatsApp</span>
-        </motion.a>
-      </motion.div>
+        </Motion.a>
+      </Motion.div>
 
-      <motion.div
+      <Motion.div
         className="bg-white dark:bg-slate-800/50 p-8 md:p-12 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -2050,15 +2058,15 @@ function Contact() {
         transition={{ type: "spring", stiffness: 120, damping: 16 }}
       >
         {isSubmitted ? (
-          <motion.div
+          <Motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="text-center p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 rounded-lg"
           >
             Thank you! Your message has been sent.
-          </motion.div>
+          </Motion.div>
         ) : (
-          <motion.form
+          <Motion.form
             onSubmit={handleSubmit}
             className="space-y-6"
             variants={formContainer}
@@ -2077,14 +2085,14 @@ function Contact() {
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div variants={formItem}>
+              <Motion.div variants={formItem}>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >
                   Full Name
                 </label>
-                <motion.input
+                <Motion.input
                   type="text"
                   id="name"
                   name="name"
@@ -2098,16 +2106,16 @@ function Contact() {
                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300"
                   placeholder="Your Name"
                 />
-              </motion.div>
+              </Motion.div>
 
-              <motion.div variants={formItem}>
+              <Motion.div variants={formItem}>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >
                   Email Address
                 </label>
-                <motion.input
+                <Motion.input
                   type="email"
                   id="email"
                   name="email"
@@ -2121,17 +2129,17 @@ function Contact() {
                   className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300"
                   placeholder="you@example.com"
                 />
-              </motion.div>
+              </Motion.div>
             </div>
 
-            <motion.div variants={formItem}>
+            <Motion.div variants={formItem}>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Message
               </label>
-              <motion.textarea
+              <Motion.textarea
                 id="message"
                 name="message"
                 rows="5"
@@ -2145,20 +2153,20 @@ function Contact() {
                 className="w-full px-4 py-3 rounded-lg bg-transparent dark:bg-slate-800 border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 resize-none"
                 placeholder="Your message..."
               />
-            </motion.div>
+            </Motion.div>
 
             {error && (
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center p-3 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-200 rounded-lg"
               >
                 {error}
-              </motion.div>
+              </Motion.div>
             )}
 
-            <motion.div className="text-center" variants={formItem}>
-              <motion.button
+            <Motion.div className="text-center" variants={formItem}>
+              <Motion.button
                 type="submit"
                 disabled={loading}
                 className="relative w-full sm:w-auto px-10 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-blue-500/40 transition-all duration-300 mx-auto disabled:opacity-60 flex items-center justify-center gap-3"
@@ -2170,7 +2178,7 @@ function Contact() {
                 ) : (
                   <>
                     <span>Send Message</span>
-                    <motion.span
+                    <Motion.span
                       whileHover={
                         prefersReducedMotion
                           ? {}
@@ -2187,14 +2195,14 @@ function Contact() {
                       className="inline-flex items-center justify-center"
                     >
                       <Send size={18} className="drop-shadow-sm" />
-                    </motion.span>
+                    </Motion.span>
                   </>
                 )}
-              </motion.button>
-            </motion.div>
-          </motion.form>
+              </Motion.button>
+            </Motion.div>
+          </Motion.form>
         )}
-      </motion.div>
+      </Motion.div>
     </section>
   );
 }
@@ -2220,7 +2228,7 @@ function Footer() {
   };
 
   return (
-    <motion.footer
+    <Motion.footer
       className="bg-gray-50 dark:bg-slate-950/50 border-t border-gray-200 dark:border-gray-800/50 relative overflow-hidden"
       initial="hidden"
       whileInView="show"
@@ -2229,7 +2237,7 @@ function Footer() {
     >
       {/* خلفية متوهجة */}
       {!prefersReducedMotion && (
-        <motion.div
+        <Motion.div
           className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-green-500/5"
           animate={{
             opacity: [0.3, 0.5, 0.3],
@@ -2243,33 +2251,33 @@ function Footer() {
       )}
 
       <div className="container mx-auto max-w-6xl px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-        <motion.div className="text-center md:text-left" variants={item}>
-          <motion.a
+        <Motion.div className="text-center md:text-left" variants={item}>
+          <Motion.a
             href="#home"
             className="text-xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer mb-2 inline-block"
             whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -2 }}
             whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           >
             {NAME}
-          </motion.a>
-          <motion.div
+          </Motion.a>
+          <Motion.div
             className="text-gray-600 dark:text-gray-400"
             variants={item}
           >
             {TITLE} <br />
             <span className="text-sm">{EMAIL}</span> |{" "}
             <span className="text-sm">{LOCATION}</span>
-          </motion.div>
-          <motion.p
+          </Motion.div>
+          <Motion.p
             className="text-gray-600 dark:text-gray-400 mt-2 text-sm"
             variants={item}
           >
             © {new Date().getFullYear()} All rights reserved.
-          </motion.p>
-        </motion.div>
+          </Motion.p>
+        </Motion.div>
 
-        <motion.div className="flex gap-6" variants={item}>
-          <motion.a
+        <Motion.div className="flex gap-6" variants={item}>
+          <Motion.a
             href={GITHUB}
             target="_blank"
             rel="noopener noreferrer"
@@ -2281,16 +2289,16 @@ function Footer() {
           >
             <SiGithub size={24} />
             {!prefersReducedMotion && (
-              <motion.span
+              <Motion.span
                 className="absolute inset-0 rounded-full bg-blue-500/20"
                 initial={{ scale: 0, opacity: 0 }}
                 whileHover={{ scale: 2, opacity: 0 }}
                 transition={{ duration: 0.4 }}
               />
             )}
-          </motion.a>
+          </Motion.a>
 
-          <motion.a
+          <Motion.a
             href={LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
@@ -2302,16 +2310,16 @@ function Footer() {
           >
             <SiLinkedin size={24} />
             {!prefersReducedMotion && (
-              <motion.span
+              <Motion.span
                 className="absolute inset-0 rounded-full bg-blue-500/20"
                 initial={{ scale: 0, opacity: 0 }}
                 whileHover={{ scale: 2, opacity: 0 }}
                 transition={{ duration: 0.4 }}
               />
             )}
-          </motion.a>
+          </Motion.a>
 
-          <motion.a
+          <Motion.a
             href={KAGGLE}
             target="_blank"
             rel="noopener noreferrer"
@@ -2324,16 +2332,16 @@ function Footer() {
           >
             <SiKaggle size={24} />
             {!prefersReducedMotion && (
-              <motion.span
+              <Motion.span
                 className="absolute inset-0 rounded-full bg-blue-500/20"
                 initial={{ scale: 0, opacity: 0 }}
                 whileHover={{ scale: 2, opacity: 0 }}
                 transition={{ duration: 0.4 }}
               />
             )}
-          </motion.a>
-        </motion.div>
+          </Motion.a>
+        </Motion.div>
       </div>
-    </motion.footer>
+    </Motion.footer>
   );
 }
