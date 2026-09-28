@@ -8,7 +8,7 @@ import { About, Experience, Resume, Skills } from "./components/ProfileSections"
 import { cvDocuments } from "./data/profile";
 
 const NAME = "Zain Mhesn";
-const TITLE = "Flutter Developer | Mobile Engineer | AI Engineer";
+const TITLE = "Flutter Developer | Mobile Developer | AI Engineer";
 const EMAIL = "zayanmhesn22@gmail.com";
 const PHONE = "+963959527648";
 const LOCATION = "Damascus, Syria";
