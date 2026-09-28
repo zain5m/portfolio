@@ -69,7 +69,7 @@ export const communityWork = [
     image: "/projects/unblock_syria.png",
     href: "https://unblocksyria.com/ar/volunteers/zain-mhesn",
     linkLabel: "View volunteer profile",
-    role: "Website Testing Supervisor",
+    role: "Website Testing lead",
     description:
       "Supervise website and service testing, monitor digital service accessibility, and prepare periodic reports documenting restrictions and supporting public transparency.",
   },
