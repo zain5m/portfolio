@@ -91,13 +91,13 @@ function Home() {
         </div>
         <div className="hidden lg:block">
           <img src="/projects/profile-pic_round.png" alt="Zain Mhesn" width="280" height="280" fetchPriority="high" className="aspect-square w-full rounded-full border border-slate-200 bg-slate-100 object-cover p-2 dark:border-slate-800 dark:bg-slate-900" />
-          <p className="mt-5 text-center text-sm text-slate-500 dark:text-slate-400">Mobile engineering · Applied AI</p>
+          <p className="mt-5 text-center text-sm text-slate-500 dark:text-slate-400">Mobile developer · Applied AI</p>
         </div>
       </Motion.div>
       <div className="mt-12 grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2 dark:border-slate-800">
         <div className="flex gap-4">
           <Smartphone size={22} className="mt-1 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-          <div><h2 className="font-semibold">Mobile engineering</h2><p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">3+ years · Production apps · End-to-end ownership</p></div>
+          <div><h2 className="font-semibold">Mobile developer</h2><p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">3+ years · Production apps · End-to-end ownership</p></div>
         </div>
         <div className="flex gap-4">
           <BrainCircuit size={22} className="mt-1 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
@@ -177,7 +177,7 @@ function Navbar({ currentPage }) {
 
             <a
               href={GITHUB}
-                aria-label="GitHub"
+              aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
@@ -186,7 +186,7 @@ function Navbar({ currentPage }) {
             </a>
             <a
               href={LINKEDIN}
-                aria-label="LinkedIn"
+              aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:scale-110 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
@@ -255,7 +255,7 @@ function Navbar({ currentPage }) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                  aria-current={currentPage === item.id ? "location" : undefined}
+                aria-current={currentPage === item.id ? "location" : undefined}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-lg font-medium transition-colors
                   ${currentPage === item.id
@@ -405,7 +405,7 @@ function Contact() {
       <SectionHeading
         eyebrow="Contact"
         title="Get In Touch"
-        subtitle="For mobile engineering, applied AI, and project collaboration."
+        subtitle="For mobile developer, applied AI, and project collaboration."
         Icon={Mail}
       />
 

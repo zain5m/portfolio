@@ -57,7 +57,7 @@ export function Experience() {
 export function About() {
   return (
     <section id="about" aria-labelledby="about-heading" className="section-shell">
-      <SectionHeader id="about-heading" eyebrow="Background" title="Mobile engineering. Applied intelligence." />
+      <SectionHeader id="about-heading" eyebrow="Background" title="Mobile developer. Applied intelligence." />
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
         <div className="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
           <p>
