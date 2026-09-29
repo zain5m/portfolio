@@ -18,7 +18,7 @@ export const cvDocuments = [
 export const experience = [
   {
     company: "East Med",
-    role: "Flutter Developer & AI Engineer",
+    role: "Mobile Developer",
     period: "September 2024 – Present",
     location: "Damascus, Syria",
     arrangement: "On-site",
